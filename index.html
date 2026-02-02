@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary Meta Tags -->
-    <title>Pro-Israel Organizations & Resources | Connecticut & USA | Israel Support Directory</title>
-    <meta name="title" content="Pro-Israel Organizations & Resources | Connecticut & USA | Israel Support Directory">
-    <meta name="description" content="Comprehensive directory of pro-Israel advocacy organizations, PACs, and educational resources in Connecticut and across the United States. Find organizations supporting Israel, combating antisemitism, and promoting Israeli-American relations.">
-    <meta name="keywords" content="pro-Israel organizations, Israel advocacy, Connecticut Israel support, AIPAC, ADL, Israel resources, Gaza conflict, Middle East advocacy, Jewish organizations, pro-Israel PACs, Israel education, Connecticut Jewish community, Israel support groups, American Israel relations, Zionist organizations, Israel defense, antisemitism prevention">
+    <title>Pro-Israel Organizations & Resources | USA | Israel Support Directory</title>
+    <meta name="title" content="Pro-Israel Organizations & Resources | USA | Israel Support Directory">
+    <meta name="description" content="Comprehensive directory of pro-Israel advocacy organizations, PACs, and educational resources across the United States. Find organizations supporting Israel, combating antisemitism, and promoting Israeli-American relations.">
+    <meta name="keywords" content="pro-Israel organizations, Israel advocacy, Israel support, AIPAC, ADL, Israel resources, Gaza conflict, Middle East advocacy, Jewish organizations, pro-Israel PACs, Israel education, Jewish community, Israel support groups, American Israel relations, Zionist organizations, Israel defense, antisemitism prevention">
     <meta name="author" content="Pro-Israel Resource Directory">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="revisit-after" content="7 days">
-    <meta name="geo.region" content="US-CT">
-    <meta name="geo.placename" content="Connecticut">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yourwebsite.com/">
-    <meta property="og:title" content="Pro-Israel Organizations & Resources | Connecticut & USA">
+    <meta property="og:title" content="Pro-Israel Organizations & Resources | USA">
     <meta property="og:description" content="Comprehensive directory of pro-Israel advocacy organizations, PACs, and educational resources supporting Israel and combating antisemitism.">
     <meta property="og:image" content="https://yourwebsite.com/og-image.jpg">
     <meta property="og:locale" content="en_US">
@@ -28,7 +26,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://yourwebsite.com/">
-    <meta property="twitter:title" content="Pro-Israel Organizations & Resources | Connecticut & USA">
+    <meta property="twitter:title" content="Pro-Israel Organizations & Resources | USA">
     <meta property="twitter:description" content="Comprehensive directory of pro-Israel advocacy organizations, PACs, and educational resources supporting Israel.">
     <meta property="twitter:image" content="https://yourwebsite.com/twitter-image.jpg">
     
@@ -50,11 +48,7 @@
         },
         "audience": {
             "@type": "Audience",
-            "audienceType": "Pro-Israel advocates, Jewish community members, supporters of Israel",
-            "geographicArea": {
-                "@type": "AdministrativeArea",
-                "name": "Connecticut, United States"
-            }
+            "audienceType": "Pro-Israel advocates, Jewish community members, supporters of Israel"
         }
     }
     </script>
@@ -65,11 +59,7 @@
         "@type": "Organization",
         "name": "Pro-Israel Resource Directory",
         "description": "A comprehensive directory of organizations supporting Israel, including advocacy groups, PACs, and educational resources",
-        "url": "https://yourwebsite.com",
-        "areaServed": {
-            "@type": "State",
-            "name": "Connecticut"
-        }
+        "url": "https://yourwebsite.com"
     }
     </script>
     
@@ -123,6 +113,140 @@
         .intro-text p {
             margin-bottom: 10px;
             line-height: 1.8;
+        }
+        
+        .newsfeed-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #0066cc;
+        }
+        
+        .newsfeed-section h2 {
+            color: #0066cc;
+            margin-bottom: 10px;
+            border-bottom: none;
+            font-size: 2em;
+        }
+        
+        .newsfeed-subtitle {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1em;
+        }
+        
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .news-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid #0066cc;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,102,204,0.2);
+        }
+        
+        .news-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
+        
+        .news-source {
+            background: #0066cc;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .news-date {
+            color: #999;
+            font-size: 0.85em;
+        }
+        
+        .news-card h3 {
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .news-excerpt {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+        
+        .news-read-more {
+            color: #0066cc;
+            font-weight: 600;
+            font-size: 0.9em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .news-read-more::after {
+            content: "→";
+        }
+        
+        .loading-spinner {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0066cc;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .news-sources {
+            text-align: center;
+            color: #666;
+            font-size: 0.85em;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .error-message {
+            background: #fff3cd;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #ffc107;
         }
         
         .tags {
@@ -224,11 +348,10 @@
     <div class="container">
         <header>
             <h1>🇮🇱 Pro-Israel Organizations & Resources</h1>
-            <p class="subtitle">A comprehensive directory of organizations supporting Israel in Connecticut and across the United States</p>
+            <p class="subtitle">A comprehensive directory of organizations supporting Israel across the United States</p>
             
             <div class="tags">
                 <span class="tag">Israel Support</span>
-                <span class="tag">Connecticut</span>
                 <span class="tag">Gaza Conflict</span>
                 <span class="tag">Middle East Advocacy</span>
                 <span class="tag">Jewish Organizations</span>
@@ -236,11 +359,27 @@
             </div>
             
             <div class="intro-text">
-                <p><strong>Find Pro-Israel Organizations in Connecticut and Beyond</strong></p>
-                <p>This directory connects you with leading pro-Israel advocacy groups, political action committees, educational resources, and community organizations across Connecticut and the United States. Whether you're seeking ways to support Israel, combat antisemitism, stay informed about the Gaza conflict, or engage with the Jewish community, you'll find valuable resources here.</p>
+                <p><strong>Find Pro-Israel Organizations Across America</strong></p>
+                <p>This directory connects you with leading pro-Israel advocacy groups, political action committees, educational resources, and community organizations across the United States. Whether you're seeking ways to support Israel, combat antisemitism, stay informed about the Gaza conflict, or engage with the Jewish community, you'll find valuable resources here.</p>
                 <p>These organizations work to strengthen American-Israeli relations, provide humanitarian support, advocate for Israel's security, and educate the public about Israel's history, culture, and challenges in the Middle East.</p>
             </div>
         </header>
+        
+        <section class="newsfeed-section">
+            <h2>📰 Latest News & Updates</h2>
+            <p class="newsfeed-subtitle">Recent articles and updates from leading pro-Israel organizations</p>
+            
+            <div id="news-container" class="news-container">
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading latest news...</p>
+                </div>
+            </div>
+            
+            <div class="news-sources">
+                <p><strong>News Sources:</strong> AIPAC, Jerusalem Post, Times of Israel, JNS, Israel Hayom, and other pro-Israel media outlets</p>
+            </div>
+        </section>
         
         <main>
             <section class="category">
@@ -289,7 +428,7 @@
                 <div class="links-grid">
                     <a href="https://www.aipac.org/get-involved/super-pac" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>AIPAC PAC</h3>
-                        <p>AIPAC's political action committee supporting pro-Israel candidates across the United States, including Connecticut</p>
+                        <p>AIPAC's political action committee supporting pro-Israel candidates across the United States</p>
                         <span class="link-url">aipac.org/get-involved/super-pac</span>
                     </a>
                     
@@ -347,7 +486,7 @@
                 <div class="links-grid">
                     <a href="https://www.jnf.org" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>JNF-USA</h3>
-                        <p>Jewish National Fund - Environmental and community development in Israel, with chapters in Connecticut</p>
+                        <p>Jewish National Fund - Environmental and community development in Israel</p>
                         <span class="link-url">jnf.org</span>
                     </a>
                     
@@ -359,13 +498,13 @@
                     
                     <a href="https://www.hadassah.org" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>Hadassah</h3>
-                        <p>Women's Zionist organization supporting healthcare in Israel and Jewish communities in Connecticut</p>
+                        <p>Women's Zionist organization supporting healthcare in Israel and Jewish communities</p>
                         <span class="link-url">hadassah.org</span>
                     </a>
                     
                     <a href="https://www.jfna.org" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>JFNA</h3>
-                        <p>Jewish Federations of North America - Supporting Jewish communities and Israel relief efforts across Connecticut and the U.S.</p>
+                        <p>Jewish Federations of North America - Supporting Jewish communities and Israel relief efforts across the United States</p>
                         <span class="link-url">jfna.org</span>
                     </a>
                 </div>
@@ -374,10 +513,227 @@
         
         <footer>
             <p><strong>About This Directory</strong></p>
-            <p>This page is for informational purposes. Organizations listed represent a variety of perspectives within the pro-Israel community in Connecticut and across the United States. Whether you're looking to support Israel during the Gaza conflict, combat antisemitism, or strengthen American-Israeli relations, these resources can help you get involved.</p>
-            <p style="margin-top: 15px;"><strong>Keywords:</strong> Pro-Israel organizations Connecticut, Israel advocacy groups, Gaza conflict support, Jewish organizations CT, AIPAC Connecticut, Israel support resources, Middle East advocacy, antisemitism prevention, pro-Israel PACs, Connecticut Jewish community</p>
+            <p>This page is for informational purposes. Organizations listed represent a variety of perspectives within the pro-Israel community across the United States. Whether you're looking to support Israel during the Gaza conflict, combat antisemitism, or strengthen American-Israeli relations, these resources can help you get involved.</p>
+            <p style="margin-top: 15px;"><strong>Keywords:</strong> Pro-Israel organizations, Israel advocacy groups, Gaza conflict support, Jewish organizations, AIPAC, Israel support resources, Middle East advocacy, antisemitism prevention, pro-Israel PACs, Jewish community</p>
             <p style="margin-top: 10px;">Last updated: January 2026</p>
         </footer>
     </div>
+    
+    <script>
+        // News feed configuration
+        const NEWS_SOURCES = [
+            {
+                name: 'Jerusalem Post',
+                rss: 'https://www.jpost.com/rss/rssfeedsheadlines.aspx',
+                color: '#0066cc'
+            },
+            {
+                name: 'Times of Israel',
+                rss: 'https://www.timesofisrael.com/feed/',
+                color: '#0088cc'
+            },
+            {
+                name: 'JNS',
+                rss: 'https://www.jns.org/feed/',
+                color: '#0066aa'
+            },
+            {
+                name: 'Israel Hayom',
+                rss: 'https://www.israelhayom.com/feed/',
+                color: '#0077bb'
+            }
+        ];
+
+        // Function to fetch news using RSS to JSON API
+        async function fetchNews() {
+            const newsContainer = document.getElementById('news-container');
+            const allArticles = [];
+
+            try {
+                // Fetch from multiple sources
+                const promises = NEWS_SOURCES.map(async (source) => {
+                    try {
+                        // Using rss2json API service (free tier)
+                        const response = await fetch(
+                            `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.rss)}&api_key=YOUR_API_KEY&count=5`
+                        );
+                        
+                        if (!response.ok) throw new Error('Feed fetch failed');
+                        
+                        const data = await response.json();
+                        
+                        if (data.items) {
+                            return data.items.slice(0, 3).map(item => ({
+                                title: item.title,
+                                link: item.link,
+                                description: item.description ? stripHtml(item.description).substring(0, 150) + '...' : '',
+                                pubDate: new Date(item.pubDate),
+                                source: source.name,
+                                sourceColor: source.color
+                            }));
+                        }
+                        return [];
+                    } catch (error) {
+                        console.error(`Error fetching from ${source.name}:`, error);
+                        return [];
+                    }
+                });
+
+                const results = await Promise.all(promises);
+                results.forEach(articles => allArticles.push(...articles));
+
+                // Sort by date (newest first)
+                allArticles.sort((a, b) => b.pubDate - a.pubDate);
+
+                // Display top 6 articles
+                displayNews(allArticles.slice(0, 6));
+
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                showError();
+            }
+        }
+
+        // Strip HTML tags from description
+        function stripHtml(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
+        }
+
+        // Format date
+        function formatDate(date) {
+            const now = new Date();
+            const diffTime = Math.abs(now - date);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+
+            if (diffHours < 1) return 'Just now';
+            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffDays === 1) return 'Yesterday';
+            if (diffDays < 7) return `${diffDays} days ago`;
+            
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        // Display news articles
+        function displayNews(articles) {
+            const newsContainer = document.getElementById('news-container');
+            
+            if (articles.length === 0) {
+                newsContainer.innerHTML = `
+                    <div class="error-message">
+                        <p><strong>Unable to load news at this time.</strong></p>
+                        <p>Please visit the organizations directly for the latest updates.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            newsContainer.innerHTML = articles.map(article => `
+                <a href="${article.link}" class="news-card" target="_blank" rel="noopener noreferrer">
+                    <div class="news-card-header">
+                        <span class="news-source" style="background-color: ${article.sourceColor}">${article.source}</span>
+                        <span class="news-date">${formatDate(article.pubDate)}</span>
+                    </div>
+                    <h3>${article.title}</h3>
+                    <p class="news-excerpt">${article.description}</p>
+                    <span class="news-read-more">Read more</span>
+                </a>
+            `).join('');
+        }
+
+        // Show error message
+        function showError() {
+            const newsContainer = document.getElementById('news-container');
+            newsContainer.innerHTML = `
+                <div class="error-message">
+                    <p><strong>Unable to load news feed at this time.</strong></p>
+                    <p>Please visit the news sources directly:</p>
+                    <p style="margin-top: 10px;">
+                        <a href="https://www.jpost.com" target="_blank" style="color: #0066cc; margin: 0 10px;">Jerusalem Post</a> |
+                        <a href="https://www.timesofisrael.com" target="_blank" style="color: #0066cc; margin: 0 10px;">Times of Israel</a> |
+                        <a href="https://www.jns.org" target="_blank" style="color: #0066cc; margin: 0 10px;">JNS</a>
+                    </p>
+                </div>
+            `;
+        }
+
+        // Alternative: Use static fallback news when API is unavailable
+        function displayFallbackNews() {
+            const newsContainer = document.getElementById('news-container');
+            const fallbackArticles = [
+                {
+                    title: 'Visit Jerusalem Post for Latest Updates',
+                    link: 'https://www.jpost.com',
+                    description: 'Get the latest breaking news from Israel and the Middle East.',
+                    source: 'Jerusalem Post',
+                    sourceColor: '#0066cc'
+                },
+                {
+                    title: 'Times of Israel - Breaking News',
+                    link: 'https://www.timesofisrael.com',
+                    description: 'Independent news coverage of Israel, the Middle East, and the Jewish world.',
+                    source: 'Times of Israel',
+                    sourceColor: '#0088cc'
+                },
+                {
+                    title: 'JNS - Jewish & Israel News',
+                    link: 'https://www.jns.org',
+                    description: 'Comprehensive coverage of news from Israel and around the Jewish world.',
+                    source: 'JNS',
+                    sourceColor: '#0066aa'
+                },
+                {
+                    title: 'Israel Hayom News',
+                    link: 'https://www.israelhayom.com',
+                    description: "Israel's most widely read news source in English.",
+                    source: 'Israel Hayom',
+                    sourceColor: '#0077bb'
+                },
+                {
+                    title: 'AIPAC News & Updates',
+                    link: 'https://www.aipac.org/news',
+                    description: 'Latest policy updates and advocacy news from AIPAC.',
+                    source: 'AIPAC',
+                    sourceColor: '#003d7a'
+                },
+                {
+                    title: 'StandWithUs Updates',
+                    link: 'https://www.standwithus.com/news',
+                    description: 'Educational resources and news about Israel advocacy.',
+                    source: 'StandWithUs',
+                    sourceColor: '#0066cc'
+                }
+            ];
+
+            newsContainer.innerHTML = fallbackArticles.map(article => `
+                <a href="${article.link}" class="news-card" target="_blank" rel="noopener noreferrer">
+                    <div class="news-card-header">
+                        <span class="news-source" style="background-color: ${article.sourceColor}">${article.source}</span>
+                        <span class="news-date">Visit Site</span>
+                    </div>
+                    <h3>${article.title}</h3>
+                    <p class="news-excerpt">${article.description}</p>
+                    <span class="news-read-more">Read more</span>
+                </a>
+            `).join('');
+        }
+
+        // Initialize news feed on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Try to fetch live news, fall back to static links if unavailable
+            fetchNews().catch(() => {
+                displayFallbackNews();
+            });
+            
+            // Refresh news every 10 minutes
+            setInterval(() => {
+                fetchNews().catch(() => {
+                    displayFallbackNews();
+                });
+            }, 600000);
+        });
+    </script>
 </body>
 </html>
