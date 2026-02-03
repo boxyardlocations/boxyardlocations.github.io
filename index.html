@@ -16,22 +16,22 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourwebsite.com/">
+    <meta property="og:url" content="https://amallattoufcom/">
     <meta property="og:title" content="A.M.A.L.L.A.T.T.O.U.F - Pro-Israel Organizations & Resources | USA">
     <meta property="og:description" content="A.M.A.L.L.A.T.T.O.U.F - Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, Facts. Comprehensive directory of pro-Israel advocacy organizations and resources.">
-    <meta property="og:image" content="https://yourwebsite.com/og-image.jpg">
+    <meta property="og:image" content="https://amallattoufcom/og-image.jpg">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Pro-Israel Resource Directory">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourwebsite.com/">
+    <meta property="twitter:url" content="https://amallattoufcom/">
     <meta property="twitter:title" content="A.M.A.L.L.A.T.T.O.U.F - Pro-Israel Organizations & Resources | USA">
     <meta property="twitter:description" content="A.M.A.L.L.A.T.T.O.U.F - Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, Facts. Directory of pro-Israel organizations.">
-    <meta property="twitter:image" content="https://yourwebsite.com/twitter-image.jpg">
+    <meta property="twitter:image" content="https://amallattoufcom/twitter-image.jpg">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://yourwebsite.com/">
+    <link rel="canonical" href="https://amallattoufcom/">
     
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -65,7 +65,27 @@
     }
     </script>
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --primary-blue: #0066cc;
+            --primary-dark: #004999;
+            --accent-gold: #d4af37;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a5568;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.08);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2), 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -73,452 +93,831 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Animated Background Shapes */
+        .bg-shape {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(60px);
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .bg-shape-1 {
+            width: 400px;
+            height: 400px;
+            background: #0066cc;
+            top: 10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+        
+        .bg-shape-2 {
+            width: 300px;
+            height: 300px;
+            background: #d4af37;
+            bottom: 20%;
+            right: -5%;
+            animation-delay: 7s;
+        }
+        
+        .bg-shape-3 {
+            width: 500px;
+            height: 500px;
+            background: #ffffff;
+            top: 50%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
         }
         
         .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* Hero Header */
+        .hero-header {
+            background: linear-gradient(135deg, #0052a3 0%, #0066cc 50%, #0080ff 100%);
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            margin: 40px auto 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
             max-width: 1000px;
             margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 40px;
         }
         
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 2.5em;
-            text-align: center;
-        }
-        
-        .main-title-section {
-            text-align: center;
+        .logo-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 12px 32px;
+            border-radius: 50px;
             margin-bottom: 30px;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #0066cc 0%, #004999 100%);
-            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9em;
+            font-weight: 600;
             color: white;
-            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
         .organization-name {
-            font-size: 3em;
-            font-weight: 800;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 6px;
+            margin-bottom: 25px;
             color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
         }
         
         .organization-tagline {
-            font-size: 1.2em;
-            line-height: 1.6;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            line-height: 1.8;
             font-weight: 400;
-            letter-spacing: 0.5px;
-            color: #e8f4f8;
+            color: rgba(255, 255, 255, 0.95);
             max-width: 900px;
             margin: 0 auto;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
-        .divider {
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #0066cc, transparent);
-            margin: 30px 0;
+        .accent-line {
+            width: 120px;
+            height: 4px;
+            background: var(--accent-gold);
+            margin: 30px auto;
+            border-radius: 2px;
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Main Content Area */
+        main {
+            padding: 80px 60px;
+            background: var(--bg-white);
+        }
+        
+        .page-intro {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            text-align: center;
         }
         
         .page-title {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 2em;
-            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-weight: 700;
         }
         
         .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 20px;
-            font-size: 1.1em;
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            margin-bottom: 30px;
+            font-weight: 500;
         }
         
         .intro-text {
-            background: #f0f7ff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            border-left: 4px solid #0066cc;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
+            padding: 40px 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .intro-text::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-gold));
+            border-radius: 0 3px 3px 0;
         }
         
         .intro-text p {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             line-height: 1.8;
+            color: var(--text-medium);
+            font-size: 1.05rem;
         }
         
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* News Feed Section */
         .newsfeed-section {
-            margin: 30px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #1DA1F2;
+            margin: 60px 0;
+            padding: 50px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .newsfeed-section h2 {
-            color: #0066cc;
-            margin-bottom: 8px;
-            border-bottom: none;
-            font-size: 1.5em;
-        }
-        
-        .newsfeed-subtitle {
-            color: #666;
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+            font-size: 2rem;
             margin-bottom: 15px;
-            font-size: 0.9em;
-        }
-        
-        .news-container {
+            font-weight: 700;
             display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 15px;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .twitter-icon {
+            font-size: 1.5rem;
+            color: #1DA1F2;
+        }
+        
+        .newsfeed-description {
+            color: var(--text-light);
+            margin-bottom: 35px;
+            font-size: 1.05rem;
+        }
+        
+        #news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
         
         .news-card {
             background: white;
-            padding: 12px 15px;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: all 0.2s ease;
+            padding: 25px;
+            border-radius: 12px;
             text-decoration: none;
             color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            border-left: 3px solid #1DA1F2;
+            box-shadow: var(--shadow-sm);
         }
         
         .news-card:hover {
-            transform: translateX(3px);
-            box-shadow: 0 2px 6px rgba(29,161,242,0.2);
-            background: #f8fbff;
-        }
-        
-        .news-card-image {
-            display: none;
-        }
-        
-        .news-card-content {
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
         }
         
         .news-card-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
         }
         
         .news-source {
-            background: #1DA1F2;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.7em;
-            font-weight: 600;
-            text-transform: uppercase;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 4px;
-        }
-        
-        .news-source.instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
         }
         
         .news-source.twitter {
-            background: #1DA1F2;
+            color: #1DA1F2;
         }
         
         .platform-icon {
-            font-size: 1em;
+            font-size: 1.1rem;
         }
         
         .news-date {
-            color: #999;
-            font-size: 0.75em;
-        }
-        
-        .news-card h3 {
-            color: #2c3e50;
-            font-size: 0.95em;
-            margin: 0;
-            line-height: 1.4;
-            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-light);
         }
         
         .news-excerpt {
-            color: #666;
-            font-size: 0.85em;
-            line-height: 1.5;
-            margin: 0;
-        }
-        
-        .news-read-more {
-            display: none;
-        }
-        
-        .loading-spinner {
-            text-align: center;
-            padding: 30px 20px;
-        }
-        
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #1DA1F2;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .news-sources {
-            text-align: center;
-            color: #666;
-            font-size: 0.8em;
-            padding-top: 10px;
-            border-top: 1px solid #ddd;
+            line-height: 1.7;
+            color: var(--text-medium);
+            flex-grow: 1;
         }
         
         .error-message {
-            background: #fff3cd;
-            color: #856404;
-            padding: 15px;
-            border-radius: 6px;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+            padding: 40px;
+            border-radius: 12px;
             text-align: center;
-            border-left: 3px solid #ffc107;
-            font-size: 0.9em;
+            border: 1px solid rgba(220, 38, 38, 0.2);
         }
         
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-        
-        .tag {
-            background: #0066cc;
+        .error-message a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #1DA1F2;
             color: white;
-            padding: 5px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .error-message a:hover {
+            background: #0c8bd9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Category Sections */
+        .category {
+            margin-bottom: 80px;
+        }
+        
+        .category:last-child {
+            margin-bottom: 0;
+        }
+        
+        .image-gallery {
+            margin: 60px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 50px;
             border-radius: 20px;
-            font-size: 0.85em;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .image-gallery h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 35px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 15px 20px;
+            background: white;
+            text-align: center;
+            color: var(--text-medium);
+            font-size: 0.95rem;
             font-weight: 500;
         }
         
-        .category {
-            margin-bottom: 40px;
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
         
-        h2 {
-            color: #0066cc;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #0066cc;
-            font-size: 1.8em;
+        .category h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 35px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .category h2 .category-icon {
+            flex-shrink: 0;
+        }
+        
+        .category h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-blue), var(--accent-gold));
+            border-radius: 2px;
         }
         
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
         
         .link-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #0066cc;
-            transition: all 0.3s ease;
+            background: white;
+            padding: 35px 30px;
+            border-radius: 16px;
             text-decoration: none;
             color: inherit;
-            display: block;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-blue), var(--accent-gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .link-card:hover::before {
+            transform: scaleX(1);
         }
         
         .link-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,102,204,0.2);
-            background: #e8f4f8;
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
         }
         
         .link-card h3 {
-            color: #0066cc;
-            margin-bottom: 8px;
-            font-size: 1.2em;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        
+        .link-card:hover h3 {
+            color: var(--primary-dark);
         }
         
         .link-card p {
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 10px;
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            font-size: 1rem;
         }
         
         .link-url {
-            color: #999;
-            font-size: 0.85em;
-            word-break: break-all;
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #e8f4f8 100%);
+            color: var(--primary-blue);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            align-self: flex-start;
         }
         
+        /* Footer */
         footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #e0e0e0;
-            text-align: center;
-            color: #7f8c8d;
-            font-size: 0.9em;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 60px;
+            color: rgba(255, 255, 255, 0.9);
+            border-top: 4px solid var(--accent-gold);
+        }
+        
+        footer p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        footer p:last-child {
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        footer strong {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-header {
+                padding: 60px 40px;
+            }
+            
+            main {
+                padding: 60px 40px;
+            }
+            
+            .newsfeed-section {
+                padding: 40px 30px;
+            }
+            
+            footer {
+                padding: 50px 40px;
+            }
         }
         
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 2em;
+            .hero-header {
+                padding: 50px 30px;
             }
             
             .organization-name {
-                font-size: 2em;
-                letter-spacing: 2px;
+                letter-spacing: 3px;
             }
             
-            .organization-tagline {
-                font-size: 1em;
+            main {
+                padding: 50px 30px;
             }
             
-            .page-title {
-                font-size: 1.5em;
+            .intro-text {
+                padding: 30px 25px;
+            }
+            
+            .newsfeed-section {
+                padding: 30px 25px;
             }
             
             .links-grid {
                 grid-template-columns: 1fr;
             }
+            
+            #news-container {
+                grid-template-columns: 1fr;
+            }
+            
+            footer {
+                padding: 40px 30px;
+            }
+            
+            .category h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-header {
+                padding: 40px 20px;
+            }
+            
+            .logo-badge {
+                font-size: 0.75rem;
+                padding: 10px 24px;
+                letter-spacing: 1px;
+            }
+            
+            .organization-name {
+                letter-spacing: 2px;
+            }
+            
+            main {
+                padding: 40px 20px;
+            }
+            
+            .intro-text {
+                padding: 25px 20px;
+            }
+            
+            .newsfeed-section {
+                padding: 25px 20px;
+            }
+            
+            .link-card {
+                padding: 25px 20px;
+            }
+            
+            footer {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Selection Color */
+        ::selection {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        ::-moz-selection {
+            background: var(--primary-blue);
+            color: white;
         }
     </style>
 </head>
 <body>
+    <!-- Animated Background Shapes -->
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+    <div class="bg-shape bg-shape-3"></div>
+    
     <div class="container">
-        <header>
-            <div class="main-title-section">
+        <!-- Hero Header -->
+        <header class="hero-header">
+            <div class="hero-content">
+                <div class="logo-badge">Resource Directory</div>
                 <h1 class="organization-name">A.M.A.L.L.A.T.T.O.U.F</h1>
-                <p class="organization-tagline">Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, Facts</p>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <h2 class="page-title">🇮🇱 Pro-Israel Organizations & Resources</h2>
-            <p class="subtitle">A comprehensive directory of organizations supporting Israel across the United States</p>
-            
-            <div class="tags">
-                <span class="tag">Israel Support</span>
-                <span class="tag">Gaza Conflict</span>
-                <span class="tag">Middle East Advocacy</span>
-                <span class="tag">Jewish Organizations</span>
-                <span class="tag">Antisemitism Prevention</span>
-            </div>
-            
-            <div class="intro-text">
-                <p><strong>Find Pro-Israel Organizations Across America</strong></p>
-                <p>This directory connects you with leading pro-Israel advocacy groups, political action committees, educational resources, and community organizations across the United States. Whether you're seeking ways to support Israel, combat antisemitism, stay informed about the Gaza conflict, or engage with the Jewish community, you'll find valuable resources here.</p>
-                <p>These organizations work to strengthen American-Israeli relations, provide humanitarian support, advocate for Israel's security, and educate the public about Israel's history, culture, and challenges in the Middle East.</p>
+                <div class="accent-line"></div>
+                <p class="organization-tagline">
+                    <strong>A</strong>dvancing <strong>M</strong>iddle-East <strong>A</strong>llies through 
+                    <strong>L</strong>aw, <strong>L</strong>earning, <strong>A</strong>dvocacy, 
+                    <strong>T</strong>ransparency, <strong>T</strong>olerance, <strong>O</strong>utreach, 
+                    <strong>U</strong>nity, <strong>F</strong>acts
+                </p>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1549924238-4f9e63bfa5d6?w=1200&h=600&fit=crop" alt="Israeli and American flags together">
+                </div>
             </div>
         </header>
         
-        <section class="newsfeed-section">
-            <h2>📰 Latest Gaza News</h2>
-            <p class="newsfeed-subtitle">Recent updates from AIPAC's Twitter feed</p>
-            
-            <div id="news-container" class="news-container">
-                <div class="loading-spinner">
-                    <div class="spinner"></div>
-                    <p>Loading latest updates...</p>
+        <main>
+            <!-- Page Introduction -->
+            <div class="page-intro">
+                <h2 class="page-title">Pro-Israel Organizations & Resources</h2>
+                <p class="subtitle">Your comprehensive directory for advocacy, education, and community support</p>
+                
+                <div class="intro-text">
+                    <p>This directory provides comprehensive information about organizations supporting Israel and Israeli-American relations. Whether you're seeking to engage in advocacy, access educational resources, or connect with the pro-Israel community, these organizations offer various ways to get involved.</p>
+                    <p>From combating antisemitism to supporting humanitarian efforts, these groups represent diverse approaches to strengthening ties between the United States and Israel while promoting peace, security, and understanding in the Middle East.</p>
                 </div>
             </div>
             
-            <div class="news-sources">
-                <p><strong>Follow AIPAC:</strong> 
-                    <a href="https://twitter.com/AIPAC" target="_blank" rel="noopener noreferrer" style="color: #0066cc; margin: 0 10px;">Twitter/X</a>
-                </p>
-            </div>
-        </section>
-        
-        <main>
+            <!-- Twitter News Feed -->
+            <section class="newsfeed-section">
+                <h2>
+                    <span class="twitter-icon">𝕏</span>
+                    Latest from AIPAC
+                </h2>
+                <p class="newsfeed-description">Stay updated with the latest news and advocacy efforts</p>
+                <div id="news-container">
+                    <!-- News cards will be inserted here by JavaScript -->
+                </div>
+            </section>
+            
+            <!-- Image Gallery -->
+            <section class="image-gallery">
+                <h2>Supporting Israel & U.S.-Israel Relations</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?w=600&h=400&fit=crop" alt="Jerusalem skyline">
+                        <div class="gallery-caption">Jerusalem - Israel's Capital</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Israeli flag">
+                        <div class="gallery-caption">The Flag of Israel</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&h=400&fit=crop" alt="Hands joining together">
+                        <div class="gallery-caption">Unity & Cooperation</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1523309996740-d5315b9cc504?w=600&h=400&fit=crop" alt="Tel Aviv modern city">
+                        <div class="gallery-caption">Tel Aviv Innovation Hub</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1569012880714-4a4d7a1f1d6f?w=600&h=400&fit=crop" alt="Star of David">
+                        <div class="gallery-caption">Jewish Heritage & Culture</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&h=400&fit=crop" alt="Peace dove">
+                        <div class="gallery-caption">Working Toward Peace</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Major Advocacy Organizations -->
             <section class="category">
-                <h2>Advocacy Organizations</h2>
+                <h2>
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="45" fill="#0066cc" opacity="0.1"/>
+                        <path d="M50 20 L65 35 L85 35 L70 50 L75 70 L50 60 L25 70 L30 50 L15 35 L35 35 Z" fill="#0066cc"/>
+                    </svg>
+                    Major Advocacy Organizations
+                </h2>
                 <div class="links-grid">
                     <a href="https://www.aipac.org" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>AIPAC</h3>
-                        <p>American Israel Public Affairs Committee - Leading pro-Israel advocacy organization supporting strong U.S.-Israel relations and combating threats to Israel's security</p>
+                        <p>American Israel Public Affairs Committee - Leading pro-Israel lobby advocating for strong U.S.-Israel relations and bipartisan support for Israel's security</p>
                         <span class="link-url">aipac.org</span>
+                    </a>
+                    
+                    <a href="https://www.jstreet.org" class="link-card" target="_blank" rel="noopener noreferrer">
+                        <h3>J Street</h3>
+                        <p>Pro-Israel, pro-peace advocacy organization promoting diplomatic solutions to Israeli-Palestinian conflict</p>
+                        <span class="link-url">jstreet.org</span>
                     </a>
                     
                     <a href="https://www.adl.org" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>ADL</h3>
-                        <p>Anti-Defamation League - Fighting antisemitism, hate, and discrimination while supporting Israel and Jewish communities worldwide</p>
+                        <p>Anti-Defamation League - Fighting antisemitism and supporting Israel while promoting civil rights and justice</p>
                         <span class="link-url">adl.org</span>
                     </a>
                     
                     <a href="https://www.ajc.org" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>AJC</h3>
-                        <p>American Jewish Committee - Global Jewish advocacy organization promoting Israel's security and strengthening international Jewish relations</p>
+                        <p>American Jewish Committee - Global advocacy organization enhancing Jewish security and Israel's diplomatic standing worldwide</p>
                         <span class="link-url">ajc.org</span>
                     </a>
                     
                     <a href="https://www.standwithus.com" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>StandWithUs</h3>
-                        <p>International education organization supporting Israel through campus outreach, media advocacy, and community programs</p>
+                        <p>International Israel education organization combating antisemitism and advocating for Israel on campuses and communities</p>
                         <span class="link-url">standwithus.com</span>
                     </a>
                     
-                    <a href="https://www.jcpa.org" class="link-card" target="_blank" rel="noopener noreferrer">
-                        <h3>JCPA</h3>
-                        <p>Jewish Council for Public Affairs - Community relations and advocacy organization addressing Israel, antisemitism, and social justice</p>
-                        <span class="link-url">jcpa.org</span>
-                    </a>
-                    
-                    <a href="https://www.cufi.org" class="link-card" target="_blank" rel="noopener noreferrer">
-                        <h3>CUFI</h3>
-                        <p>Christians United for Israel - Christian grassroots organization supporting Israel through advocacy and education</p>
-                        <span class="link-url">cufi.org</span>
+                    <a href="https://www.zoa.org" class="link-card" target="_blank" rel="noopener noreferrer">
+                        <h3>ZOA</h3>
+                        <p>Zionist Organization of America - Advocating for strong U.S.-Israel relations and Israeli security interests</p>
+                        <span class="link-url">zoa.org</span>
                     </a>
                 </div>
             </section>
             
+            <!-- Student & Campus Organizations -->
             <section class="category">
-                <h2>Political Action Committees (PACs)</h2>
+                <h2>
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="45" fill="#0066cc" opacity="0.1"/>
+                        <path d="M30 45 L50 30 L70 45 L70 70 L30 70 Z M50 35 L50 50 M35 50 L65 50" stroke="#0066cc" stroke-width="4" fill="none"/>
+                        <circle cx="50" cy="42" r="3" fill="#0066cc"/>
+                    </svg>
+                    Student & Campus Organizations
+                </h2>
                 <div class="links-grid">
-                    <a href="https://www.aipac.org/get-involved/super-pac" class="link-card" target="_blank" rel="noopener noreferrer">
-                        <h3>AIPAC PAC</h3>
-                        <p>AIPAC's political action committee supporting pro-Israel candidates across the United States</p>
-                        <span class="link-url">aipac.org/get-involved/super-pac</span>
+                    <a href="https://www.hillel.org" class="link-card" target="_blank" rel="noopener noreferrer">
+                        <h3>Hillel International</h3>
+                        <p>Supporting Jewish students on college campuses with Israel education, community building, and leadership development</p>
+                        <span class="link-url">hillel.org</span>
                     </a>
                     
+                    <a href="https://www.chabadoncampus.org" class="link-card" target="_blank" rel="noopener noreferrer">
+                        <h3>Chabad on Campus</h3>
+                        <p>Network of Chabad houses providing spiritual, social, and educational support for Jewish students, including Israel programming</p>
+                        <span class="link-url">chabadoncampus.org</span>
+                    </a>
+                    
+                    <a href="https://www.birthrightisrael.com" class="link-card" target="_blank" rel="noopener noreferrer">
+                        <h3>Birthright Israel</h3>
+                        <p>Free educational trips to Israel for young Jewish adults, strengthening connection to Jewish heritage and Israel</p>
+                        <span class="link-url">birthrightisrael.com</span>
+                    </a>
+                </div>
+            </section>
+            
+            <!-- Political Action Committees -->
+            <section class="category">
+                <h2>
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="45" fill="#0066cc" opacity="0.1"/>
+                        <rect x="25" y="35" width="50" height="35" rx="3" stroke="#0066cc" stroke-width="4" fill="none"/>
+                        <path d="M40 35 L40 25 L60 25 L60 35" stroke="#0066cc" stroke-width="4" fill="none"/>
+                        <circle cx="50" cy="52" r="8" fill="#d4af37"/>
+                    </svg>
+                    Political Action Committees
+                </h2>
+                <div class="links-grid">
                     <a href="https://www.norpac.net" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>NORPAC</h3>
-                        <p>Bipartisan PAC supporting pro-Israel candidates and strengthening the U.S.-Israel relationship through political engagement</p>
+                        <p>Bipartisan political action committee supporting U.S.-Israel relationship through candidate endorsements and advocacy</p>
                         <span class="link-url">norpac.net</span>
                     </a>
                     
@@ -536,8 +935,16 @@
                 </div>
             </section>
             
+            <!-- Educational & Cultural Organizations -->
             <section class="category">
-                <h2>Educational & Cultural Organizations</h2>
+                <h2>
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="45" fill="#0066cc" opacity="0.1"/>
+                        <rect x="30" y="40" width="40" height="30" rx="2" stroke="#0066cc" stroke-width="4" fill="none"/>
+                        <path d="M35 50 L45 50 M35 57 L45 57 M35 64 L45 64 M52 50 L65 50 M52 57 L65 57 M52 64 L62 64" stroke="#0066cc" stroke-width="2"/>
+                    </svg>
+                    Educational & Cultural Organizations
+                </h2>
                 <div class="links-grid">
                     <a href="https://www.israelforever.org" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>Israel Forever</h3>
@@ -565,8 +972,16 @@
                 </div>
             </section>
             
+            <!-- Community & Support -->
             <section class="category">
-                <h2>Community & Support</h2>
+                <h2>
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="45" fill="#0066cc" opacity="0.1"/>
+                        <path d="M50 30 C40 30 35 35 35 42 C35 52 50 65 50 65 C50 65 65 52 65 42 C65 35 60 30 50 30 Z" fill="#d4af37"/>
+                        <circle cx="50" cy="42" r="5" fill="#fff"/>
+                    </svg>
+                    Community & Support
+                </h2>
                 <div class="links-grid">
                     <a href="https://www.jnf.org" class="link-card" target="_blank" rel="noopener noreferrer">
                         <h3>JNF-USA</h3>
@@ -595,11 +1010,12 @@
             </section>
         </main>
         
+        <!-- Footer -->
         <footer>
             <p><strong>About This Directory</strong></p>
             <p>This page is for informational purposes. Organizations listed represent a variety of perspectives within the pro-Israel community across the United States. Whether you're looking to support Israel during the Gaza conflict, combat antisemitism, or strengthen American-Israeli relations, these resources can help you get involved.</p>
-            <p style="margin-top: 15px;"><strong>Keywords:</strong> Pro-Israel organizations, Israel advocacy groups, Gaza conflict support, Jewish organizations, AIPAC, Israel support resources, Middle East advocacy, antisemitism prevention, pro-Israel PACs, Jewish community</p>
-            <p style="margin-top: 10px;">Last updated: January 2026</p>
+            <p style="margin-top: 20px;"><strong>Keywords:</strong> Pro-Israel organizations, Israel advocacy groups, Gaza conflict support, Jewish organizations, AIPAC, Israel support resources, Middle East advocacy, antisemitism prevention, pro-Israel PACs, Jewish community</p>
+            <p style="margin-top: 15px;">Last updated: January 2026</p>
         </footer>
     </div>
     
@@ -677,8 +1093,7 @@
                 <div class="error-message">
                     <p><strong>View the latest Gaza news and updates on AIPAC's Twitter</strong></p>
                     <p style="margin-top: 10px;">
-                        <a href="https://twitter.com/AIPAC" target="_blank" rel="noopener noreferrer"
-                           style="color: #1DA1F2; font-weight: 600; text-decoration: none;">
+                        <a href="https://twitter.com/AIPAC" target="_blank" rel="noopener noreferrer">
                             Follow @AIPAC on Twitter →
                         </a>
                     </p>
