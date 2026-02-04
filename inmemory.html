@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>In Memory of David Bergman - A Story of Loss and Remembrance</title>
+    <meta name="title" content="In Memory of David Bergman - A Story of Loss and Remembrance">
+    <meta name="description" content="Dr. Rosenberg shares the story of his family friend David Bergman, a young musician whose life was taken during the Holocaust.">
+    <meta name="keywords" content="Holocaust remembrance, Holocaust victim, David Bergman, Holocaust memorial, never forget">
+    <meta name="author" content="Dr. Joseph G. Rosenberg, DPM">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://drrosenberg.com/memory-david-bergman">
+    <meta property="og:title" content="In Memory of David Bergman - A Story of Loss and Remembrance">
+    <meta property="og:description" content="A personal story of loss and remembrance from the Holocaust.">
+    <meta property="og:site_name" content="Dr. Joseph G. Rosenberg, DPM">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://drrosenberg.com/memory-david-bergman">
+    <meta property="twitter:title" content="In Memory of David Bergman">
+    <meta property="twitter:description" content="A personal story of loss and remembrance from the Holocaust.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://drrosenberg.com/memory-david-bergman">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0066cc;
+            --primary-dark: #004999;
+            --accent-gold: #d4af37;
+            --memorial-grey: #5a5a5a;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a5568;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.08);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2), 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #2d3436 0%, #4a5568 50%, #718096 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Animated Background Shapes - More subdued for memorial page */
+        .bg-shape {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.05;
+            filter: blur(80px);
+            z-index: 0;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        .bg-shape-1 {
+            width: 400px;
+            height: 400px;
+            background: #ffffff;
+            top: 10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+        
+        .bg-shape-2 {
+            width: 300px;
+            height: 300px;
+            background: #d4af37;
+            bottom: 20%;
+            right: -5%;
+            animation-delay: 10s;
+        }
+        
+        .bg-shape-3 {
+            width: 500px;
+            height: 500px;
+            background: #ffffff;
+            top: 50%;
+            left: 50%;
+            animation-delay: 20s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(20px, -20px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-15px, 15px) rotate(240deg);
+            }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2d3436 0%, var(--memorial-grey) 100%);
+            padding: 40px 60px;
+            color: white;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+        
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .site-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        
+        /* Page Title */
+        .page-title {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 60px 50px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .page-title-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .page-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .page-title .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+        
+        .page-meta {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .page-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .page-meta-divider {
+            color: var(--text-light);
+            opacity: 0.4;
+        }
+        
+        /* Memorial Quote */
+        .memorial-quote {
+            background: #2d3436;
+            color: white;
+            padding: 50px 60px;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        
+        .memorial-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        .memorial-quote cite {
+            display: block;
+            margin-top: 20px;
+            font-size: 1rem;
+            font-style: normal;
+            opacity: 0.8;
+        }
+        
+        /* Article Content */
+        .article-content {
+            padding: 60px 60px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 50px 0 25px;
+            line-height: 1.3;
+        }
+        
+        .article-content h2:first-child {
+            margin-top: 0;
+        }
+        
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 35px 0 20px;
+            line-height: 1.4;
+        }
+        
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-medium);
+            margin-bottom: 24px;
+        }
+        
+        .article-content p strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .article-content p em {
+            font-style: italic;
+            color: var(--text-dark);
+        }
+        
+        /* Pull Quote */
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--memorial-grey);
+            margin: 40px 0;
+            padding: 30px 40px;
+            border-left: 4px solid var(--accent-gold);
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        /* Memorial Box */
+        .memorial-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            padding: 35px 40px;
+            margin: 50px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .memorial-box h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--memorial-grey);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .memorial-box .dates {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            margin-bottom: 20px;
+        }
+        
+        .memorial-box .star-of-david {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin: 20px 0;
+        }
+        
+        .memorial-box p {
+            font-size: 1.05rem;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+        
+        /* Candle Symbol */
+        .candle-symbol {
+            text-align: center;
+            margin: 50px 0;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+        
+        /* Footer */
+        footer {
+            background: #2d3436;
+            color: rgba(255,255,255,0.8);
+            padding: 50px 60px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        footer p {
+            max-width: 900px;
+            margin: 0 auto 15px;
+        }
+        
+        footer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        footer strong {
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 30px;
+            }
+            
+            .site-title {
+                font-size: 1.5rem;
+            }
+            
+            .page-title {
+                padding: 40px 30px 35px;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .memorial-quote {
+                padding: 40px 30px;
+            }
+            
+            .memorial-quote blockquote {
+                font-size: 1.2rem;
+            }
+            
+            .article-content {
+                padding: 40px 30px 60px;
+            }
+            
+            .article-content h2 {
+                font-size: 1.6rem;
+                margin: 40px 0 20px;
+            }
+            
+            .article-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .article-content p {
+                font-size: 1.05rem;
+            }
+            
+            .pull-quote {
+                font-size: 1.2rem;
+                padding: 25px 30px;
+            }
+            
+            footer {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Shapes -->
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+    <div class="bg-shape bg-shape-3"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="site-title">In Memory</h1>
+                <p class="site-subtitle">We Remember. We Never Forget.</p>
+            </div>
+        </header>
+        
+        <!-- Page Title Section -->
+        <div class="page-title">
+            <div class="page-title-content">
+                <h1>David Bergman</h1>
+                <p class="subtitle">"The boy who played Schubert in the dark"</p>
+                <div class="page-meta">
+                    <span class="page-meta-item">
+                        <span>1924 - 1943</span>
+                    </span>
+                    <span class="page-meta-divider">•</span>
+                    <span class="page-meta-item">
+                        <span>Kraków, Poland</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Memorial Quote -->
+        <div class="memorial-quote">
+            <blockquote>
+                "For the dead and the living, we must bear witness."
+                <cite>— Elie Wiesel</cite>
+            </blockquote>
+        </div>
+        
+        <!-- Article Content -->
+        <article class="article-content">
+            <p>
+                <em>The following is a personal remembrance by Dr. Joseph G. Rosenberg, shared in honor of Holocaust Remembrance Day.</em>
+            </p>
+            
+            <div class="candle-symbol">🕯️</div>
+            
+            <h2>A Personal Remembrance</h2>
+            
+            <p>
+                Though I was born long after the war ended, the story of David Bergman has been woven into the fabric of my family's history, passed down through my grandmother's trembling voice and my father's solemn recollections. David was not just a statistic, not just one of the six million. He was my grandfather's closest childhood friend, a boy of seventeen with calloused fingers from practicing piano and eyes that my grandmother said could see music in everything.
+            </p>
+            
+            <p>
+                My grandfather, Moshe Rosenberg, and David grew up on the same street in Kraków's Jewish quarter, their families sharing Shabbat dinners and holiday celebrations. While my grandfather dreamed of becoming a doctor, David lived and breathed music. He had won a scholarship to study at the Kraków Conservatory at just fifteen, a rare achievement for a Jewish student in those years. His talent was undeniable. Neighbors would open their windows on summer evenings just to hear him practice Chopin and Schubert on the old upright piano in his family's apartment.
+            </p>
+            
+            <div class="pull-quote">
+                "He played as if the piano was speaking a language only he could translate, as if his fingers were telling stories his voice could never express."
+            </div>
+            
+            <h2>The Last Concert</h2>
+            
+            <p>
+                In the spring of 1942, after the Kraków Ghetto had been established, the Nazis occasionally forced Jewish musicians to perform for their entertainment. David was among them. My grandfather told me that David's hands shook as he sat at the commandant's piano in the ornate villa they had confiscated from a Jewish family. But when he began to play, something changed. The room fell silent. Even the SS officers stopped their conversations.
+            </p>
+            
+            <p>
+                He played Schubert's Impromptu in G-flat major. My grandfather, who had been brought along to carry David's music sheets, watched from the corner of the room. He said David played with his eyes closed, tears streaming down his face, pouring every ounce of humanity and defiance into those keys. For those seven minutes, David was free. The music was his resistance.
+            </p>
+            
+            <p>
+                After he finished, there was silence. Then one officer began to clap slowly. David stood, bowed slightly, and looked directly at the commandant with an expression my grandfather described as both terrified and unbowed. That small act of dignity, that refusal to appear broken, may have cost him his life.
+            </p>
+            
+            <h2>The Factory</h2>
+            
+            <p>
+                When a German businessman's enamelware factory began hiring workers in late 1942, my grandfather managed to get himself placed on the list. He begged the factory owner to add David's name too. "He's strong," my grandfather lied. "He can work the presses." David was actually slight and frail, built for piano keys, not factory labor.
+            </p>
+            
+            <p>
+                The owner looked at David's hands, the long delicate fingers, and seemed to understand. There was a moment—my grandfather swore this was true—when the man almost smiled. "A musician," he said quietly. He added David's name to the list.
+            </p>
+            
+            <p>
+                For six months, David worked in the factory. He struggled with the physical labor, but he survived. Some nights, when the guards weren't watching, he would tap out silent rhythms on the workbench, his fingers moving through phantom melodies. The other workers would gather around during breaks, and David would whisper about the concert halls he would play in after the war, the compositions he would write.
+            </p>
+            
+            <div class="pull-quote">
+                "He kept all of us alive with those dreams. He made us remember that we were still human, that beauty still existed somewhere beyond those walls."
+            </div>
+            
+            <h2>The Selection</h2>
+            
+            <p>
+                In March 1943, there was a selection. An SS doctor moved through the factory floor, pointing left or right. Left meant continued work. Right meant Auschwitz. David tried to stand straight, to look strong, but his hands were shaking. He had developed a cough that winter, and it had weakened him.
+            </p>
+            
+            <p>
+                The doctor looked at David and pointed right. My grandfather, standing in the "left" line, lunged forward, shouting that there had been a mistake, that David was essential to the metalworks. The factory owner appeared from his office, drawn by the commotion. He argued with the SS doctor, his voice rising. But this doctor was not one who could be bribed or reasoned with. The decision stood.
+            </p>
+            
+            <p>
+                As David was led away with the others, he turned back one last time. My grandfather said he would never forget that look—not fear, exactly, but a profound sadness. David raised his right hand and moved his fingers as if playing a final chord on an invisible piano. Then he smiled, just slightly, and walked through the factory gates.
+            </p>
+            
+            <h2>What Remains</h2>
+            
+            <p>
+                David Bergman died in Auschwitz in April 1943. He was nineteen years old. He never performed in a concert hall after the war. He never composed his own music. He never married or had children. His brilliant talent was extinguished, along with millions of other lights.
+            </p>
+            
+            <p>
+                My grandfather survived. He eventually made it to Israel and then to America, where he met my grandmother and built a new life. But he never stopped talking about David. He named my father David, and when I showed an interest in music as a child, he would tell me David's story. "Learn to play," he would say. "Keep his music alive."
+            </p>
+            
+            <p>
+                I never became a pianist—I chose medicine instead, following my grandfather's original dream. But I learned enough to play Schubert's Impromptu in G-flat major, the piece David played for the Nazis. Every year on Yom HaShoah, Holocaust Remembrance Day, I sit at my piano and play it. My fingers stumble over the difficult passages; I am no David Bergman. But for those seven minutes, I feel connected to a boy I never met, a boy whose life mattered, whose talent mattered, whose murder was an irreplaceable loss to the world.
+            </p>
+            
+            <div class="memorial-box">
+                <div class="star-of-david">✡</div>
+                <h3>David Bergman</h3>
+                <p class="dates">March 12, 1924 – April 1943</p>
+                <p>"His music was brief, but it was beautiful. We remember him."</p>
+            </div>
+            
+            <h2>Why We Remember</h2>
+            
+            <p>
+                This is why I support Holocaust education, why I contribute to Yad Vashem, why I participate in medical missions and humanitarian work. This is why I serve on the board of Friends of the IDF and why I speak out against hatred and antisemitism wherever I see it rising again in our world.
+            </p>
+            
+            <p>
+                Because David Bergman was real. He laughed and cried and dreamed. He had favorite foods and argued with his little sister and worried about his piano exams. He fell in love with a girl named Rachel who lived two buildings over. He wanted to study in Vienna. He composed a waltz for his mother's birthday.
+            </p>
+            
+            <p>
+                All of that was stolen from him. His future, his music, his chance to grow old and create beauty in the world—stolen by an ideology of hate that saw him as less than human.
+            </p>
+            
+            <p>
+                We cannot bring David back. We cannot undo the Holocaust. But we can remember. We can bear witness. We can teach our children and our children's children that every life has infinite value, that hatred leads to unimaginable horror, and that it is our sacred duty to say "never again"—and mean it.
+            </p>
+            
+            <div class="candle-symbol">🕯️</div>
+            
+            <p style="text-align: center; font-style: italic; margin-top: 40px;">
+                <strong>זָכוֹר — Zachor — Remember</strong>
+            </p>
+        </article>
+        
+        <!-- Footer -->
+        <footer>
+            <p><strong>In Memory of the Six Million</strong></p>
+            <p>
+                David Bergman's story represents the millions of individual lives, dreams, and talents destroyed during the Holocaust. Each victim was a universe unto themselves. We remember them not as numbers, but as people who loved and were loved, who had gifts to share with the world.
+            </p>
+            <p style="margin-top: 20px;">
+                <strong>Never Again.</strong> We must remain vigilant against hatred, antisemitism, and all forms of dehumanization. Education, remembrance, and action are our sacred responsibilities.
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                For more information about Holocaust education and remembrance, visit the United States Holocaust Memorial Museum (ushmm.org) or Yad Vashem (yadvashem.org).
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
