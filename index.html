@@ -838,6 +838,11 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Carousel Animations */
+        @keyframes twinkle { from { opacity:0.2; transform:scale(1); } to { opacity:1; transform:scale(1.5); } }
+        @keyframes pulse-glow { 0%,100% { box-shadow:0 0 20px rgba(212,175,55,0.4),0 8px 32px rgba(0,0,0,0.4); } 50% { box-shadow:0 0 40px rgba(212,175,55,0.8),0 8px 32px rgba(0,0,0,0.4); } }
+        @keyframes bounce-icon { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
         
         /* Selection Color */
         ::selection {
@@ -900,6 +905,10 @@
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                 </a>
+                <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" rel="noopener noreferrer" 
+                   style="color: #1a1a2e; text-decoration: none; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f0d060 100%); padding: 6px 14px; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(212,175,55,0.4); white-space: nowrap;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(212,175,55,0.6)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 8px rgba(212,175,55,0.4)'">
+                    🏆 Quiz Champ
+                </a>
             </div>
         </nav>
         
@@ -933,34 +942,71 @@
                 </div>
             </div>
             
-            <!-- Podcast Section -->
-            <section id="podcast" class="podcast-section">
-                <div class="podcast-container">
-                    <h2>Latest Podcast Episode</h2>
-                    <p class="podcast-intro">Listen to Dr. Rosenberg's latest insights and discussions</p>
-                    
-                    <!-- Spotify Embed Player -->
-                    <div class="spotify-player-wrapper">
-                        <iframe 
-                            style="border-radius:12px" 
-                            src="https://open.spotify.com/embed/show/67xrcEbd49Uyhn9kuvCkIL?utm_source=generator&theme=0" 
-                            width="100%" 
-                            height="352" 
-                            frameBorder="0" 
-                            allowfullscreen="" 
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                            loading="lazy">
-                        </iframe>
+            <!-- ===== ROTATING FEATURE CAROUSEL ===== -->
+            <div id="feature-carousel" style="position:relative;margin:40px 0;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.18);">
+
+                <!-- TAB PILLS -->
+                <div style="display:flex;background:#1a1a2e;padding:0;">
+                    <button onclick="showSlide(0)" id="tab-0" style="flex:1;padding:14px 10px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border-bottom:3px solid transparent;">🎙 Podcast</button>
+                    <button onclick="showSlide(1)" id="tab-1" style="flex:1;padding:14px 10px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border-bottom:3px solid transparent;">𝕏 AIPAC Feed</button>
+                    <button onclick="showSlide(2)" id="tab-2" style="flex:1;padding:14px 10px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border-bottom:3px solid transparent;">🏆 Trivia Game</button>
+                </div>
+
+                <!-- PROGRESS BAR -->
+                <div style="height:3px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden;">
+                    <div id="carousel-progress" style="height:100%;background:linear-gradient(90deg,#0066cc,#d4af37);width:0%;transition:width 0.1s linear;"></div>
+                </div>
+
+                <!-- SLIDE 0: PODCAST -->
+                <div id="slide-0" style="display:block;background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);padding:50px 40px;text-align:center;">
+                    <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--text-dark);margin-bottom:10px;font-weight:600;">Latest Podcast Episode</h2>
+                    <p style="font-size:1rem;color:var(--text-medium);margin-bottom:25px;">Listen to Dr. Rosenberg's latest insights and discussions</p>
+                    <div style="max-width:800px;margin:0 auto;box-shadow:0 10px 30px rgba(0,0,0,0.15);border-radius:12px;overflow:hidden;background:white;">
+                        <iframe style="border-radius:12px;display:block;" src="https://open.spotify.com/embed/show/67xrcEbd49Uyhn9kuvCkIL?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
-                    
-                    <!-- Link to Full Podcast Channel -->
-                    <div class="podcast-link">
-                        <a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL" target="_blank" rel="noopener noreferrer" class="btn-podcast">
-                            View All Episodes on Spotify
-                        </a>
+                    <div style="margin-top:25px;">
+                        <a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 32px;background:#1DB954;color:white;text-decoration:none;border-radius:50px;font-weight:600;font-size:1rem;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(29,185,84,0.3);">View All Episodes on Spotify →</a>
                     </div>
                 </div>
-            </section>
+
+                <!-- SLIDE 1: TWITTER/X FEED -->
+                <div id="slide-1" style="display:none;background:linear-gradient(135deg,#f8f9fa 0%,#ffffff 100%);padding:50px 40px;">
+                    <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--text-dark);margin-bottom:8px;font-weight:600;display:flex;align-items:center;gap:10px;justify-content:center;"><span style="color:#1DA1F2;">𝕏</span> Latest from AIPAC</h2>
+                    <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:25px;text-align:center;">Stay updated with the latest news and advocacy efforts</p>
+                    <div id="news-container" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;max-width:1000px;margin:0 auto;"></div>
+                </div>
+
+                <!-- SLIDE 2: TRIVIA GAME -->
+                <div id="slide-2" style="display:none;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:60px 40px;text-align:center;position:relative;overflow:hidden;">
+                    <div style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;">
+                        <div style="position:absolute;width:4px;height:4px;background:rgba(255,255,255,0.6);border-radius:50%;top:15%;left:10%;animation:twinkle 2s infinite alternate;"></div>
+                        <div style="position:absolute;width:3px;height:3px;background:rgba(255,255,255,0.5);border-radius:50%;top:30%;left:80%;animation:twinkle 3s infinite alternate;"></div>
+                        <div style="position:absolute;width:5px;height:5px;background:rgba(212,175,55,0.7);border-radius:50%;top:60%;left:20%;animation:twinkle 2.5s infinite alternate;"></div>
+                        <div style="position:absolute;width:3px;height:3px;background:rgba(255,255,255,0.4);border-radius:50%;top:75%;left:70%;animation:twinkle 1.8s infinite alternate;"></div>
+                        <div style="position:absolute;width:4px;height:4px;background:rgba(212,175,55,0.5);border-radius:50%;top:20%;left:50%;animation:twinkle 2.2s infinite alternate;"></div>
+                    </div>
+                    <div style="position:relative;z-index:1;max-width:650px;margin:0 auto;">
+                        <div style="font-size:3.5rem;margin-bottom:12px;animation:bounce-icon 2s ease-in-out infinite;">🏆</div>
+                        <div style="display:inline-block;background:rgba(212,175,55,0.15);border:1px solid rgba(212,175,55,0.4);padding:5px 18px;border-radius:50px;font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#d4af37;margin-bottom:16px;">NEW · Test Your Knowledge</div>
+                        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);color:#ffffff;margin-bottom:14px;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,0.4);">Quiz Champ Trivia Game</h2>
+                        <p style="color:rgba(255,255,255,0.75);font-size:0.97rem;line-height:1.7;margin-bottom:10px;">Think you know your stuff? Put your knowledge to the test — covering Israel, history, geopolitics, and more. Compete, learn, and climb the leaderboard!</p>
+                        <div style="display:flex;justify-content:center;gap:24px;margin:18px 0 28px;flex-wrap:wrap;">
+                            <span style="color:rgba(255,255,255,0.65);font-size:0.83rem;">⚡ Fast-paced rounds</span>
+                            <span style="color:rgba(255,255,255,0.65);font-size:0.83rem;">🎯 Multiple categories</span>
+                            <span style="color:rgba(255,255,255,0.65);font-size:0.83rem;">🌟 Earn your champion title</span>
+                        </div>
+                        <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg,#d4af37 0%,#f0d060 50%,#d4af37 100%);color:#1a1a2e;font-size:1.05rem;font-weight:800;padding:16px 44px;border-radius:50px;text-decoration:none;letter-spacing:0.5px;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 0 20px rgba(212,175,55,0.4);">🎮 &nbsp;Play Quiz Champ Now &nbsp;→</a>
+                        <p style="color:rgba(255,255,255,0.3);font-size:0.76rem;margin-top:14px;">Opens in a new tab · Free to play · No sign-up required</p>
+                    </div>
+                </div>
+
+                <!-- NAV ARROWS -->
+                <button onclick="prevSlide()" style="position:absolute;top:50%;left:12px;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:1.1rem;cursor:pointer;backdrop-filter:blur(6px);z-index:10;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">‹</button>
+                <button onclick="nextSlide()" style="position:absolute;top:50%;right:12px;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:1.1rem;cursor:pointer;backdrop-filter:blur(6px);z-index:10;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">›</button>
+            </div>
+            <!-- ===== END CAROUSEL ===== -->
+
+
             
             <!-- Navigation Tabs -->
             <nav style="background: white; padding: 20px; margin: 0 0 30px 0; border-bottom: 2px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
@@ -996,17 +1042,7 @@
                 </div>
             </nav>
             
-            <!-- Twitter News Feed -->
-            <section class="newsfeed-section">
-                <h2>
-                    <span class="twitter-icon">𝕏</span>
-                    Latest from AIPAC
-                </h2>
-                <p class="newsfeed-description">Stay updated with the latest news and advocacy efforts</p>
-                <div id="news-container">
-                    <!-- News cards will be inserted here by JavaScript -->
-                </div>
-            </section>
+
             
             <!-- Image Gallery -->
             <section class="image-gallery">
@@ -1199,6 +1235,56 @@
     </div>
     
     <script>
+        // ===== CAROUSEL LOGIC =====
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slideInterval = 8000; // 8 seconds per slide
+        let autoTimer = null;
+        let progressTimer = null;
+        let progressStart = null;
+
+        function showSlide(n) {
+            // Hide all slides
+            for (let i = 0; i < totalSlides; i++) {
+                document.getElementById('slide-' + i).style.display = 'none';
+                const tab = document.getElementById('tab-' + i);
+                tab.style.color = 'rgba(255,255,255,0.5)';
+                tab.style.borderBottomColor = 'transparent';
+                tab.style.background = 'transparent';
+            }
+            currentSlide = (n + totalSlides) % totalSlides;
+            document.getElementById('slide-' + currentSlide).style.display = 'block';
+            const activeTab = document.getElementById('tab-' + currentSlide);
+            activeTab.style.color = '#ffffff';
+            activeTab.style.borderBottomColor = '#d4af37';
+            activeTab.style.background = 'rgba(255,255,255,0.05)';
+
+            // Reset progress bar
+            clearInterval(progressTimer);
+            const bar = document.getElementById('carousel-progress');
+            bar.style.transition = 'none';
+            bar.style.width = '0%';
+            progressStart = Date.now();
+            setTimeout(() => {
+                bar.style.transition = 'width ' + slideInterval + 'ms linear';
+                bar.style.width = '100%';
+            }, 50);
+
+            // Reset auto-advance
+            clearTimeout(autoTimer);
+            autoTimer = setTimeout(() => showSlide(currentSlide + 1), slideInterval);
+        }
+
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+
+        // Start carousel on load
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(0);
+            fetchSocialMedia();
+        });
+        // ===== END CAROUSEL =====
+
         // AIPAC Twitter Configuration
         const AIPAC_TWITTER = {
             username: 'AIPAC',
@@ -1275,10 +1361,7 @@
             `;
         }
 
-        // Initialize social media feed on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchSocialMedia();
-        });
+        // (carousel init handles DOMContentLoaded above)
     </script>
 </body>
 </html>
