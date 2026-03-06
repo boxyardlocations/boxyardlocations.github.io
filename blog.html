@@ -25,17 +25,15 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.7;
-            color: var(--text-dark);
+            line-height: 1.7; color: var(--text-dark);
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
+            background-attachment: fixed; min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
         .bg-shape { position:fixed; border-radius:50%; opacity:0.1; filter:blur(60px); z-index:0; animation:float 20s ease-in-out infinite; }
         .bg-shape-1 { width:400px; height:400px; background:#0066cc; top:10%; left:-10%; }
         .bg-shape-2 { width:300px; height:300px; background:#d4af37; bottom:20%; right:-5%; animation-delay:7s; }
-        .bg-shape-3 { width:500px; height:500px; background:#ffffff; top:50%; left:50%; animation-delay:14s; }
+        .bg-shape-3 { width:500px; height:500px; background:#fff; top:50%; left:50%; animation-delay:14s; }
         @keyframes float {
             0%,100% { transform:translate(0,0) rotate(0deg); }
             33% { transform:translate(30px,-30px) rotate(120deg); }
@@ -43,11 +41,10 @@
         }
         .container { position:relative; z-index:1; max-width:1400px; margin:0 auto; background:var(--bg-white); box-shadow:var(--shadow-xl); }
 
-        /* ── Hero ── */
+        /* Hero */
         .hero-header {
             background: linear-gradient(135deg, #0052a3 0%, #0066cc 50%, #0080ff 100%);
-            padding: 60px 50px 40px;
-            position: relative; overflow: hidden;
+            padding: 60px 50px 40px; position: relative; overflow: hidden;
         }
         .hero-header::before {
             content:''; position:absolute; inset:0;
@@ -68,8 +65,7 @@
             text-shadow:0 2px 8px rgba(0,0,0,0.2); line-height:1.2;
         }
         .organization-tagline {
-            font-size:clamp(0.9rem,1.5vw,1.1rem); color:rgba(255,255,255,0.92);
-            max-width:900px; margin:0 auto;
+            font-size:clamp(0.9rem,1.5vw,1.1rem); color:rgba(255,255,255,0.92); max-width:900px; margin:0 auto;
         }
         .accent-line { width:80px; height:3px; background:var(--accent-gold); margin:20px auto; border-radius:2px; box-shadow:0 2px 8px rgba(212,175,55,0.4); }
         .breadcrumb {
@@ -81,81 +77,29 @@
         .breadcrumb .sep { color:rgba(255,255,255,0.35); }
         .breadcrumb .current { color:white; font-size:0.85rem; font-weight:600; }
 
-        /* ── Main ── */
-        main { padding: 50px 50px 60px; background: var(--bg-white); }
-
-        .page-intro { max-width:900px; margin:0 auto 40px; text-align:center; }
+        /* Main */
+        main { padding:60px 50px; background:var(--bg-white); }
+        .page-intro { max-width:900px; margin:0 auto 50px; text-align:center; }
         .page-title { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,3vw,2rem); color:var(--text-dark); margin-bottom:12px; font-weight:600; }
-        .subtitle { font-size:1rem; color:var(--text-medium); margin-bottom:0; }
+        .subtitle { font-size:1rem; color:var(--text-medium); }
 
-        /* ── Section header ── */
-        .section-header {
-            display:flex; align-items:center; justify-content:space-between;
-            margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid var(--bg-light);
-        }
-        .section-title {
-            font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--text-dark); font-weight:600;
-            position:relative; padding-bottom:12px;
-        }
-        .section-title::after {
-            content:''; position:absolute; left:0; bottom:0;
-            width:60px; height:3px;
-            background:linear-gradient(to right,var(--primary-blue),var(--accent-gold));
-            border-radius:2px;
-        }
+        /* Section header */
+        .section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:30px; padding-bottom:16px; border-bottom:2px solid var(--bg-light); }
+        .section-title { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--text-dark); font-weight:600; position:relative; padding-bottom:12px; }
+        .section-title::after { content:''; position:absolute; left:0; bottom:0; width:60px; height:3px; background:linear-gradient(to right,var(--primary-blue),var(--accent-gold)); border-radius:2px; }
         .tumblr-btn {
             display:inline-flex; align-items:center; gap:8px;
-            background:linear-gradient(135deg,#35465c,#001935);
-            color:white; padding:10px 22px; border-radius:50px;
-            font-size:0.82rem; font-weight:600; letter-spacing:0.5px;
-            text-decoration:none; transition:all 0.3s; box-shadow:var(--shadow-sm);
+            background:linear-gradient(135deg,#35465c,#001935); color:white;
+            padding:10px 22px; border-radius:50px; font-size:0.82rem; font-weight:600;
+            text-decoration:none; transition:all 0.3s; box-shadow:var(--shadow-sm); letter-spacing:0.4px;
         }
-        .tumblr-btn:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); background:linear-gradient(135deg,#4a5f78,#0a2a4a); }
+        .tumblr-btn:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
         .tumblr-btn svg { width:14px; height:14px; fill:#36d8ff; flex-shrink:0; }
 
-        /* ── Tabs ── */
-        .view-tabs {
-            display:flex; gap:0; margin-bottom:24px;
-            border:1px solid rgba(0,0,0,0.1); border-radius:10px; overflow:hidden;
-            width:fit-content; box-shadow:var(--shadow-sm);
-        }
-        .tab-btn {
-            padding:10px 24px; background:white; border:none; cursor:pointer;
-            font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:600;
-            color:var(--text-light); transition:all 0.2s; border-right:1px solid rgba(0,0,0,0.08);
-        }
-        .tab-btn:last-child { border-right:none; }
-        .tab-btn.active { background:var(--primary-blue); color:white; }
-        .tab-btn:hover:not(.active) { background:var(--bg-light); color:var(--text-dark); }
+        /* Grid */
+        #posts-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:26px; }
 
-        /* ── Iframe view ── */
-        #iframe-view { display:block; }
-        .iframe-wrapper {
-            border-radius:12px; overflow:hidden;
-            border:1px solid rgba(0,0,0,0.1);
-            box-shadow:var(--shadow-md);
-            background:white;
-        }
-        .iframe-wrapper iframe {
-            width:100%; height:900px; border:none; display:block;
-        }
-        .iframe-note {
-            padding:12px 20px; background:var(--bg-light);
-            border-top:1px solid rgba(0,0,0,0.06);
-            font-size:0.8rem; color:var(--text-light);
-            display:flex; align-items:center; justify-content:space-between;
-        }
-        .iframe-note a { color:var(--primary-blue); text-decoration:none; font-weight:600; }
-        .iframe-note a:hover { text-decoration:underline; }
-
-        /* ── API Cards view ── */
-        #cards-view { display:none; }
-
-        #posts-grid {
-            display:grid;
-            grid-template-columns:repeat(auto-fill, minmax(320px,1fr));
-            gap:26px;
-        }
+        /* Card */
         .post-card {
             background:white; border-radius:12px; text-decoration:none; color:inherit;
             transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
@@ -166,8 +110,7 @@
         .post-card::before {
             content:''; position:absolute; top:0; left:0; right:0; height:3px;
             background:linear-gradient(to right,var(--primary-blue),var(--accent-gold));
-            transform:scaleX(0); transform-origin:left;
-            transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
+            transform:scaleX(0); transform-origin:left; transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
         }
         .post-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); border-color:rgba(0,102,204,0.2); }
         .post-card:hover::before { transform:scaleX(1); }
@@ -191,17 +134,39 @@
         .loading-wrap { text-align:center; padding:70px 20px; color:var(--text-light); }
         .spinner { width:44px; height:44px; border:3px solid rgba(0,102,204,0.12); border-top-color:var(--primary-blue); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 18px; }
         @keyframes spin { to { transform:rotate(360deg); } }
-        .info-box {
-            background:linear-gradient(135deg,#f0f7ff,#e8f4f8);
-            border:1px solid rgba(0,102,204,0.12); border-radius:12px;
-            padding:32px 36px; text-align:center; box-shadow:var(--shadow-sm);
-        }
-        .info-box h3 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--text-dark); margin-bottom:10px; }
-        .info-box p { color:var(--text-medium); font-size:0.9rem; margin-bottom:18px; }
-        .info-box a { color:var(--primary-blue); font-weight:600; text-decoration:none; }
-        .info-box a:hover { text-decoration:underline; }
+        .loading-wrap p { font-size:0.95rem; }
 
-        .load-more-wrap { text-align:center; margin-top:40px; }
+        .state-box {
+            border-radius:14px; padding:40px; text-align:center;
+        }
+        .state-box.empty {
+            background:linear-gradient(135deg,#f0f7ff,#e8f4f8);
+            border:1px solid rgba(0,102,204,0.12);
+        }
+        .state-box.error {
+            background:linear-gradient(135deg,#fff8f0,#fff0e0);
+            border:1px solid rgba(204,102,0,0.15);
+        }
+        .state-box .icon { font-size:2.8rem; margin-bottom:16px; }
+        .state-box h3 { font-family:'Playfair Display',serif; font-size:1.25rem; color:var(--text-dark); margin-bottom:10px; }
+        .state-box p { color:var(--text-medium); font-size:0.9rem; line-height:1.7; max-width:480px; margin:0 auto 20px; }
+        .state-box .steps { text-align:left; max-width:440px; margin:0 auto 24px; background:white; border-radius:10px; padding:20px 24px; box-shadow:var(--shadow-sm); }
+        .state-box .steps ol { padding-left:20px; }
+        .state-box .steps li { font-size:0.88rem; color:var(--text-medium); margin-bottom:8px; line-height:1.6; }
+        .state-box .steps li:last-child { margin-bottom:0; }
+        .state-box .steps a { color:var(--primary-blue); font-weight:600; text-decoration:none; }
+        .state-box .steps a:hover { text-decoration:underline; }
+        .state-box .steps code { background:var(--bg-light); padding:2px 6px; border-radius:4px; font-family:monospace; font-size:0.85em; color:var(--primary-dark); }
+        .btn-primary {
+            display:inline-block; padding:11px 28px;
+            background:linear-gradient(135deg,var(--primary-blue),var(--primary-dark));
+            color:white; border-radius:8px; text-decoration:none;
+            font-weight:600; font-size:0.88rem; transition:all 0.3s; box-shadow:var(--shadow-sm);
+        }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+
+        /* Load more */
+        .load-more-wrap { text-align:center; margin-top:44px; }
         #load-more-btn {
             display:none; padding:13px 40px;
             background:linear-gradient(135deg,var(--primary-blue),var(--primary-dark));
@@ -211,25 +176,20 @@
         }
         #load-more-btn:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); }
 
-        /* ── Footer ── */
-        footer {
-            background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);
-            padding:40px 50px; color:rgba(255,255,255,0.9);
-            border-top:3px solid var(--accent-gold);
-        }
+        /* Footer */
+        footer { background:linear-gradient(135deg,#1a1a1a,#2d2d2d); padding:40px 50px; color:rgba(255,255,255,0.9); border-top:3px solid var(--accent-gold); }
         footer p { margin-bottom:15px; line-height:1.7; font-size:0.9rem; }
-        footer p:last-child { margin-bottom:0; color:rgba(255,255,255,0.5); font-size:0.8rem; }
+        footer p:last-child { margin-bottom:0; color:rgba(255,255,255,0.45); font-size:0.8rem; }
         footer strong { color:var(--accent-gold); font-weight:600; }
         footer a { color:var(--accent-gold); text-decoration:none; }
         footer a:hover { text-decoration:underline; }
 
         @media (max-width:768px) {
             .hero-header { padding:40px 24px 30px; }
-            main { padding:36px 20px 50px; }
+            main { padding:40px 20px 50px; }
             footer { padding:30px 24px; }
             #posts-grid { grid-template-columns:1fr; }
             .section-header { flex-direction:column; align-items:flex-start; gap:12px; }
-            .iframe-wrapper iframe { height:600px; }
         }
     </style>
 </head>
@@ -241,7 +201,6 @@
 
 <div class="container">
 
-    <!-- Hero -->
     <header class="hero-header">
         <div class="hero-content">
             <div class="logo-badge">Blog &amp; Updates</div>
@@ -270,107 +229,63 @@
             </a>
         </div>
 
-        <!-- View toggle tabs -->
-        <div class="view-tabs">
-            <button class="tab-btn active" onclick="switchView('iframe')">📄 Embedded View</button>
-            <button class="tab-btn" onclick="switchView('cards')" id="cards-tab">🗂 Card View</button>
-        </div>
-
-        <!-- IFRAME VIEW: Most reliable, always works -->
-        <div id="iframe-view">
-            <div class="iframe-wrapper">
-                <iframe
-                    src="https://www.tumblr.com/blog/amallattouf"
-                    title="AMALLATTOUF Tumblr Blog"
-                    loading="lazy"
-                    referrerpolicy="no-referrer"
-                    sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
-                ></iframe>
-                <div class="iframe-note">
-                    <span>Showing live content from <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">amallattouf.tumblr.com</a></span>
-                    <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">Open full blog ↗</a>
-                </div>
+        <div id="posts-grid">
+            <div class="full-col loading-wrap">
+                <div class="spinner"></div>
+                <p>Loading posts…</p>
             </div>
         </div>
 
-        <!-- CARDS VIEW: Tumblr API -->
-        <div id="cards-view">
-            <div id="posts-grid">
-                <div class="full-col loading-wrap">
-                    <div class="spinner"></div>
-                    <p>Loading posts…</p>
-                </div>
-            </div>
-            <div class="load-more-wrap">
-                <button id="load-more-btn" onclick="loadMore()">Load More Posts</button>
-            </div>
+        <div class="load-more-wrap">
+            <button id="load-more-btn" onclick="loadMore()">Load More Posts</button>
         </div>
-
     </main>
 
     <footer>
         <p><strong>A.M.A.L.L.A.T.T.O.U.F Blog</strong></p>
-        <p>Posts are sourced directly from the <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">official Tumblr blog</a>. Visit Tumblr to follow and see the complete archive.</p>
-        <p>Content &copy; AMALLATTOUF. This page is an aggregated reader view.</p>
+        <p>Posts are sourced directly from the <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">official AMALLATTOUF Tumblr</a>. Visit Tumblr to follow and see the complete archive.</p>
+        <p>Content &copy; AMALLATTOUF.</p>
     </footer>
 
 </div>
 
 <script>
-    // ── View switching ──
-    let cardsLoaded = false;
+    // ─────────────────────────────────────────────
+    //  CONFIGURATION
+    //  Replace TUMBLR_API_KEY with your real key.
+    //  Get one free at: https://www.tumblr.com/oauth/apps
+    //  (Register app → copy "OAuth Consumer Key")
+    // ─────────────────────────────────────────────
+    const TUMBLR_API_KEY = 'KEYEP1JAorO1Ot6bI3ZceYeQSudizO8w3WLsmMAlvPxfTkp9HA';
+    const BLOG_NAME      = 'amallattouf';
+    const PAGE_SIZE      = 9;
 
-    function switchView(view) {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        if (view === 'iframe') {
-            document.getElementById('iframe-view').style.display = 'block';
-            document.getElementById('cards-view').style.display = 'none';
-            document.querySelector('.tab-btn:first-child').classList.add('active');
-        } else {
-            document.getElementById('iframe-view').style.display = 'none';
-            document.getElementById('cards-view').style.display = 'block';
-            document.getElementById('cards-tab').classList.add('active');
-            if (!cardsLoaded) { cardsLoaded = true; loadTumblrPosts(); }
-        }
+    let allPosts = [];
+    let displayed = 0;
+
+    // ── Utilities ──
+    function esc(s) {
+        return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
-
-    // ── Tumblr API (card view) ──
-    // NOTE: Replace YOUR_API_KEY_HERE with a real key from https://www.tumblr.com/oauth/apps
-    const TUMBLR_API_KEY = 'fuiKNFp9vQFvjLNvx4sUwti4Yb5yGutBN4Xh10LHpnGEwR8GVB';
-    const BLOG = 'amallattouf';
-    const PAGE_SIZE = 9;
-    let allPosts = [], displayedCount = 0;
-
-    function loadTumblrPosts() {
-        const cb = 'tumblr_' + Date.now();
-        const s = document.createElement('script');
-        window[cb] = function(data) {
-            delete window[cb];
-            document.head.removeChild(s);
-            if (data && data.response && Array.isArray(data.response.posts)) {
-                allPosts = data.response.posts;
-                renderBatch(false);
-            } else {
-                showInfo();
-            }
-        };
-        s.onerror = () => { delete window[cb]; document.head.removeChild(s); showInfo(); };
-        s.src = `https://api.tumblr.com/v2/blog/${BLOG}.tumblr.com/posts?api_key=${TUMBLR_API_KEY}&limit=20&callback=${cb}`;
-        document.head.appendChild(s);
+    function stripHtml(h) {
+        const d = document.createElement('div');
+        d.innerHTML = h || '';
+        return (d.textContent || '').replace(/\s+/g,' ').trim();
     }
-
-    function stripHtml(h) { const d = document.createElement('div'); d.innerHTML = h; return d.textContent || ''; }
-    function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
+    function fmtDate(ts) {
+        return new Date(ts * 1000).toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+    }
+    function fmtType(t) {
+        return ({text:'✍ Article',photo:'📷 Photo',quote:'💬 Quote',link:'🔗 Link',video:'🎥 Video',audio:'🎵 Audio',answer:'❓ Q&A'})[t] || '📝 Post';
+    }
     function getTitle(p) {
         if (p.title) return p.title;
-        const body = p.body || p.caption || p.text || p.answer || p.description || '';
-        const t = stripHtml(body).replace(/\s+/g,' ').trim();
-        return t ? t.slice(0,80) + (t.length>80?'…':'') : 'Post';
+        const raw = stripHtml(p.body || p.caption || p.text || p.answer || p.description || '');
+        return raw.slice(0, 80) + (raw.length > 80 ? '…' : '') || 'Untitled Post';
     }
     function getExcerpt(p) {
-        const body = p.body || p.caption || p.description || p.answer || p.text || '';
-        return stripHtml(body).replace(/\s+/g,' ').trim().slice(0,220);
+        const raw = stripHtml(p.body || p.caption || p.description || p.answer || p.text || '');
+        return raw.slice(0, 240) + (raw.length > 240 ? '…' : '');
     }
     function getImage(p) {
         if (p.photos && p.photos[0]) {
@@ -380,29 +295,22 @@
         }
         return p.thumbnail_url || null;
     }
-    function fmtType(t) {
-        return ({text:'✍ Article',photo:'📷 Photo',quote:'💬 Quote',link:'🔗 Link',video:'🎥 Video',audio:'🎵 Audio',answer:'❓ Q&A'})[t] || '📝 Post';
-    }
-    function fmtDate(ts) {
-        return new Date(ts*1000).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
-    }
 
-    function renderBatch(append) {
+    // ── Render a batch of posts ──
+    function renderBatch(posts) {
         const grid = document.getElementById('posts-grid');
-        if (!append) grid.innerHTML = '';
-        if (allPosts.length === 0) { showInfo(); return; }
-
-        const batch = allPosts.slice(displayedCount, displayedCount + PAGE_SIZE);
-        batch.forEach(p => {
+        posts.forEach(p => {
             const img = getImage(p);
+            const tags = (p.tags || []).slice(0, 3).map(t => `<span class="tag">#${esc(t)}</span>`).join('');
             const card = document.createElement('a');
             card.className = 'post-card';
-            card.href = p.post_url || p.short_url || '#';
+            card.href = p.post_url || p.short_url || `https://www.tumblr.com/blog/${BLOG_NAME}`;
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
-            const tags = (p.tags||[]).slice(0,3).map(t=>`<span class="tag">#${esc(t)}</span>`).join('');
             card.innerHTML = `
-                ${img ? `<img class="post-thumb" src="${esc(img)}" alt="" loading="lazy" onerror="this.style.display='none'">` : `<div class="post-placeholder">✍</div>`}
+                ${img
+                    ? `<img class="post-thumb" src="${esc(img)}" alt="" loading="lazy" onerror="this.style.display='none'">`
+                    : `<div class="post-placeholder">✍</div>`}
                 <div class="post-body">
                     <div class="post-meta">
                         <span class="type-badge">${fmtType(p.type)}</span>
@@ -418,21 +326,94 @@
             grid.appendChild(card);
         });
 
-        displayedCount += batch.length;
-        const btn = document.getElementById('load-more-btn');
-        btn.style.display = (displayedCount < allPosts.length) ? 'inline-block' : 'none';
+        displayed += posts.length;
+        document.getElementById('load-more-btn').style.display =
+            displayed < allPosts.length ? 'inline-block' : 'none';
     }
 
-    function loadMore() { renderBatch(true); }
+    function loadMore() {
+        renderBatch(allPosts.slice(displayed, displayed + PAGE_SIZE));
+    }
 
-    function showInfo() {
+    // ── Show empty-state (no posts yet) ──
+    function showEmpty() {
         document.getElementById('posts-grid').innerHTML = `
-            <div class="full-col info-box">
-                <h3>No Posts Found via API</h3>
-                <p>The Tumblr API didn't return posts — this usually means the blog is new, private, or the API key needs updating. The <strong>Embedded View</strong> tab above shows the live blog directly.</p>
-                <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">→ Open full blog on Tumblr</a>
+            <div class="full-col state-box empty">
+                <div class="icon">📝</div>
+                <h3>No Posts Yet</h3>
+                <p>The AMALLATTOUF Tumblr blog doesn't have any public posts yet. Once you publish posts on Tumblr, they'll appear here automatically.</p>
+                <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer" class="btn-primary">Go to Tumblr to Post →</a>
             </div>`;
     }
+
+    // ── Show setup instructions (no/wrong API key) ──
+    function showSetup() {
+        document.getElementById('posts-grid').innerHTML = `
+            <div class="full-col state-box error">
+                <div class="icon">🔑</div>
+                <h3>Tumblr API Key Needed</h3>
+                <p>To automatically pull posts from Tumblr, you need a free Tumblr API key. It takes about 2 minutes to set up:</p>
+                <div class="steps">
+                    <ol>
+                        <li>Go to <a href="https://www.tumblr.com/oauth/apps" target="_blank" rel="noopener noreferrer">tumblr.com/oauth/apps</a> and log in.</li>
+                        <li>Click <strong>Register application</strong>.</li>
+                        <li>Fill in any App Name (e.g. "AMALLATTOUF Blog"), website URL, and description. The callback URL can be anything (e.g. <code>https://amallattouf.com</code>).</li>
+                        <li>Submit — you'll instantly see your <strong>OAuth Consumer Key</strong>.</li>
+                        <li>Open <code>blog.html</code>, find the line:<br><code>const TUMBLR_API_KEY = 'PASTE_YOUR_API_KEY_HERE';</code><br>and replace <code>PASTE_YOUR_API_KEY_HERE</code> with your key.</li>
+                        <li>Re-upload the file to your server — posts will load immediately.</li>
+                    </ol>
+                </div>
+                <a href="https://www.tumblr.com/oauth/apps" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Free API Key →</a>
+            </div>`;
+    }
+
+    // ── Fetch via JSONP ──
+    function fetchPosts() {
+        if (!TUMBLR_API_KEY || TUMBLR_API_KEY === 'PASTE_YOUR_API_KEY_HERE') {
+            showSetup();
+            return;
+        }
+
+        const cb = '__tumblr_cb_' + Date.now();
+        const script = document.createElement('script');
+
+        window[cb] = function(data) {
+            delete window[cb];
+            if (script.parentNode) script.parentNode.removeChild(script);
+
+            if (!data || data.meta.status !== 200) {
+                // Bad key or API error
+                showSetup();
+                return;
+            }
+
+            const posts = (data.response && data.response.posts) || [];
+            const grid = document.getElementById('posts-grid');
+            grid.innerHTML = '';
+
+            if (posts.length === 0) {
+                showEmpty();
+                return;
+            }
+
+            allPosts = posts;
+            renderBatch(allPosts.slice(0, PAGE_SIZE));
+        };
+
+        script.onerror = function() {
+            delete window[cb];
+            if (script.parentNode) script.parentNode.removeChild(script);
+            showSetup();
+        };
+
+        script.src =
+            `https://api.tumblr.com/v2/blog/${BLOG_NAME}.tumblr.com/posts` +
+            `?api_key=${encodeURIComponent(TUMBLR_API_KEY)}&limit=20&callback=${cb}`;
+        document.head.appendChild(script);
+    }
+
+    // ── Init ──
+    document.addEventListener('DOMContentLoaded', fetchPosts);
 </script>
 </body>
 </html>
