@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A.M.A.L.L.A.T.T.O.U.F - Blog</title>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --primary-blue: #0066cc;
@@ -25,9 +22,7 @@
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.08);
             --shadow-xl: 0 20px 40px rgba(0,0,0,0.2), 0 8px 16px rgba(0,0,0,0.1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.7;
@@ -37,705 +32,345 @@
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* Animated Background Shapes */
-        .bg-shape {
-            position: fixed;
-            border-radius: 50%;
-            opacity: 0.1;
-            filter: blur(60px);
-            z-index: 0;
-            animation: float 20s ease-in-out infinite;
-        }
-        .bg-shape-1 { width: 400px; height: 400px; background: #0066cc; top: 10%; left: -10%; animation-delay: 0s; }
-        .bg-shape-2 { width: 300px; height: 300px; background: #d4af37; bottom: 20%; right: -5%; animation-delay: 7s; }
-        .bg-shape-3 { width: 500px; height: 500px; background: #ffffff; top: 50%; left: 50%; animation-delay: 14s; }
-
+        .bg-shape { position:fixed; border-radius:50%; opacity:0.1; filter:blur(60px); z-index:0; animation:float 20s ease-in-out infinite; }
+        .bg-shape-1 { width:400px; height:400px; background:#0066cc; top:10%; left:-10%; }
+        .bg-shape-2 { width:300px; height:300px; background:#d4af37; bottom:20%; right:-5%; animation-delay:7s; }
+        .bg-shape-3 { width:500px; height:500px; background:#ffffff; top:50%; left:50%; animation-delay:14s; }
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33%       { transform: translate(30px, -30px) rotate(120deg); }
-            66%       { transform: translate(-20px, 20px) rotate(240deg); }
+            0%,100% { transform:translate(0,0) rotate(0deg); }
+            33% { transform:translate(30px,-30px) rotate(120deg); }
+            66% { transform:translate(-20px,20px) rotate(240deg); }
         }
+        .container { position:relative; z-index:1; max-width:1400px; margin:0 auto; background:var(--bg-white); box-shadow:var(--shadow-xl); }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1400px;
-            margin: 0 auto;
-            background: var(--bg-white);
-            box-shadow: var(--shadow-xl);
-        }
-
-        /* ── Hero Header ── */
+        /* Hero */
         .hero-header {
             background: linear-gradient(135deg, #0052a3 0%, #0066cc 50%, #0080ff 100%);
-            padding: 60px 50px;
-            position: relative;
-            overflow: hidden;
+            padding: 60px 50px 40px;
+            position: relative; overflow: hidden;
         }
         .hero-header::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(212,175,55,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
-            pointer-events: none;
+            content:''; position:absolute; inset:0;
+            background: radial-gradient(circle at 20% 50%, rgba(212,175,55,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events:none;
         }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .hero-content { position:relative; z-index:1; text-align:center; max-width:1000px; margin:0 auto; }
         .logo-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding: 8px 24px;
-            border-radius: 50px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: white;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+            display:inline-block; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px);
+            padding:8px 24px; border-radius:50px; margin-bottom:20px;
+            border:1px solid rgba(255,255,255,0.2); font-size:0.8rem; font-weight:600;
+            color:white; letter-spacing:1.5px; text-transform:uppercase;
         }
         .organization-name {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            line-height: 1.2;
+            font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.5rem);
+            font-weight:700; letter-spacing:3px; margin-bottom:20px; color:white;
+            text-shadow:0 2px 8px rgba(0,0,0,0.2); line-height:1.2;
         }
         .organization-tagline {
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-            line-height: 1.6;
-            font-weight: 400;
-            color: rgba(255,255,255,0.92);
-            max-width: 900px;
-            margin: 0 auto;
+            font-size:clamp(0.9rem,1.5vw,1.1rem); color:rgba(255,255,255,0.92);
+            max-width:900px; margin:0 auto;
         }
-        .accent-line {
-            width: 80px;
-            height: 3px;
-            background: var(--accent-gold);
-            margin: 20px auto;
-            border-radius: 2px;
-            box-shadow: 0 2px 8px rgba(212,175,55,0.4);
+        .accent-line { width:80px; height:3px; background:var(--accent-gold); margin:20px auto; border-radius:2px; box-shadow:0 2px 8px rgba(212,175,55,0.4); }
+        .breadcrumb {
+            position:relative; z-index:1; display:inline-flex; align-items:center; gap:8px;
+            margin-top:28px; padding:9px 18px; background:rgba(0,0,0,0.2); border-radius:8px;
         }
+        .breadcrumb a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.85rem; font-weight:500; transition:color 0.2s; }
+        .breadcrumb a:hover { color:var(--accent-gold); }
+        .breadcrumb .sep { color:rgba(255,255,255,0.35); font-size:0.85rem; }
+        .breadcrumb .current { color:white; font-size:0.85rem; font-weight:600; }
 
-        /* Back nav */
-        .back-nav {
-            background: rgba(0,0,0,0.15);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 50px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* Main */
+        main { padding:60px 50px; background:var(--bg-white); }
+        .page-intro { max-width:900px; margin:0 auto 50px; text-align:center; }
+        .page-title { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,3vw,2rem); color:var(--text-dark); margin-bottom:15px; font-weight:600; }
+        .subtitle { font-size:1rem; color:var(--text-medium); margin-bottom:25px; }
+        .intro-box {
+            background:linear-gradient(135deg,#f0f7ff 0%,#e8f4f8 100%);
+            padding:26px 36px; border-radius:12px;
+            border:1px solid rgba(0,102,204,0.1); box-shadow:var(--shadow-sm);
+            position:relative; overflow:hidden; text-align:left;
         }
-        .back-nav a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-        .back-nav a:hover { color: var(--accent-gold); }
-        .back-nav span { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
-        .back-nav .current { color: white; font-size: 0.85rem; font-weight: 600; }
+        .intro-box::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(to bottom,var(--primary-blue),var(--accent-gold)); border-radius:0 3px 3px 0; }
+        .intro-box p { color:var(--text-medium); font-size:0.93rem; line-height:1.7; }
+        .intro-box a { color:var(--primary-blue); font-weight:600; text-decoration:none; }
+        .intro-box a:hover { text-decoration:underline; }
 
-        /* ── Main Content ── */
-        main { padding: 60px 50px; background: var(--bg-white); }
+        /* Section header */
+        .section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:30px; padding-bottom:16px; border-bottom:2px solid var(--bg-light); }
+        .section-title { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--text-dark); font-weight:600; position:relative; padding-bottom:12px; }
+        .section-title::after { content:''; position:absolute; left:0; bottom:0; width:60px; height:3px; background:linear-gradient(to right,var(--primary-blue),var(--accent-gold)); border-radius:2px; }
+        .tumblr-link {
+            display:inline-flex; align-items:center; gap:8px;
+            background:linear-gradient(135deg,#35465c,#001935);
+            color:white; padding:9px 20px; border-radius:50px;
+            font-size:0.8rem; font-weight:600; letter-spacing:0.5px;
+            text-decoration:none; transition:all 0.3s; box-shadow:var(--shadow-sm);
+        }
+        .tumblr-link:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+        .tumblr-link svg { width:14px; height:14px; fill:#00cfff; }
 
-        .page-intro {
-            max-width: 900px;
-            margin: 0 auto 60px;
-            text-align: center;
-        }
-        .page-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .subtitle {
-            font-size: 1rem;
-            color: var(--text-medium);
-            margin-bottom: 25px;
-        }
-        .intro-text {
-            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
-            padding: 30px 40px;
-            border-radius: 12px;
-            border: 1px solid rgba(0,102,204,0.1);
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            overflow: hidden;
-        }
-        .intro-text::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-gold));
-            border-radius: 0 3px 3px 0;
-        }
-        .intro-text p {
-            margin-bottom: 12px;
-            line-height: 1.7;
-            color: var(--text-medium);
-            font-size: 0.95rem;
-        }
-        .intro-text p:last-child { margin-bottom: 0; }
+        /* Grid */
+        #posts-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:28px; }
 
-        /* ── Blog Feed Section ── */
-        .blog-section {
-            margin: 0;
-        }
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--bg-light);
-        }
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: var(--text-dark);
-            font-weight: 600;
-            position: relative;
-            padding-bottom: 12px;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0; bottom: 0;
-            width: 60px; height: 3px;
-            background: linear-gradient(to right, var(--primary-blue), var(--accent-gold));
-            border-radius: 2px;
-        }
-        .tumblr-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #001935, #003366);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-        }
-        .tumblr-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            background: linear-gradient(135deg, #003366, #0052a3);
-        }
-        .tumblr-badge svg { width: 16px; height: 16px; fill: white; }
-
-        /* Posts Grid */
-        #posts-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 28px;
-        }
-
-        /* Post Card */
+        /* Card */
         .post-card {
-            background: white;
-            border-radius: 12px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-            border: 1px solid rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
+            background:white; border-radius:12px; text-decoration:none; color:inherit;
+            transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+            border:1px solid rgba(0,0,0,0.08);
+            display:flex; flex-direction:column;
+            position:relative; overflow:hidden; box-shadow:var(--shadow-sm);
         }
         .post-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary-blue), var(--accent-gold));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+            content:''; position:absolute; top:0; left:0; right:0; height:3px;
+            background:linear-gradient(to right,var(--primary-blue),var(--accent-gold));
+            transform:scaleX(0); transform-origin:left;
+            transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
         }
-        .post-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(0,102,204,0.2); }
-        .post-card:hover::before { transform: scaleX(1); }
+        .post-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); border-color:rgba(0,102,204,0.2); }
+        .post-card:hover::before { transform:scaleX(1); }
+        .post-thumb { width:100%; height:190px; object-fit:cover; display:block; background:linear-gradient(135deg,#e8f4f8,#f0f7ff); }
+        .post-placeholder { width:100%; height:100px; background:linear-gradient(135deg,#f0f7ff,#e8f4f8); display:flex; align-items:center; justify-content:center; font-size:2rem; opacity:0.25; color:var(--primary-blue); }
+        .post-body { padding:22px; flex:1; display:flex; flex-direction:column; }
+        .post-meta { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.05); }
+        .type-badge { background:rgba(0,102,204,0.08); color:var(--primary-blue); padding:3px 10px; border-radius:50px; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
+        .post-date { font-size:0.76rem; color:var(--text-light); }
+        .post-title { font-family:'Playfair Display',serif; font-size:1.08rem; font-weight:700; color:var(--text-dark); margin-bottom:10px; line-height:1.4; transition:color 0.2s; }
+        .post-card:hover .post-title { color:var(--primary-blue); }
+        .post-excerpt { font-size:0.87rem; color:var(--text-medium); line-height:1.65; flex:1; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+        .post-footer { margin-top:16px; padding-top:12px; border-top:1px solid rgba(0,0,0,0.05); display:flex; align-items:center; justify-content:space-between; gap:8px; }
+        .tags { display:flex; flex-wrap:wrap; gap:4px; }
+        .tag { background:var(--bg-light); color:var(--text-light); padding:2px 8px; border-radius:50px; font-size:0.68rem; font-weight:500; }
+        .read-more { font-size:0.8rem; font-weight:600; color:var(--primary-blue); white-space:nowrap; display:flex; align-items:center; gap:4px; transition:gap 0.2s; }
+        .post-card:hover .read-more { gap:8px; }
 
-        .post-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            background: linear-gradient(135deg, #e8f4f8 0%, #f0f7ff 100%);
-        }
-        .post-image-placeholder {
-            width: 100%;
-            height: 140px;
-            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-blue);
-            font-size: 2rem;
-            opacity: 0.4;
-        }
+        /* States */
+        .full-col { grid-column:1/-1; }
+        .loading-wrap { text-align:center; padding:80px 20px; color:var(--text-light); }
+        .spinner { width:48px; height:48px; border:3px solid rgba(0,102,204,0.15); border-top-color:var(--primary-blue); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 20px; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        .loading-wrap p { font-size:0.95rem; }
+        .error-wrap { background:linear-gradient(135deg,#fff5f5,#ffe5e5); border:1px solid rgba(220,38,38,0.2); border-radius:12px; padding:50px 40px; text-align:center; }
+        .error-wrap h3 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--text-dark); margin-bottom:12px; }
+        .error-wrap p { color:var(--text-medium); font-size:0.9rem; margin-bottom:20px; }
+        .btn-primary { display:inline-block; padding:12px 30px; background:linear-gradient(135deg,var(--primary-blue),var(--primary-dark)); color:white; border-radius:8px; text-decoration:none; font-weight:600; font-size:0.9rem; transition:all 0.3s; box-shadow:var(--shadow-sm); }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
 
-        .post-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
-
-        .post-meta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .post-type-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(0,102,204,0.08);
-            color: var(--primary-blue);
-            padding: 3px 10px;
-            border-radius: 50px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .post-date {
-            font-size: 0.78rem;
-            color: var(--text-light);
-        }
-
-        .post-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            line-height: 1.4;
-            transition: color 0.2s;
-        }
-        .post-card:hover .post-title { color: var(--primary-blue); }
-
-        .post-excerpt {
-            font-size: 0.88rem;
-            color: var(--text-medium);
-            line-height: 1.65;
-            flex: 1;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .post-footer {
-            margin-top: 16px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .post-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        .post-tag {
-            background: var(--bg-light);
-            color: var(--text-light);
-            padding: 2px 8px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 500;
-        }
-        .read-more {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            white-space: nowrap;
-            transition: gap 0.2s;
-        }
-        .post-card:hover .read-more { gap: 8px; }
-
-        /* Loading State */
-        .loading-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 80px 40px;
-            color: var(--text-light);
-        }
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 3px solid rgba(0,102,204,0.15);
-            border-top-color: var(--primary-blue);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto 20px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .loading-state p { font-size: 0.95rem; }
-
-        /* Error State */
-        .error-state {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
-            border: 1px solid rgba(220,38,38,0.2);
-            border-radius: 12px;
-            padding: 50px 40px;
-            text-align: center;
-        }
-        .error-state h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-        }
-        .error-state p { color: var(--text-medium); margin-bottom: 20px; font-size: 0.9rem; }
-        .error-state a {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-        }
-        .error-state a:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-        /* Load More */
-        .load-more-wrap {
-            text-align: center;
-            margin-top: 50px;
-        }
+        /* Load more */
+        .load-more-wrap { text-align:center; margin-top:50px; }
         #load-more-btn {
-            display: none;
-            padding: 14px 40px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-md);
-            letter-spacing: 0.5px;
+            display:none; padding:14px 44px;
+            background:linear-gradient(135deg,var(--primary-blue),var(--primary-dark));
+            color:white; border:none; border-radius:50px;
+            font-family:'Inter',sans-serif; font-size:0.95rem; font-weight:600;
+            cursor:pointer; transition:all 0.3s; box-shadow:var(--shadow-md); letter-spacing:0.5px;
         }
-        #load-more-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-        #load-more-btn:active { transform: translateY(-1px); }
+        #load-more-btn:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+        #load-more-btn:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
 
         /* Footer */
-        footer {
-            background: linear-gradient(135deg, #001935 0%, #003366 100%);
-            color: rgba(255,255,255,0.8);
-            padding: 40px 50px;
-            font-size: 0.85rem;
-            line-height: 1.8;
-        }
-        footer p { margin-bottom: 8px; }
-        footer strong { color: white; }
-        footer a { color: var(--accent-gold); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
+        footer { background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%); padding:40px 50px; color:rgba(255,255,255,0.9); border-top:3px solid var(--accent-gold); }
+        footer p { margin-bottom:15px; line-height:1.7; font-size:0.9rem; }
+        footer p:last-child { margin-bottom:0; color:rgba(255,255,255,0.5); font-size:0.8rem; }
+        footer strong { color:var(--accent-gold); font-weight:600; }
+        footer a { color:var(--accent-gold); text-decoration:none; }
+        footer a:hover { text-decoration:underline; }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-header { padding: 40px 24px; }
-            main { padding: 40px 24px; }
-            footer { padding: 30px 24px; }
-            .back-nav { padding: 10px 24px; }
-            #posts-container { grid-template-columns: 1fr; }
-            .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+        @media (max-width:768px) {
+            .hero-header { padding:40px 24px 30px; }
+            main { padding:40px 24px; }
+            footer { padding:30px 24px; }
+            #posts-grid { grid-template-columns:1fr; }
+            .section-header { flex-direction:column; align-items:flex-start; gap:14px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Animated Background Shapes -->
-    <div class="bg-shape bg-shape-1"></div>
-    <div class="bg-shape bg-shape-2"></div>
-    <div class="bg-shape bg-shape-3"></div>
+<div class="bg-shape bg-shape-1"></div>
+<div class="bg-shape bg-shape-2"></div>
+<div class="bg-shape bg-shape-3"></div>
 
-    <div class="container">
+<div class="container">
 
-        <!-- Hero Header -->
-        <header class="hero-header">
-            <div class="hero-content">
-                <div class="logo-badge">Blog &amp; Updates</div>
-                <h1 class="organization-name">A.M.A.L.L.A.T.T.O.U.F</h1>
-                <div class="accent-line"></div>
-                <p class="organization-tagline">
-                    Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, Facts
-                </p>
-            </div>
-            <!-- Back Nav -->
-            <nav class="back-nav" style="position:relative;z-index:1;margin-top:30px;border-radius:8px;">
+    <header class="hero-header">
+        <div class="hero-content">
+            <div class="logo-badge">Blog &amp; Updates</div>
+            <h1 class="organization-name">A.M.A.L.L.A.T.T.O.U.F</h1>
+            <div class="accent-line"></div>
+            <p class="organization-tagline">Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, Facts</p>
+            <div class="breadcrumb">
                 <a href="index.html">← Home</a>
-                <span>/</span>
+                <span class="sep">/</span>
                 <span class="current">Blog</span>
-            </nav>
-        </header>
+            </div>
+        </div>
+    </header>
 
-        <!-- Main Content -->
-        <main>
+    <main>
+        <div class="page-intro">
+            <h2 class="page-title">Latest Posts &amp; Perspectives</h2>
+            <p class="subtitle">Commentary, research, and advocacy from the AMALLATTOUF Tumblr blog</p>
+            <div class="intro-box">
+                <p>Posts are fetched automatically from the <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">AMALLATTOUF Tumblr blog</a>. Click any card to read the full post on Tumblr.</p>
+            </div>
+        </div>
 
-            <!-- Intro -->
-            <div class="page-intro">
-                <h2 class="page-title">Latest Posts &amp; Perspectives</h2>
-                <p class="subtitle">Insights, analysis, and advocacy from the AMALLATTOUF Tumblr blog</p>
-                <div class="intro-text">
-                    <p>Stay informed with the latest commentary, research, and advocacy content from the AMALLATTOUF blog. Each post covers topics related to Middle East affairs, pro-Israel advocacy, legal developments, and community outreach.</p>
-                    <p>Posts are loaded directly from the <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer" style="color:var(--primary-blue);font-weight:600;">official Tumblr</a>. Click any post to read the full article.</p>
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Recent Posts</h2>
+                <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer" class="tumblr-link">
+                    <svg viewBox="0 0 24 24"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.306 1.406z"/></svg>
+                    View on Tumblr
+                </a>
+            </div>
+
+            <div id="posts-grid">
+                <div class="full-col loading-wrap">
+                    <div class="spinner"></div>
+                    <p>Fetching posts from Tumblr…</p>
                 </div>
             </div>
 
-            <!-- Blog Feed -->
-            <section class="blog-section">
-                <div class="section-header">
-                    <h2 class="section-title">Recent Posts</h2>
-                    <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer" class="tumblr-badge">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.306 1.406z"/></svg>
-                        View on Tumblr
-                    </a>
-                </div>
+            <div class="load-more-wrap">
+                <button id="load-more-btn" onclick="loadMore()">Load More Posts</button>
+            </div>
+        </section>
+    </main>
 
-                <div id="posts-container">
-                    <div class="loading-state">
-                        <div class="spinner"></div>
-                        <p>Loading posts from Tumblr…</p>
+    <footer>
+        <p><strong>A.M.A.L.L.A.T.T.O.U.F Blog</strong></p>
+        <p>Posts are fetched directly from the <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">official Tumblr blog</a>. Visit Tumblr to follow and see the full archive.</p>
+        <p>Content &copy; AMALLATTOUF. This page is an aggregated reader view.</p>
+    </footer>
+
+</div>
+
+<script>
+    let allPosts = [];
+    let displayedCount = 0;
+    const PAGE_SIZE = 9;
+
+    function formatType(type) {
+        const map = { text:"✍ Article", photo:"📷 Photo", quote:"💬 Quote", link:"🔗 Link", video:"🎥 Video", audio:"🎵 Audio", chat:"💬 Chat", answer:"❓ Q&A" };
+        return map[(type||"").toLowerCase()] || "📝 Post";
+    }
+
+    function renderPosts(posts) {
+        const grid = document.getElementById("posts-grid");
+        posts.forEach(post => {
+            const card = document.createElement("a");
+            card.className = "post-card";
+            card.href = post.url || "https://www.tumblr.com/blog/amallattouf";
+            card.target = "_blank";
+            card.rel = "noopener noreferrer";
+
+            const imgHtml = post.image
+                ? `<img class="post-thumb" src="${escHtml(post.image)}" alt="" loading="lazy" onerror="this.style.display='none'">`
+                : `<div class="post-placeholder">✍</div>`;
+
+            const tagsHtml = (post.tags||[]).slice(0,3).map(t => `<span class="tag">#${escHtml(t)}</span>`).join("");
+
+            card.innerHTML = `
+                ${imgHtml}
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="type-badge">${formatType(post.type)}</span>
+                        <span class="post-date">${escHtml(post.date||"")}</span>
                     </div>
-                </div>
+                    <h3 class="post-title">${escHtml(post.title||"Untitled Post")}</h3>
+                    ${post.excerpt ? `<p class="post-excerpt">${escHtml(post.excerpt)}</p>` : ""}
+                    <div class="post-footer">
+                        <div class="tags">${tagsHtml}</div>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                </div>`;
+            grid.appendChild(card);
+        });
+    }
 
-                <div class="load-more-wrap">
-                    <button id="load-more-btn" onclick="loadMore()">Load More Posts</button>
-                </div>
-            </section>
+    function escHtml(s) {
+        return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+    }
 
-        </main>
+    function showError(msg) {
+        document.getElementById("posts-grid").innerHTML = `
+            <div class="full-col error-wrap">
+                <h3>Unable to Load Posts</h3>
+                <p>${msg}</p>
+                <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer" class="btn-primary">View Blog on Tumblr →</a>
+            </div>`;
+    }
 
-        <!-- Footer -->
-        <footer>
-            <p><strong>A.M.A.L.L.A.T.T.O.U.F Blog</strong></p>
-            <p>Posts are sourced directly from the <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">AMALLATTOUF Tumblr blog</a>. For the full archive and to follow, visit Tumblr directly.</p>
-            <p style="margin-top:15px;color:rgba(255,255,255,0.4);font-size:0.8rem;">Content © AMALLATTOUF. This page is an aggregated view for convenience.</p>
-        </footer>
+    function loadMore() {
+        const btn = document.getElementById("load-more-btn");
+        const next = allPosts.slice(displayedCount, displayedCount + PAGE_SIZE);
+        renderPosts(next);
+        displayedCount += next.length;
+        if (displayedCount >= allPosts.length) btn.style.display = "none";
+    }
 
-    </div>
+    async function fetchPosts() {
+        const prompt = `Please search the web for the Tumblr blog at https://www.tumblr.com/blog/amallattouf and find all blog posts. For each post you find, extract:
+- title: post title or first line of content
+- excerpt: plain text summary, 120-180 characters, no HTML tags
+- url: direct Tumblr post URL
+- date: formatted date like "March 3, 2026"
+- type: text/photo/quote/link/video/audio
+- image: URL of any featured/thumbnail image, or null
+- tags: array of up to 4 tag strings
 
-    <script>
-        // ── Config ──
-        const BLOG_NAME  = 'amallattouf';
-        const API_KEY    = 'fuiKNFp9vQFvjLNvx4sUwti4Yb5yGutBN4Xh10LHpnGEwR8GVB';  // Tumblr demo key
-        const POSTS_PER_PAGE = 9;
-        let offset = 0;
-        let totalPosts = 0;
+Return ONLY a JSON array. No markdown fences, no preamble, no explanation. Just the raw JSON array starting with [ and ending with ].
+If you cannot access the blog or it has no posts, return [].`;
 
-        // ── Helpers ──
-        function formatDate(ts) {
-            const d = new Date(ts * 1000);
-            return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        const resp = await fetch("https://api.anthropic.com/v1/messages", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                model: "claude-sonnet-4-20250514",
+                max_tokens: 4000,
+                tools: [{ type: "web_search_20250305", name: "web_search" }],
+                messages: [{ role: "user", content: prompt }]
+            })
+        });
+
+        if (!resp.ok) {
+            const errText = await resp.text();
+            throw new Error("API error " + resp.status + ": " + errText);
         }
 
-        function stripHtml(html) {
-            const tmp = document.createElement('div');
-            tmp.innerHTML = html;
-            return tmp.textContent || tmp.innerText || '';
-        }
+        const data = await resp.json();
+        const text = (data.content || []).filter(b => b.type === "text").map(b => b.text).join("\n");
+        const s = text.indexOf("[");
+        const e = text.lastIndexOf("]");
+        if (s === -1 || e === -1) throw new Error("No JSON array in response. Raw: " + text.slice(0,300));
+        return JSON.parse(text.slice(s, e + 1));
+    }
 
-        function getPostTitle(post) {
-            if (post.title) return post.title;
-            if (post.type === 'photo' && post.caption) {
-                const t = stripHtml(post.caption).slice(0, 80);
-                return t || 'Photo Post';
-            }
-            if (post.type === 'quote' && post.text) return '"' + post.text.slice(0, 80) + '…"';
-            if (post.type === 'link' && post.link_author) return post.link_author;
-            if (post.type === 'answer') return post.question ? post.question.slice(0, 80) : 'Q&A';
-            const body = getPostExcerpt(post);
-            const words = body.split(/\s+/).slice(0, 10).join(' ');
-            return words ? words + '…' : 'Untitled Post';
-        }
+    (async function init() {
+        try {
+            const posts = await fetchPosts();
+            const grid = document.getElementById("posts-grid");
+            grid.innerHTML = "";
 
-        function getPostExcerpt(post) {
-            let text = '';
-            if (post.body)        text = stripHtml(post.body);
-            else if (post.caption) text = stripHtml(post.caption);
-            else if (post.description) text = stripHtml(post.description);
-            else if (post.excerpt) text = post.excerpt;
-            else if (post.text)    text = stripHtml(post.text);
-            else if (post.answer)  text = stripHtml(post.answer);
-            return text.trim();
-        }
-
-        function getPostImage(post) {
-            if (post.photos && post.photos.length > 0) {
-                const sizes = post.photos[0].alt_sizes || [];
-                const best = sizes.find(s => s.width >= 400) || sizes[0];
-                return best ? best.url : null;
-            }
-            if (post.thumbnail_url) return post.thumbnail_url;
-            return null;
-        }
-
-        function getTypeLabel(type) {
-            const map = {
-                text: '✍ Article', photo: '📷 Photo', quote: '💬 Quote',
-                link: '🔗 Link', chat: '💬 Chat', audio: '🎵 Audio',
-                video: '🎥 Video', answer: '❓ Q&A'
-            };
-            return map[type] || '📝 Post';
-        }
-
-        // ── Render Posts ──
-        function renderPosts(posts, append) {
-            const container = document.getElementById('posts-container');
-            if (!append) container.innerHTML = '';
-
-            if (posts.length === 0 && !append) {
-                container.innerHTML = `
-                    <div class="error-state">
-                        <h3>No Posts Found</h3>
-                        <p>There don't appear to be any public posts on this blog yet.</p>
-                        <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">Visit the Blog →</a>
-                    </div>`;
+            if (!posts || posts.length === 0) {
+                showError("No posts were found on this blog. It may be private or have no public posts. Click below to visit the blog directly.");
                 return;
             }
 
-            posts.forEach(post => {
-                const title   = getPostTitle(post);
-                const excerpt = getPostExcerpt(post);
-                const image   = getPostImage(post);
-                const date    = formatDate(post.timestamp);
-                const typeLabel = getTypeLabel(post.type);
-                const tags    = (post.tags || []).slice(0, 3);
-                const url     = post.post_url || post.short_url || '#';
+            allPosts = posts;
+            renderPosts(allPosts.slice(0, PAGE_SIZE));
+            displayedCount = Math.min(PAGE_SIZE, allPosts.length);
 
-                const imgHtml = image
-                    ? `<img class="post-image" src="${image}" alt="${title.replace(/"/g,'')}" loading="lazy" onerror="this.style.display='none'">`
-                    : `<div class="post-image-placeholder">✍</div>`;
+            const btn = document.getElementById("load-more-btn");
+            if (allPosts.length > PAGE_SIZE) btn.style.display = "inline-block";
 
-                const tagsHtml = tags.length
-                    ? `<div class="post-tags">${tags.map(t => `<span class="post-tag">#${t}</span>`).join('')}</div>`
-                    : '<div></div>';
-
-                const card = document.createElement('a');
-                card.className = 'post-card';
-                card.href = url;
-                card.target = '_blank';
-                card.rel = 'noopener noreferrer';
-                card.innerHTML = `
-                    ${imgHtml}
-                    <div class="post-body">
-                        <div class="post-meta">
-                            <span class="post-type-badge">${typeLabel}</span>
-                            <span class="post-date">${date}</span>
-                        </div>
-                        <h3 class="post-title">${title}</h3>
-                        ${excerpt ? `<p class="post-excerpt">${excerpt}</p>` : ''}
-                        <div class="post-footer">
-                            ${tagsHtml}
-                            <span class="read-more">Read more →</span>
-                        </div>
-                    </div>`;
-                container.appendChild(card);
-            });
-
-            // Show / hide Load More
-            const btn = document.getElementById('load-more-btn');
-            btn.style.display = (offset < totalPosts) ? 'inline-block' : 'none';
+        } catch(err) {
+            console.error(err);
+            showError("There was a problem fetching the blog posts (" + err.message + "). You can read all posts directly on Tumblr.");
         }
-
-        // ── Fetch via Tumblr JSONP (no-cors workaround) ──
-        function fetchPosts(newOffset, append) {
-            const container = document.getElementById('posts-container');
-            if (!append) {
-                container.innerHTML = `<div class="loading-state"><div class="spinner"></div><p>Loading posts from Tumblr…</p></div>`;
-            }
-
-            const callbackName = 'tumblr_cb_' + Date.now();
-            const script = document.createElement('script');
-
-            window[callbackName] = function(data) {
-                delete window[callbackName];
-                document.head.removeChild(script);
-
-                if (data && data.response && data.response.posts) {
-                    totalPosts = data.response.total_posts;
-                    offset = newOffset + data.response.posts.length;
-                    renderPosts(data.response.posts, append);
-                } else {
-                    showError();
-                }
-            };
-
-            script.onerror = () => {
-                delete window[callbackName];
-                document.head.removeChild(script);
-                showError();
-            };
-
-            script.src = `https://api.tumblr.com/v2/blog/${BLOG_NAME}.tumblr.com/posts`
-                + `?api_key=${API_KEY}&offset=${newOffset}&limit=${POSTS_PER_PAGE}&callback=${callbackName}`;
-            document.head.appendChild(script);
-        }
-
-        function showError() {
-            const container = document.getElementById('posts-container');
-            container.innerHTML = `
-                <div class="error-state">
-                    <h3>Unable to Load Posts</h3>
-                    <p>We couldn't fetch the latest posts automatically. This may be due to browser security restrictions on cross-origin requests. You can view the full blog directly on Tumblr.</p>
-                    <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer">View Blog on Tumblr →</a>
-                </div>`;
-        }
-
-        function loadMore() {
-            document.getElementById('load-more-btn').textContent = 'Loading…';
-            document.getElementById('load-more-btn').disabled = true;
-            fetchPosts(offset, true);
-            setTimeout(() => {
-                const btn = document.getElementById('load-more-btn');
-                btn.textContent = 'Load More Posts';
-                btn.disabled = false;
-            }, 2000);
-        }
-
-        // ── Init ──
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchPosts(0, false);
-        });
-    </script>
+    })();
+</script>
 </body>
 </html>
