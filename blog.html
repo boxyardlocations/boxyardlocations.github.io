@@ -241,35 +241,7 @@
         footer a { color:var(--accent-gold); text-decoration:none; }
         footer a:hover { text-decoration:underline; }
 
-        /* AI image loading shimmer */
-        .ai-loading { background: #f0f4f8; }
-        .img-shimmer {
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, #e8edf2 25%, #f4f7fa 50%, #e8edf2 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.6s infinite;
-        }
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        /* Unsplash photo credit */
-        .photo-credit {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 5px 10px;
-            background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
-            font-size: 0.65rem; color: rgba(255,255,255,0.85);
-            opacity: 0; transition: opacity 0.3s;
-        }
-        .post-visual { position: relative; }
-        .post-card:hover .photo-credit { opacity: 1; }
-        .photo-credit a { color: rgba(255,255,255,0.95); text-decoration: none; }
-        .photo-credit a:hover { text-decoration: underline; }
-
-        /* Smooth image fade-in */
-        .post-thumb { animation: fadeInImg 0.5s ease; }
-        @keyframes fadeInImg { from { opacity:0; } to { opacity:1; } }
+        /* Topic chips above intro */
         .topic-chips { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:20px; }
         .topic-chip {
             display:inline-flex; align-items:center; gap:6px;
@@ -379,21 +351,13 @@
 <script>
     // ─────────────────────────────────────────────
     //  CONFIGURATION
-    //
-    //  ANTHROPIC_API_KEY → your Anthropic key (console.anthropic.com).
-    //                      Claude reads each post title/excerpt and picks
-    //                      the best Wikipedia article — images served free
-    //                      from Wikipedia, no other API key needed.
-    //
-    //  Posts are loaded from the public Tumblr RSS feed — no Tumblr
-    //  API key required.
+    //  Replace TUMBLR_API_KEY with your real key.
+    //  Get one free at: https://www.tumblr.com/oauth/apps
+    //  (Register app → copy "OAuth Consumer Key")
     // ─────────────────────────────────────────────
-    const ANTHROPIC_API_KEY = 'P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';
-    const BLOG_NAME         = 'amallattouf';
-    const PAGE_SIZE         = 9;
-
-    // Simple in-memory image cache: postId → { url, caption, articleUrl }
-    const imageCache = {};
+    const TUMBLR_API_KEY = 'KEYEP1JAorO1Ot6bI3ZceYeQSudizO8w3WLsmMAlvPxfTkp9HA';
+    const BLOG_NAME      = 'amallattouf';
+    const PAGE_SIZE      = 9;
 
     let allPosts = [];
     let displayed = 0;
@@ -423,9 +387,6 @@
         return raw.slice(0, 240) + (raw.length > 240 ? '…' : '');
     }
     function getImage(p) {
-        // RSS-normalised posts store pre-extracted image in _imgUrl
-        if (p._imgUrl) return p._imgUrl;
-        // Legacy Tumblr API format kept for compatibility
         if (p.photos && p.photos[0]) {
             const sizes = p.photos[0].alt_sizes || [];
             const sz = sizes.find(s => s.width >= 400) || sizes[0];
@@ -434,86 +395,7 @@
         return p.thumbnail_url || null;
     }
 
-    // ── AI-powered Wikipedia image lookup (no extra API key needed) ──
-
-    // Step 1: Ask Claude to name the single most relevant Wikipedia article title
-    async function getWikipediaArticle(post) {
-        const title   = getTitle(post);
-        const excerpt = getExcerpt(post).slice(0, 300);
-        const tags    = (post.tags || []).slice(0, 5).join(', ');
-
-        try {
-            const res = await fetch('https://api.anthropic.com/v1/messages', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': ANTHROPIC_API_KEY,
-                    'anthropic-version': '2023-06-01',
-                    'anthropic-dangerous-direct-browser-access': 'true'
-                },
-                body: JSON.stringify({
-                    model: 'claude-sonnet-4-20250514',
-                    max_tokens: 30,
-                    messages: [{
-                        role: 'user',
-                        content: `Reply with ONLY the exact Wikipedia article title (as it appears in a Wikipedia URL) that would have the most relevant lead image for this blog post. No explanation, no punctuation, just the article title with underscores instead of spaces.
-
-Post title: ${title}
-Tags: ${tags}
-Excerpt: ${excerpt}`
-                    }]
-                })
-            });
-            const data = await res.json();
-            const article = (data.content?.[0]?.text || '').trim().replace(/\s+/g, '_');
-            return article || title.split(' ').slice(0, 2).join('_');
-        } catch (e) {
-            return title.split(' ').slice(0, 2).join('_');
-        }
-    }
-
-    // Step 2: Fetch the lead image from Wikipedia's free REST API
-    async function fetchWikipediaImage(articleTitle) {
-        try {
-            const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(articleTitle)}`;
-            const res = await fetch(url);
-            if (!res.ok) return null;
-            const data = await res.json();
-            const imgUrl = data.originalimage?.source || data.thumbnail?.source;
-            if (!imgUrl) return null;
-            return {
-                url: imgUrl,
-                caption: data.description || data.title || '',
-                articleUrl: data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${articleTitle}`
-            };
-        } catch (e) {
-            return null;
-        }
-    }
-
-    // Combined: Claude picks article → Wikipedia supplies image (free, no key)
-    async function getAIImage(post) {
-        if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY === 'PASTE_YOUR_ANTHROPIC_KEY_HERE') return null;
-        const cacheKey = String(post.id || getTitle(post));
-        if (imageCache[cacheKey]) return imageCache[cacheKey];
-        const article = await getWikipediaArticle(post);
-        const photo   = await fetchWikipediaImage(article);
-        if (photo) imageCache[cacheKey] = { ...photo, article };
-        return imageCache[cacheKey] || null;
-    }
-
-    // Update a card's visual area once image is resolved
-    function applyImageToCard(card, photo, postType, visualSeed) {
-        const visual = card.querySelector('.post-visual, .post-placeholder-wrap');
-        if (!visual) return;
-        if (photo && photo.url) {
-            visual.className = 'post-visual';
-            visual.innerHTML = `
-                <img class="post-thumb" src="${esc(photo.url)}" alt="${esc(photo.caption)}" loading="lazy"
-                     onerror="this.parentElement.innerHTML='${getPlaceholderSVG(postType, visualSeed).replace(/'/g,"&#39;").replace(/\n/g,'')}'; this.parentElement.className='post-visual post-placeholder-wrap';">
-                ${photo.caption ? `<div class="photo-credit">📖 <a href="${esc(photo.articleUrl)}" target="_blank" rel="noopener noreferrer">${esc(photo.caption)}</a> · Wikipedia</div>` : ''}`;
-        }
-    }
+    // ── SVG illustrated placeholders per post type ──
     const placeholderSVGs = {
         text: (seed) => `<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="g${seed}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e8f2ff"/><stop offset="100%" style="stop-color:#dceeff"/></linearGradient></defs>
@@ -603,6 +485,11 @@ Excerpt: ${excerpt}`
         const grid = document.getElementById('posts-grid');
         const isFirstBatch = displayed === 0;
 
+        // Add divider after featured post
+        if (isFirstBatch && posts.length > 1) {
+            // We'll inject the divider after rendering
+        }
+
         posts.forEach((p, idx) => {
             const img = getImage(p);
             const tags = (p.tags || []).slice(0, 3).map(t => `<span class="tag">#${esc(t)}</span>`).join('');
@@ -613,15 +500,9 @@ Excerpt: ${excerpt}`
             card.rel = 'noopener noreferrer';
 
             const visualSeed = (displayed + idx) + '_' + (p.id || idx);
-
-            // Show Tumblr image immediately if available, else show shimmer + SVG fallback
-            let visualHtml;
-            if (img) {
-                visualHtml = `<div class="post-visual"><img class="post-thumb" src="${esc(img)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${getPlaceholderSVG(p.type, visualSeed).replace(/'/g,"&#39;").replace(/\n/g,'')}'; this.parentElement.className='post-visual post-placeholder-wrap';"></div>`;
-            } else {
-                // Shimmer while AI image loads
-                visualHtml = `<div class="post-visual ai-loading"><div class="img-shimmer"></div></div>`;
-            }
+            const visualHtml = img
+                ? `<div class="post-visual"><img class="post-thumb" src="${esc(img)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${getPlaceholderSVG(p.type, visualSeed).replace(/'/g, "\\'").replace(/\n/g,'')}'; this.parentElement.className='post-visual post-placeholder-wrap';"></div>`
+                : `<div class="post-visual post-placeholder-wrap">${getPlaceholderSVG(p.type, visualSeed)}</div>`;
 
             const isFeatured = isFirstBatch && idx === 0;
 
@@ -649,22 +530,6 @@ Excerpt: ${excerpt}`
                 divider.innerHTML = `<span class="grid-divider-text">More Posts</span>`;
                 grid.appendChild(divider);
             }
-
-            // If no Tumblr image, fetch an AI-selected one asynchronously
-            if (!img) {
-                getAIImage(p).then(photo => {
-                    if (photo) {
-                        applyImageToCard(card, photo, p.type, visualSeed);
-                    } else {
-                        // Fall back to SVG illustration
-                        const visual = card.querySelector('.post-visual');
-                        if (visual) {
-                            visual.className = 'post-visual post-placeholder-wrap';
-                            visual.innerHTML = getPlaceholderSVG(p.type, visualSeed);
-                        }
-                    }
-                });
-            }
         });
 
         displayed += posts.length;
@@ -687,65 +552,70 @@ Excerpt: ${excerpt}`
             </div>`;
     }
 
-    // ── Show error state ──
-    function showError(msg) {
+    // ── Show setup instructions (no/wrong API key) ──
+    function showSetup() {
         document.getElementById('posts-grid').innerHTML = `
             <div class="full-col state-box error">
-                <div class="icon">⚠️</div>
-                <h3>Could Not Load Posts</h3>
-                <p>${msg}</p>
-                <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer" class="btn-primary">View on Tumblr →</a>
+                <div class="icon">🔑</div>
+                <h3>Tumblr API Key Needed</h3>
+                <p>To automatically pull posts from Tumblr, you need a free Tumblr API key. It takes about 2 minutes to set up:</p>
+                <div class="steps">
+                    <ol>
+                        <li>Go to <a href="https://www.tumblr.com/oauth/apps" target="_blank" rel="noopener noreferrer">tumblr.com/oauth/apps</a> and log in.</li>
+                        <li>Click <strong>Register application</strong>.</li>
+                        <li>Fill in any App Name (e.g. "AMALLATTOUF Blog"), website URL, and description. The callback URL can be anything (e.g. <code>https://amallattouf.com</code>).</li>
+                        <li>Submit — you'll instantly see your <strong>OAuth Consumer Key</strong>.</li>
+                        <li>Open <code>blog.html</code>, find the line:<br><code>const TUMBLR_API_KEY = 'PASTE_YOUR_API_KEY_HERE';</code><br>and replace <code>PASTE_YOUR_API_KEY_HERE</code> with your key.</li>
+                        <li>Re-upload the file to your server — posts will load immediately.</li>
+                    </ol>
+                </div>
+                <a href="https://www.tumblr.com/oauth/apps" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Free API Key →</a>
             </div>`;
     }
 
-    // ── Normalise an RSS item into the shape renderBatch expects ──
-    function normaliseRssItem(item, idx) {
-        // Extract first <img> from content if present
-        const imgMatch = (item.content || item.description || '').match(/<img[^>]+src=["']([^"']+)["']/i);
-        const imgUrl   = imgMatch ? imgMatch[1] : null;
+    // ── Fetch via JSONP ──
+    function fetchPosts() {
+        if (!TUMBLR_API_KEY || TUMBLR_API_KEY === 'PASTE_YOUR_API_KEY_HERE') {
+            showSetup();
+            return;
+        }
 
-        // Determine post type from categories / content clues
-        let type = 'text';
-        const cats = (item.categories || []).join(' ').toLowerCase();
-        if (cats.includes('photo') || imgUrl) type = 'photo';
-        else if (cats.includes('quote'))      type = 'quote';
-        else if (cats.includes('link'))       type = 'link';
-        else if (cats.includes('video'))      type = 'video';
+        const cb = '__tumblr_cb_' + Date.now();
+        const script = document.createElement('script');
 
-        return {
-            id:        item.guid || item.link || String(idx),
-            type,
-            title:     item.title || '',
-            body:      item.content || item.description || '',
-            post_url:  item.link || '',
-            timestamp: item.pubDate ? Math.floor(new Date(item.pubDate).getTime() / 1000) : 0,
-            tags:      item.categories || [],
-            _imgUrl:   imgUrl   // pre-extracted Tumblr image if any
-        };
-    }
+        window[cb] = function(data) {
+            delete window[cb];
+            if (script.parentNode) script.parentNode.removeChild(script);
 
-    // ── Fetch posts via public RSS → rss2json proxy (no key needed) ──
-    async function fetchPosts() {
-        const rssUrl  = `https://${BLOG_NAME}.tumblr.com/rss`;
-        // rss2json.com free tier: up to 10,000 req/day, no key needed for public feeds
-        const apiUrl  = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=20`;
-
-        try {
-            const res  = await fetch(apiUrl);
-            const data = await res.json();
-
-            if (data.status !== 'ok' || !data.items?.length) {
-                showError('No posts found. Make sure the Tumblr blog has public posts.');
+            if (!data || data.meta.status !== 200) {
+                // Bad key or API error
+                showSetup();
                 return;
             }
 
-            allPosts = data.items.map(normaliseRssItem);
-            document.getElementById('posts-grid').innerHTML = '';
-            renderBatch(allPosts.slice(0, PAGE_SIZE));
+            const posts = (data.response && data.response.posts) || [];
+            const grid = document.getElementById('posts-grid');
+            grid.innerHTML = '';
 
-        } catch (err) {
-            showError('Failed to load posts from the RSS feed. Please try again later.');
-        }
+            if (posts.length === 0) {
+                showEmpty();
+                return;
+            }
+
+            allPosts = posts;
+            renderBatch(allPosts.slice(0, PAGE_SIZE));
+        };
+
+        script.onerror = function() {
+            delete window[cb];
+            if (script.parentNode) script.parentNode.removeChild(script);
+            showSetup();
+        };
+
+        script.src =
+            `https://api.tumblr.com/v2/blog/${BLOG_NAME}.tumblr.com/posts` +
+            `?api_key=${encodeURIComponent(TUMBLR_API_KEY)}&limit=20&callback=${cb}`;
+        document.head.appendChild(script);
     }
 
     // ── Init ──
