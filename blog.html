@@ -380,14 +380,14 @@
     // ─────────────────────────────────────────────
     //  CONFIGURATION
     //
-    //  TUMBLR_API_KEY    → free at https://www.tumblr.com/oauth/apps
-    //                      (Register app → copy "OAuth Consumer Key")
-    //  ANTHROPIC_API_KEY → your Anthropic key. Claude reads each post
-    //                      and picks the best Wikipedia article for it.
-    //                      Images are fetched from Wikipedia for free —
-    //                      no other API key needed.
+    //  ANTHROPIC_API_KEY → your Anthropic key (console.anthropic.com).
+    //                      Claude reads each post title/excerpt and picks
+    //                      the best Wikipedia article — images served free
+    //                      from Wikipedia, no other API key needed.
+    //
+    //  Posts are loaded from the public Tumblr RSS feed — no Tumblr
+    //  API key required.
     // ─────────────────────────────────────────────
-    const TUMBLR_API_KEY    = 'KEYEP1JAorO1Ot6bI3ZceYeQSudizO8w3WLsmMAlvPxfTkp9HA';
     const ANTHROPIC_API_KEY = 'P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';
     const BLOG_NAME         = 'amallattouf';
     const PAGE_SIZE         = 9;
@@ -423,6 +423,9 @@
         return raw.slice(0, 240) + (raw.length > 240 ? '…' : '');
     }
     function getImage(p) {
+        // RSS-normalised posts store pre-extracted image in _imgUrl
+        if (p._imgUrl) return p._imgUrl;
+        // Legacy Tumblr API format kept for compatibility
         if (p.photos && p.photos[0]) {
             const sizes = p.photos[0].alt_sizes || [];
             const sz = sizes.find(s => s.width >= 400) || sizes[0];
@@ -684,67 +687,65 @@ Excerpt: ${excerpt}`
             </div>`;
     }
 
-    // ── Show setup instructions (no/wrong API key) ──
-    function showSetup() {
+    // ── Show error state ──
+    function showError(msg) {
         document.getElementById('posts-grid').innerHTML = `
             <div class="full-col state-box error">
-                <div class="icon">🔑</div>
-                <h3>API Keys Needed</h3>
-                <p>Two free API keys power this blog. Open <code>blog.html</code> and fill in the configuration at the top of the &lt;script&gt; block:</p>
-                <div class="steps">
-                    <ol>
-                        <li><strong>Tumblr API Key</strong> — go to <a href="https://www.tumblr.com/oauth/apps" target="_blank" rel="noopener noreferrer">tumblr.com/oauth/apps</a>, register an app, and copy the <em>OAuth Consumer Key</em>.</li>
-                        <li><strong>Anthropic API Key</strong> — go to <a href="https://console.anthropic.com" target="_blank" rel="noopener noreferrer">console.anthropic.com</a> and copy your API key. Claude reads each post and automatically finds a relevant Wikipedia image — no other image API key needed.</li>
-                        <li>Paste both keys into the <code>CONFIGURATION</code> section at the top of the script, then re-upload <code>blog.html</code>.</li>
-                    </ol>
-                </div>
-                <a href="https://www.tumblr.com/oauth/apps" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Tumblr Key →</a>
+                <div class="icon">⚠️</div>
+                <h3>Could Not Load Posts</h3>
+                <p>${msg}</p>
+                <a href="https://www.tumblr.com/blog/amallattouf" target="_blank" rel="noopener noreferrer" class="btn-primary">View on Tumblr →</a>
             </div>`;
     }
 
-    // ── Fetch via JSONP ──
-    function fetchPosts() {
-        if (!TUMBLR_API_KEY || TUMBLR_API_KEY === 'PASTE_YOUR_API_KEY_HERE') {
-            showSetup();
-            return;
-        }
+    // ── Normalise an RSS item into the shape renderBatch expects ──
+    function normaliseRssItem(item, idx) {
+        // Extract first <img> from content if present
+        const imgMatch = (item.content || item.description || '').match(/<img[^>]+src=["']([^"']+)["']/i);
+        const imgUrl   = imgMatch ? imgMatch[1] : null;
 
-        const cb = '__tumblr_cb_' + Date.now();
-        const script = document.createElement('script');
+        // Determine post type from categories / content clues
+        let type = 'text';
+        const cats = (item.categories || []).join(' ').toLowerCase();
+        if (cats.includes('photo') || imgUrl) type = 'photo';
+        else if (cats.includes('quote'))      type = 'quote';
+        else if (cats.includes('link'))       type = 'link';
+        else if (cats.includes('video'))      type = 'video';
 
-        window[cb] = function(data) {
-            delete window[cb];
-            if (script.parentNode) script.parentNode.removeChild(script);
+        return {
+            id:        item.guid || item.link || String(idx),
+            type,
+            title:     item.title || '',
+            body:      item.content || item.description || '',
+            post_url:  item.link || '',
+            timestamp: item.pubDate ? Math.floor(new Date(item.pubDate).getTime() / 1000) : 0,
+            tags:      item.categories || [],
+            _imgUrl:   imgUrl   // pre-extracted Tumblr image if any
+        };
+    }
 
-            if (!data || data.meta.status !== 200) {
-                // Bad key or API error
-                showSetup();
+    // ── Fetch posts via public RSS → rss2json proxy (no key needed) ──
+    async function fetchPosts() {
+        const rssUrl  = `https://${BLOG_NAME}.tumblr.com/rss`;
+        // rss2json.com free tier: up to 10,000 req/day, no key needed for public feeds
+        const apiUrl  = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=20`;
+
+        try {
+            const res  = await fetch(apiUrl);
+            const data = await res.json();
+
+            if (data.status !== 'ok' || !data.items?.length) {
+                showError('No posts found. Make sure the Tumblr blog has public posts.');
                 return;
             }
 
-            const posts = (data.response && data.response.posts) || [];
-            const grid = document.getElementById('posts-grid');
-            grid.innerHTML = '';
-
-            if (posts.length === 0) {
-                showEmpty();
-                return;
-            }
-
-            allPosts = posts;
+            allPosts = data.items.map(normaliseRssItem);
+            document.getElementById('posts-grid').innerHTML = '';
             renderBatch(allPosts.slice(0, PAGE_SIZE));
-        };
 
-        script.onerror = function() {
-            delete window[cb];
-            if (script.parentNode) script.parentNode.removeChild(script);
-            showSetup();
-        };
-
-        script.src =
-            `https://api.tumblr.com/v2/blog/${BLOG_NAME}.tumblr.com/posts` +
-            `?api_key=${encodeURIComponent(TUMBLR_API_KEY)}&limit=20&callback=${cb}`;
-        document.head.appendChild(script);
+        } catch (err) {
+            showError('Failed to load posts from the RSS feed. Please try again later.');
+        }
     }
 
     // ── Init ──
