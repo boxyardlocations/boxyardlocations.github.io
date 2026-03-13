@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A.M.A.L.L.A.T.T.O.U.F - Pro-Israel Organizations & Resources | USA</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Epilogue:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Epilogue', sans-serif;
+    background: #f5f2ed;
+    color: #1a1a18;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 64px;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.18em;
+    color: #1a3a7c;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: rgba(26,26,24,0.5);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: #1a3a7c; }
+  .nav-right { display: flex; gap: 10px; align-items: center; }
+  .nav-quiz {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: transparent;
+    color: #1a3a7c;
+    border: 1.5px solid #1a3a7c;
+    padding: 8px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .nav-donate {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    background: #1a3a7c;
+    color: #fff;
+    border: none;
+    padding: 9px 22px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 52% 48%;
+    min-height: 560px;
+    background: #fff;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+  }
+  .hero-left {
+    padding: 64px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(26,26,24,0.08);
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow-flags { font-size: 18px; }
+  .eyebrow-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.4);
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 108px;
+    line-height: 0.88;
+    letter-spacing: 0.04em;
+    margin: 28px 0;
+  }
+  .hero-title .black { color: #1a1a18; }
+  .hero-title .blue  { color: #1a3a7c; }
+  .hero-desc {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(26,26,24,0.6);
+    max-width: 400px;
+    margin-bottom: 36px;
+  }
+  .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .btn-solid {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    background: #1a3a7c;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-outline {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: transparent;
+    color: rgba(26,26,24,0.55);
+    border: 1px solid rgba(26,26,24,0.2);
+    padding: 12px 22px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-outline:hover { border-color: #1a3a7c; color: #1a3a7c; }
+
+  /* ── HERO TILES ── */
+  .hero-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    background: rgba(26,26,24,0.06);
+  }
+  .hero-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: filter 0.2s;
+    text-decoration: none;
+  }
+  .hero-tile:hover { filter: brightness(0.96); }
+  .ht-1 { background: #1a3a7c; }
+  .ht-2 { background: #dce9f7; }
+  .ht-3 { background: #f0f4fb; }
+  .ht-4 { background: #1a3a7c; }
+  .tile-big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    opacity: 0.08;
+    position: absolute;
+    bottom: 8px; right: 12px;
+    letter-spacing: -0.02em;
+  }
+  .tile-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    display: inline-block;
+    width: fit-content;
+  }
+  .tag-light { background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.8); }
+  .tag-blue  { background: rgba(26,58,124,0.1); color: #1a3a7c; }
+  .tile-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+  .tile-label.on-dark { color: #fff; }
+  .tile-label.on-light { color: #1a1a18; }
+  .tile-count { font-size: 11px; font-weight: 400; letter-spacing: 0.06em; margin-top: 4px; }
+  .tile-count.on-dark  { color: rgba(255,255,255,0.55); }
+  .tile-count.on-light { color: rgba(26,26,24,0.45); }
+
+  /* ── RIBBON ── */
+  .ribbon {
+    background: #1a3a7c;
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ribbon-inner {
+    display: inline-flex;
+    animation: marquee 22s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .ribbon-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.7);
+    padding: 0 28px;
+  }
+  .ribbon-sep { font-size: 16px; color: rgba(255,255,255,0.25); padding: 0 4px; }
+
+  /* ── ACRONYM BAR ── */
+  .acronym-bar {
+    background: #fff;
+    display: flex;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+    overflow-x: auto;
+  }
+  .ac {
+    flex: 1;
+    min-width: 72px;
+    text-align: center;
+    padding: 20px 8px;
+    border-right: 1px solid rgba(26,26,24,0.07);
+    cursor: default;
+    transition: background 0.15s;
+  }
+  .ac:last-child { border-right: none; }
+  .ac:hover { background: #f0f4fb; }
+  .ac-L {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    line-height: 1;
+    color: #1a3a7c;
+  }
+  .ac-W {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.35);
+    margin-top: 5px;
+    line-height: 1.3;
+  }
+
+  /* ── FEATURE BAND (4 columns) ── */
+  .feature-band {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3px;
+    background: rgba(26,26,24,0.07);
+    border-top: 1px solid rgba(26,26,24,0.08);
+  }
+  .feat {
+    background: #fff;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background 0.15s;
+  }
+  .feat:hover { background: #f8f9fd; }
+  .feat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: rgba(26,58,124,0.06);
+    position: absolute;
+    top: 8px; right: 16px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .feat-icon { font-size: 22px; margin-bottom: 14px; line-height: 1; }
+  .feat-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    color: #1a1a18;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+  .feat-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(26,26,24,0.55);
+    margin-bottom: 18px;
+  }
+  .feat-cta {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1a3a7c;
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(26,58,124,0.3);
+    padding-bottom: 1px;
+    display: inline-block;
+  }
+
+  /* ── ORG SECTION ── */
+  .orgs-section {
+    padding: 56px 48px;
+    background: #f5f2ed;
+  }
+  .section-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 8px;
+  }
+  .section-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.04em;
+    color: #1a1a18;
+    line-height: 1;
+  }
+  .section-count {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.35);
+    padding-bottom: 8px;
+  }
+  .filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 20px 0 32px;
+  }
+  .pill {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 7px 16px;
+    border-radius: 100px;
+    border: 1.5px solid rgba(26,26,24,0.15);
+    background: #fff;
+    color: rgba(26,26,24,0.55);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .pill.active { background: #1a3a7c; color: #fff; border-color: #1a3a7c; }
+  .pill:hover:not(.active) { border-color: #1a3a7c; color: #1a3a7c; }
+
+  .orgs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .org-card {
+    background: #fff;
+    border: 1px solid rgba(26,26,24,0.08);
+    border-radius: 16px;
+    padding: 26px 24px 22px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+  .org-card:hover {
+    border-color: #1a3a7c;
+    box-shadow: 0 6px 24px rgba(26,58,124,0.1);
+  }
+  .org-card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: rgba(26,26,24,0.04);
+    position: absolute;
+    bottom: -8px; right: 12px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .org-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: #dce9f7;
+    color: #1a3a7c;
+    padding: 4px 10px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .org-abbr {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.06em;
+    color: #1a1a18;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .org-full {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(26,26,24,0.6);
+    margin-bottom: 14px;
+  }
+  .org-link {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a3a7c;
+    text-decoration: none;
+  }
+  .org-link::after { content: ' →'; }
+
+  /* ── CTA FOOTER ── */
+  .cta-strip {
+    background: #1a3a7c;
+    padding: 56px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 40px;
+  }
+  .cta-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+  }
+  .cta-heading span { color: #7fb3e8; }
+  .cta-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    margin-top: 10px;
+    line-height: 1.5;
+    max-width: 480px;
+  }
+  .cta-btns { display: flex; flex-direction: column; gap: 10px; }
+  .cta-btn-white {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    background: #fff;
+    color: #1a3a7c;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 100px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .cta-btn-ghost {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    border: 1.5px solid rgba(255,255,255,0.22);
+    padding: 11px 28px;
+    border-radius: 100px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .cta-btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 320px; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero-left { padding: 40px 24px; }
+    .hero-title { font-size: 72px; }
+    .orgs-grid { grid-template-columns: 1fr 1fr; }
+    .feature-band { grid-template-columns: 1fr 1fr; }
+    .cta-strip { grid-template-columns: 1fr; }
+    .orgs-section { padding: 40px 24px; }
+  }
+  @media (max-width: 600px) {
+    .orgs-grid { grid-template-columns: 1fr; }
+    .feature-band { grid-template-columns: 1fr; }
+    .acronym-bar { flex-wrap: wrap; }
+    .ac { min-width: 60px; flex: 0 0 20%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">AMALLATTOUF</a>
+  <ul class="nav-links">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="#directory">Directory</a></li>
+    <li><a href="https://www.amallattouf.com/blog.html">Blog</a></li>
+    <li><a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL" target="_blank">Podcast</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" class="nav-quiz">🏆 Quiz Champ</a>
+    <a href="https://www.fidf.org/" target="_blank" class="nav-donate">Donate</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="eyebrow-flags">🇮🇱 🇺🇸</span>
+        <span class="eyebrow-text">Pro-Israel Resource Directory · USA</span>
+      </div>
+      <div class="hero-title">
+        <span class="black">A.M.A.</span><br>
+        <span class="blue">L.L.A.T.T.</span><br>
+        <span class="blue">O.U.F.</span>
+      </div>
+    </div>
+    <div>
+      <p class="hero-desc">Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, and Facts — a comprehensive directory for engagement and education.</p>
+      <div class="hero-actions">
+        <a href="#directory" class="btn-solid">Browse Directory</a>
+        <a href="http://www.amallattouf.com/blog-post.html" class="btn-outline">Read the mission</a>
+        <a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL" target="_blank" class="btn-outline">🎙 Podcast</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <a href="#advocacy" class="hero-tile ht-1">
+      <span class="tile-tag tag-light">Advocacy</span>
+      <div>
+        <div class="tile-label on-dark">Advocacy Orgs</div>
+        <div class="tile-count on-dark">8 organizations</div>
+      </div>
+      <div class="tile-big-num" style="color:#fff;">01</div>
+    </a>
+    <a href="#action" class="hero-tile ht-2">
+      <span class="tile-tag tag-blue">Political</span>
+      <div>
+        <div class="tile-label on-light">Political Action</div>
+        <div class="tile-count on-light">3 PACs</div>
+      </div>
+      <div class="tile-big-num" style="color:#1a3a7c;">02</div>
+    </a>
+    <a href="#education" class="hero-tile ht-3">
+      <span class="tile-tag tag-blue">Education</span>
+      <div>
+        <div class="tile-label on-light">Education & Media</div>
+        <div class="tile-count on-light">6 organizations</div>
+      </div>
+      <div class="tile-big-num" style="color:#1a3a7c;">03</div>
+    </a>
+    <a href="#community" class="hero-tile ht-4">
+      <span class="tile-tag tag-light">Community</span>
+      <div>
+        <div class="tile-label on-dark">Community</div>
+        <div class="tile-count on-dark">8 organizations</div>
+      </div>
+      <div class="tile-big-num" style="color:#fff;">04</div>
+    </a>
+  </div>
+</div>
+
+<!-- RIBBON -->
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <span class="ribbon-item">ADVOCACY</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">EDUCATION</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">COMMUNITY SUPPORT</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">POLITICAL ACTION</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">TRANSPARENCY</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">UNITY</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">FACTS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">TOLERANCE</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">OUTREACH</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">ADVOCACY</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">EDUCATION</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">COMMUNITY SUPPORT</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">POLITICAL ACTION</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">TRANSPARENCY</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">UNITY</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">FACTS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">TOLERANCE</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">OUTREACH</span><span class="ribbon-sep">·</span>
+  </div>
+</div>
+
+<!-- ACRONYM BAR -->
+<div class="acronym-bar">
+  <div class="ac"><div class="ac-L">A</div><div class="ac-W">Advancing</div></div>
+  <div class="ac"><div class="ac-L">M</div><div class="ac-W">Middle-East</div></div>
+  <div class="ac"><div class="ac-L">A</div><div class="ac-W">Allies</div></div>
+  <div class="ac"><div class="ac-L">L</div><div class="ac-W">Law</div></div>
+  <div class="ac"><div class="ac-L">L</div><div class="ac-W">Learning</div></div>
+  <div class="ac"><div class="ac-L">A</div><div class="ac-W">Advocacy</div></div>
+  <div class="ac"><div class="ac-L">T</div><div class="ac-W">Transparency</div></div>
+  <div class="ac"><div class="ac-L">T</div><div class="ac-W">Tolerance</div></div>
+  <div class="ac"><div class="ac-L">O</div><div class="ac-W">Outreach</div></div>
+  <div class="ac"><div class="ac-L">U</div><div class="ac-W">Unity</div></div>
+  <div class="ac"><div class="ac-L">F</div><div class="ac-W">Facts</div></div>
+</div>
+
+<!-- FEATURE BAND: Podcast · Blog · Quiz · AIPAC Feed -->
+<div class="feature-band">
+
+  <a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL" target="_blank" class="feat">
+    <div class="feat-number">01</div>
+    <div class="feat-icon">🎙</div>
+    <div class="feat-title">Podcast with Dr. Rosenberg</div>
+    <div class="feat-desc">In-depth discussions on advocacy, Middle East history, and geopolitics. New episodes on Spotify.</div>
+    <span class="feat-cta">Listen now →</span>
+  </a>
+
+  <a href="https://www.amallattouf.com/blog.html" class="feat">
+    <div class="feat-number">02</div>
+    <div class="feat-icon">✍️</div>
+    <div class="feat-title">Blog & Updates</div>
+    <div class="feat-desc">Stay current with Dr. Rosenberg's latest analysis, commentary, and updates on pro-Israel advocacy and policy.</div>
+    <span class="feat-cta">Read the blog →</span>
+  </a>
+
+  <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" class="feat">
+    <div class="feat-number">03</div>
+    <div class="feat-icon">🏆</div>
+    <div class="feat-title">Quiz Champ Trivia</div>
+    <div class="feat-desc">Fast-paced knowledge rounds covering Israel, history, and geopolitics. Free to play — no sign-up needed.</div>
+    <span class="feat-cta">Play free →</span>
+  </a>
+
+  <a href="https://www.aipac.org" target="_blank" class="feat">
+    <div class="feat-number">04</div>
+    <div class="feat-icon">𝕏</div>
+    <div class="feat-title">AIPAC Live Feed</div>
+    <div class="feat-desc">Stay updated with the latest advocacy news, legislative developments, and community updates from AIPAC.</div>
+    <span class="feat-cta">View feed →</span>
+  </a>
+
+</div>
+
+<!-- ORG DIRECTORY -->
+<div class="orgs-section" id="directory">
+  <div class="section-top">
+    <div class="section-heading">Organizations</div>
+    <div class="section-count">25+ Indexed</div>
+  </div>
+  <div class="filter-pills">
+    <span class="pill active">All</span>
+    <span class="pill">📢 Advocacy</span>
+    <span class="pill">⚡ Political Action</span>
+    <span class="pill">📚 Education & Media</span>
+    <span class="pill">🎓 Campus</span>
+    <span class="pill">🤝 Community</span>
+  </div>
+  <div class="orgs-grid">
+
+    <a href="https://www.aipac.org" target="_blank" class="org-card" id="advocacy">
+      <div class="org-card-num">01</div>
+      <span class="org-badge">Advocacy</span>
+      <div class="org-abbr">AIPAC</div>
+      <div class="org-full">American Israel Public Affairs Committee — leading pro-Israel lobby for bipartisan U.S.-Israel relations and security.</div>
+      <span class="org-link">aipac.org</span>
+    </a>
+
+    <a href="https://www.adl.org" target="_blank" class="org-card">
+      <div class="org-card-num">02</div>
+      <span class="org-badge">Civil Rights</span>
+      <div class="org-abbr">ADL</div>
+      <div class="org-full">Anti-Defamation League — fighting antisemitism and supporting Israel while promoting civil rights and justice.</div>
+      <span class="org-link">adl.org</span>
+    </a>
+
+    <a href="https://www.ajc.org" target="_blank" class="org-card">
+      <div class="org-card-num">03</div>
+      <span class="org-badge">Global Advocacy</span>
+      <div class="org-abbr">AJC</div>
+      <div class="org-full">American Jewish Committee — global advocacy enhancing Jewish security and Israel's diplomatic standing worldwide.</div>
+      <span class="org-link">ajc.org</span>
+    </a>
+
+    <a href="https://www.standwithus.com" target="_blank" class="org-card">
+      <div class="org-card-num">04</div>
+      <span class="org-badge">Education</span>
+      <div class="org-abbr">StandWithUs</div>
+      <div class="org-full">International education organization combating antisemitism and advocating for Israel on campuses and communities.</div>
+      <span class="org-link">standwithus.com</span>
+    </a>
+
+    <a href="https://www.hillel.org" target="_blank" class="org-card" id="education">
+      <div class="org-card-num">05</div>
+      <span class="org-badge">Campus</span>
+      <div class="org-abbr">Hillel</div>
+      <div class="org-full">Supporting Jewish students on college campuses with Israel education, community building, and leadership development.</div>
+      <span class="org-link">hillel.org</span>
+    </a>
+
+    <a href="https://www.fidf.org" target="_blank" class="org-card">
+      <div class="org-card-num">06</div>
+      <span class="org-badge">Military Support</span>
+      <div class="org-abbr">FIDF</div>
+      <div class="org-full">Friends of the Israel Defense Forces — supporting IDF soldiers and their families during service and beyond.</div>
+      <span class="org-link">fidf.org</span>
+    </a>
+
+    <a href="https://www.honestreporting.com" target="_blank" class="org-card">
+      <div class="org-card-num">07</div>
+      <span class="org-badge">Media Watchdog</span>
+      <div class="org-abbr">HonestReporting</div>
+      <div class="org-full">Defending Israel against bias and misinformation in global media coverage of the Middle East.</div>
+      <span class="org-link">honestreporting.com</span>
+    </a>
+
+    <a href="https://www.norpac.net" target="_blank" class="org-card" id="action">
+      <div class="org-card-num">08</div>
+      <span class="org-badge">Political Action</span>
+      <div class="org-abbr">NORPAC</div>
+      <div class="org-full">Bipartisan political action committee supporting the U.S.-Israel relationship through endorsements and advocacy.</div>
+      <span class="org-link">norpac.net</span>
+    </a>
+
+    <a href="https://www.jnf.org" target="_blank" class="org-card" id="community">
+      <div class="org-card-num">09</div>
+      <span class="org-badge">Community Dev.</span>
+      <div class="org-abbr">JNF-USA</div>
+      <div class="org-full">Jewish National Fund — environmental and community development across Israel, building a stronger future.</div>
+      <span class="org-link">jnf.org</span>
+    </a>
+
+    <a href="https://www.jstreet.org" target="_blank" class="org-card">
+      <div class="org-card-num">10</div>
+      <span class="org-badge">Advocacy</span>
+      <div class="org-abbr">J Street</div>
+      <div class="org-full">Pro-Israel, pro-peace advocacy organization promoting diplomatic solutions to the Israeli-Palestinian conflict.</div>
+      <span class="org-link">jstreet.org</span>
+    </a>
+
+    <a href="https://www.zoa.org" target="_blank" class="org-card">
+      <div class="org-card-num">11</div>
+      <span class="org-badge">Advocacy</span>
+      <div class="org-abbr">ZOA</div>
+      <div class="org-full">Zionist Organization of America — advocating for strong U.S.-Israel relations and Israeli security interests.</div>
+      <span class="org-link">zoa.org</span>
+    </a>
+
+    <a href="https://www.birthrightisrael.com" target="_blank" class="org-card">
+      <div class="org-card-num">12</div>
+      <span class="org-badge">Campus</span>
+      <div class="org-abbr">Birthright Israel</div>
+      <div class="org-full">Free educational trips to Israel for young Jewish adults, strengthening connection to Jewish heritage and Israel.</div>
+      <span class="org-link">birthrightisrael.com</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div>
+    <div class="cta-heading">Support Israel.<br>Spread <span>Truth.</span><br>Take Action.</div>
+    <p class="cta-sub">Every resource in this directory is a pathway to engagement. Advocate, learn, and make a difference in U.S.-Israel relations.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="https://www.fidf.org/" target="_blank" class="cta-btn-white">Donate to FIDF →</a>
+    <a href="#directory" class="cta-btn-ghost">Browse All Organizations</a>
+  </div>
+</div>
+
+</body>
+</html>
