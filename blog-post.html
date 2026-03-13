@@ -178,7 +178,7 @@ nav {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  nav { padding: 0 20px; } .nav-links { display: none; }
+  nav { padding: 10px 16px; height: auto; flex-wrap: wrap; gap: 8px; } .nav-links { display: flex; flex-wrap: wrap; gap: 10px 18px; width: 100%; justify-content: center; padding-bottom: 4px; } .nav-links a { font-size: 11px; }
   .article-banner { padding-left: 24px; padding-right: 24px; }
   .article-title { font-size: 44px; }
   .article-layout { grid-template-columns: 1fr; padding: 40px 24px 60px; }
@@ -186,6 +186,66 @@ nav {
   .cta-strip { grid-template-columns: 1fr; padding: 36px 24px; }
   .site-footer { padding: 36px 24px; }
 }
+
+  /* ── FLOATING BUTTONS ── */
+  .floating-btns {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 200;
+  }
+  .float-quiz {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: #fff;
+    color: #1a3a7c;
+    border: 1.5px solid #1a3a7c;
+    padding: 11px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(26,58,124,0.15);
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .float-quiz:hover {
+    background: #1a3a7c;
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(26,58,124,0.3);
+    transform: translateY(-2px);
+  }
+  .float-donate {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    background: #1a3a7c;
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(26,58,124,0.35);
+    transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .float-donate:hover {
+    background: #0f2660;
+    box-shadow: 0 6px 28px rgba(26,58,124,0.5);
+    transform: translateY(-2px);
+  }
+  @media (max-width: 600px) {
+    .floating-btns { bottom: 18px; right: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -198,11 +258,10 @@ nav {
     <li><a href="blog.html" class="active">Blog</a></li>
     <li><a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL" target="_blank">Podcast</a></li>
     <li><a href="contact.html">Contact</a></li>
+<li><a href="https://www.instagram.com/amal.lattouf">Social</a></li>
+
   </ul>
-  <div class="nav-right">
-    <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" class="nav-quiz">🏆 Quiz Champ</a>
-    <a href="https://www.fidf.org/" target="_blank" class="nav-donate">Donate</a>
-  </div>
+  <div class="nav-right"></div>
 </nav>
 
 <div class="article-banner">
@@ -320,6 +379,13 @@ nav {
   <p><strong>Disclaimer:</strong> The views expressed in articles represent various perspectives within the discourse on Israel and the Middle East. Readers are encouraged to seek multiple sources and viewpoints when forming their understanding of these complex issues.</p>
   <p>Last updated: February 2026</p>
 </footer>
+
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-btns">
+  <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" class="float-quiz">🏆 Quiz Champ</a>
+  <a href="https://www.fidf.org/" target="_blank" class="float-donate">Donate</a>
+</div>
 
 </body>
 </html>

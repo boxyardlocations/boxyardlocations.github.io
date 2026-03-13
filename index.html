@@ -502,12 +502,73 @@
   }
   .cta-btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
 
+  /* ── FLOATING BUTTONS ── */
+  .floating-btns {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 200;
+  }
+  .float-quiz {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: #fff;
+    color: #1a3a7c;
+    border: 1.5px solid #1a3a7c;
+    padding: 11px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(26,58,124,0.15);
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .float-quiz:hover {
+    background: #1a3a7c;
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(26,58,124,0.3);
+    transform: translateY(-2px);
+  }
+  .float-donate {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    background: #1a3a7c;
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(26,58,124,0.35);
+    transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .float-donate:hover {
+    background: #0f2660;
+    box-shadow: 0 6px 28px rgba(26,58,124,0.5);
+    transform: translateY(-2px);
+  }
+  @media (max-width: 600px) {
+    .floating-btns { bottom: 18px; right: 16px; }
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; }
     .hero-right { min-height: 320px; }
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
+    nav { padding: 10px 16px; height: auto; flex-wrap: wrap; gap: 8px; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 10px 18px; width: 100%; justify-content: center; padding-bottom: 4px; }
+    .nav-links a { font-size: 11px; }
     .hero-left { padding: 40px 24px; }
     .hero-title { font-size: 72px; }
     .orgs-grid { grid-template-columns: 1fr 1fr; }
@@ -535,10 +596,9 @@
     <li><a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL" target="_blank">Podcast</a></li>
  <li><a href="https://www.amallattouf.com/testimonials">Testimonials</a></li>
     <li><a href="/contact.html">Contact</a></li>
+<li><a href="https://www.instagram.com/amal.lattouf">Social</a></li>
   </ul>
   <div class="nav-right">
-    <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" class="nav-quiz">🏆 Quiz Champ</a>
-    <a href="https://www.fidf.org/" target="_blank" class="nav-donate">Donate</a>
   </div>
 </nav>
 
@@ -803,6 +863,12 @@
     <a href="https://www.fidf.org/" target="_blank" class="cta-btn-white">Donate to FIDF →</a>
     <a href="#directory" class="cta-btn-ghost">Browse All Organizations</a>
   </div>
+</div>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-btns">
+  <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" class="float-quiz">🏆 Quiz Champ</a>
+  <a href="https://www.fidf.org/" target="_blank" class="float-donate">Donate</a>
 </div>
 
 </body>
