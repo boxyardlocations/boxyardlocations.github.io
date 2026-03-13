@@ -75,7 +75,6 @@ nav {
 }
 #posts-grid .post-card:first-child .post-visual { width: 44%; flex-shrink: 0; min-height: 360px; }
 #posts-grid .post-card:first-child .post-thumb { height: 100%; }
-#posts-grid .post-card:first-child .post-placeholder-wrap { height: 100%; }
 #posts-grid .post-card:first-child .post-body { padding: 32px; justify-content: center; }
 #posts-grid .post-card:first-child .post-title { font-size: 22px; margin-bottom: 14px; }
 #posts-grid .post-card:first-child .post-excerpt { -webkit-line-clamp: 5; }
@@ -99,8 +98,6 @@ nav {
 .post-visual { width: 100%; position: relative; overflow: hidden; }
 .post-thumb { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.4s ease; }
 .post-card:hover .post-thumb { transform: scale(1.03); }
-.post-placeholder-wrap { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.post-placeholder-wrap svg { width: 100%; height: 100%; }
 
 .post-body { padding: 22px 24px; flex: 1; display: flex; flex-direction: column; }
 .post-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
@@ -172,7 +169,6 @@ nav {
   #posts-grid .post-card:first-child { flex-direction: column; max-height: none; }
   #posts-grid .post-card:first-child .post-visual { width: 100%; min-height: 220px; height: 220px; }
   #posts-grid .post-card:first-child .post-thumb { height: 220px; }
-  #posts-grid .post-card:first-child .post-placeholder-wrap { height: 220px; }
   .cta-strip { grid-template-columns: 1fr; padding: 36px 24px; }
   .blog-section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   .site-footer { padding: 36px 24px; }
@@ -338,14 +334,6 @@ nav {
   function getExcerpt(p) { const r=stripHtml(p.body||p.caption||p.description||p.answer||p.text||''); return r.slice(0,240)+(r.length>240?'…':''); }
   function getImage(p) { if(p.photos&&p.photos[0]){const s=p.photos[0].alt_sizes||[];const z=s.find(x=>x.width>=400)||s[0];return z?z.url:null;} return p.thumbnail_url||null; }
 
-  const placeholderSVGs = {
-    text: s => `<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="200" fill="#f0f4fb"/><rect x="40" y="36" width="200" height="10" rx="5" fill="#1a3a7c" opacity="0.15"/><rect x="40" y="56" width="280" height="7" rx="3.5" fill="#1a1a18" opacity="0.08"/><rect x="40" y="71" width="240" height="7" rx="3.5" fill="#1a1a18" opacity="0.07"/><rect x="40" y="86" width="260" height="7" rx="3.5" fill="#1a1a18" opacity="0.07"/><rect x="40" y="108" width="200" height="7" rx="3.5" fill="#1a1a18" opacity="0.06"/><text x="316" y="168" font-size="52" opacity="0.08">✍</text></svg>`,
-    photo: s => `<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="200" fill="#e8eef8"/><circle cx="200" cy="90" r="50" fill="#1a3a7c" opacity="0.06"/><circle cx="200" cy="90" r="30" fill="#1a3a7c" opacity="0.08"/><text x="178" y="100" font-size="24" opacity="0.15">📷</text><rect x="40" y="158" width="320" height="7" rx="3.5" fill="#1a1a18" opacity="0.07"/></svg>`,
-    quote: s => `<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="200" fill="#f5f2ed"/><text x="32" y="110" font-size="100" fill="#1a3a7c" opacity="0.08" font-family="Georgia,serif">"</text><rect x="80" y="62" width="240" height="8" rx="4" fill="#1a1a18" opacity="0.1"/><rect x="80" y="79" width="200" height="8" rx="4" fill="#1a1a18" opacity="0.08"/><rect x="80" y="140" width="130" height="6" rx="3" fill="#1a3a7c" opacity="0.15"/></svg>`,
-    default: s => `<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="200" fill="#f0f4fb"/><circle cx="200" cy="90" r="44" fill="#1a3a7c" opacity="0.06"/><text x="178" y="100" font-size="24" opacity="0.15">📝</text><rect x="60" y="155" width="280" height="7" rx="3.5" fill="#1a1a18" opacity="0.07"/></svg>`
-  };
-  function getPlaceholderSVG(type, seed) { return (placeholderSVGs[type]||placeholderSVGs.default)(seed); }
-
   function renderBatch(posts) {
     const grid = document.getElementById('posts-grid');
     const isFirst = displayed === 0;
@@ -356,10 +344,9 @@ nav {
       card.className = 'post-card';
       card.href = p.post_url||p.short_url||`https://www.tumblr.com/blog/${BLOG_NAME}`;
       card.target = '_blank'; card.rel = 'noopener noreferrer';
-      const seed = (displayed+idx)+'_'+(p.id||idx);
       const visualHtml = img
-        ? `<div class="post-visual"><img class="post-thumb" src="${esc(img)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='${getPlaceholderSVG(p.type,seed).replace(/'/g,"\\'").replace(/\n/g,'')}'; this.parentElement.className='post-visual post-placeholder-wrap';"></div>`
-        : `<div class="post-visual post-placeholder-wrap">${getPlaceholderSVG(p.type,seed)}</div>`;
+        ? `<div class="post-visual"><img class="post-thumb" src="${esc(img)}" alt="" loading="lazy" onerror="this.parentElement.style.display='none';"></div>`
+        : ``;
       const isFeatured = isFirst && idx === 0;
       card.innerHTML = `${visualHtml}<div class="post-body">${isFeatured?'<div class="featured-label">★ Featured Post</div>':''}<div class="post-meta"><span class="type-badge">${fmtType(p.type)}</span><span class="post-date">${fmtDate(p.timestamp)}</span></div><h3 class="post-title">${esc(getTitle(p))}</h3>${getExcerpt(p)?`<p class="post-excerpt">${esc(getExcerpt(p))}</p>`:''}<div class="post-footer"><div class="tags">${tags}</div><span class="read-more">Read more</span></div></div>`;
       grid.appendChild(card);
