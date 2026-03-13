@@ -956,8 +956,9 @@
                 <!-- TAB PILLS -->
                 <div style="display:flex;background:#1a1a2e;padding:0;">
                     <button onclick="showSlide(0)" id="tab-0" style="flex:1;padding:14px 10px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border-bottom:3px solid transparent;">🎙 Podcast</button>
-                    <button onclick="showSlide(1)" id="tab-1" style="flex:1;padding:14px 10px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border-bottom:3px solid transparent;">𝕏 AIPAC Feed</button>
-                    <button onclick="showSlide(2)" id="tab-2" style="flex:1;padding:14px 10px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border-bottom:3px solid transparent;">🏆 Trivia Game</button>
+                    <button onclick="showSlide(1)" id="tab-1" style="flex:1;padding:14px 10px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border-bottom:3px solid transparent;">✍️ Blog & Diary</button>
+                    <button onclick="showSlide(2)" id="tab-2" style="flex:1;padding:14px 10px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border-bottom:3px solid transparent;">𝕏 AIPAC Feed</button>
+                    <button onclick="showSlide(3)" id="tab-3" style="flex:1;padding:14px 10px;border:none;background:transparent;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease;border-bottom:3px solid transparent;">🏆 Trivia Game</button>
                 </div>
 
                 <!-- PROGRESS BAR -->
@@ -977,15 +978,104 @@
                     </div>
                 </div>
 
-                <!-- SLIDE 1: TWITTER/X FEED -->
-                <div id="slide-1" style="display:none;background:linear-gradient(135deg,#f8f9fa 0%,#ffffff 100%);padding:50px 40px;">
+                <!-- SLIDE 1: BLOG & DIARY -->
+                <div id="slide-1" style="display:none;background:linear-gradient(135deg,#0f2027 0%,#203a43 50%,#2c5364 100%);padding:60px 40px;position:relative;overflow:hidden;">
+                    <!-- Decorative background blobs -->
+                    <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:rgba(212,175,55,0.08);border-radius:50%;pointer-events:none;"></div>
+                    <div style="position:absolute;bottom:-80px;left:-40px;width:250px;height:250px;background:rgba(255,255,255,0.04);border-radius:50%;pointer-events:none;"></div>
+
+                    <div style="max-width:900px;margin:0 auto;position:relative;z-index:1;">
+
+                        <!-- Header -->
+                        <div style="text-align:center;margin-bottom:36px;">
+                            <div style="display:inline-block;background:rgba(212,175,55,0.18);border:1px solid rgba(212,175,55,0.45);padding:5px 20px;border-radius:50px;font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#d4af37;margin-bottom:16px;">Regularly Updated · Personal Insights</div>
+                            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.5rem);color:#ffffff;margin-bottom:12px;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,0.4);">Dr. Rosenberg's Blog & Diary</h2>
+                            <div style="width:60px;height:3px;background:linear-gradient(to right,#0066cc,#d4af37);border-radius:2px;margin:0 auto 16px;"></div>
+                            <p style="color:rgba(255,255,255,0.75);font-size:0.97rem;line-height:1.7;max-width:580px;margin:0 auto;">Candid reflections, news analysis, and first-hand perspectives on Israel, geopolitics, and the AMALLATTOUF mission — updated regularly.</p>
+                        </div>
+
+                        <!-- Feature Cards Grid -->
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:32px;">
+
+                            <!-- Card 1 -->
+                            <div style="background:rgba(255,255,255,0.07);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:24px 20px;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.transform='translateY(0)'">
+                                <div style="font-size:2rem;margin-bottom:10px;">📰</div>
+                                <h3 style="color:#d4af37;font-size:0.95rem;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">News Analysis</h3>
+                                <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;line-height:1.6;">Breaking down the latest Middle East developments with clarity and context.</p>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div style="background:rgba(255,255,255,0.07);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:24px 20px;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.transform='translateY(0)'">
+                                <div style="font-size:2rem;margin-bottom:10px;">✍️</div>
+                                <h3 style="color:#d4af37;font-size:0.95rem;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">Personal Diary</h3>
+                                <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;line-height:1.6;">Authentic, first-hand reflections from Dr. Rosenberg's journey and mission.</p>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div style="background:rgba(255,255,255,0.07);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:24px 20px;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.12)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.transform='translateY(0)'">
+                                <div style="font-size:2rem;margin-bottom:10px;">🔔</div>
+                                <h3 style="color:#d4af37;font-size:0.95rem;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">Stay Updated</h3>
+                                <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;line-height:1.6;">New entries added regularly — bookmark and return for the freshest insights.</p>
+                            </div>
+                        </div>
+
+                        <!-- Photo Grid -->
+                        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:160px 160px;gap:10px;margin-bottom:30px;border-radius:14px;overflow:hidden;border:1px solid rgba(212,175,55,0.2);">
+                            <!-- Large featured photo - spans 2 rows -->
+                            <div style="grid-row:1/3;position:relative;overflow:hidden;">
+                                <img src="https://stockcake.com/i/words-flow-freely_1198381_1143206" alt="Writing memoir with fountain pen" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);padding:14px 12px;">
+                                    <span style="color:rgba(255,255,255,0.9);font-size:0.78rem;font-weight:600;">✍️ Pen to Paper</span>
+                                </div>
+                            </div>
+                            <!-- Top right photo 1 -->
+                            <div style="position:relative;overflow:hidden;">
+                                <img src="https://images.stockcake.com/public/8/6/5/865ee19d-e3ed-4c5f-aafb-7b82fcb4b51b_large/elderly-writing-wisdom-stockcake.jpg" alt="Elderly person writing in notebook" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.65),transparent);padding:10px;">
+                                    <span style="color:rgba(255,255,255,0.9);font-size:0.72rem;font-weight:600;">📝 Life Stories</span>
+                                </div>
+                            </div>
+                            <!-- Top right photo 2 -->
+                            <div style="position:relative;overflow:hidden;">
+                                <img src="https://images.stockcake.com/public/d/0/c/d0c73b88-ce1e-4f52-8f7e-4eb8a04e8e84_large/senior-writing-memoir-stockcake.jpg" alt="Senior writing memoir" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.65),transparent);padding:10px;">
+                                    <span style="color:rgba(255,255,255,0.9);font-size:0.72rem;font-weight:600;">📖 Memories</span>
+                                </div>
+                            </div>
+                            <!-- Bottom right photo 1 -->
+                            <div style="position:relative;overflow:hidden;">
+                                <img src="https://images.stockcake.com/public/5/e/c/5ec12cd3-a2af-4e67-bb11-9ab8db7bf2b6_large/antique-writing-setup-stockcake.jpg" alt="Vintage journal and pen" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.65),transparent);padding:10px;">
+                                    <span style="color:rgba(255,255,255,0.9);font-size:0.72rem;font-weight:600;">🖋️ Heritage</span>
+                                </div>
+                            </div>
+                            <!-- Bottom right photo 2 -->
+                            <div style="position:relative;overflow:hidden;">
+                                <img src="https://images.stockcake.com/public/1/f/3/1f3b2aa7-5c62-4ff4-b30c-3417fa0fa21d_large/handwritten-journal-pages-stockcake.jpg" alt="Handwritten journal pages" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+                                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.65),transparent);padding:10px;">
+                                    <span style="color:rgba(255,255,255,0.9);font-size:0.72rem;font-weight:600;">📜 Diary</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <div style="text-align:center;">
+                            <a href="https://www.amallattouf.com/blog.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg,#d4af37 0%,#f0d060 50%,#d4af37 100%);color:#1a1a2e;font-size:1.05rem;font-weight:800;padding:16px 44px;border-radius:50px;text-decoration:none;letter-spacing:0.5px;transition:all 0.3s ease;box-shadow:0 0 20px rgba(212,175,55,0.4);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 30px rgba(212,175,55,0.6)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 0 20px rgba(212,175,55,0.4)'">✍️ &nbsp;Read the Blog & Diary &nbsp;→</a>
+                            <p style="color:rgba(255,255,255,0.35);font-size:0.76rem;margin-top:14px;">Opens in a new tab · Regularly updated · Free to read</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SLIDE 2: TWITTER/X FEED -->
+                <div id="slide-2" style="display:none;background:linear-gradient(135deg,#f8f9fa 0%,#ffffff 100%);padding:50px 40px;">
                     <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--text-dark);margin-bottom:8px;font-weight:600;display:flex;align-items:center;gap:10px;justify-content:center;"><span style="color:#1DA1F2;">𝕏</span> Latest from AIPAC</h2>
                     <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:25px;text-align:center;">Stay updated with the latest news and advocacy efforts</p>
                     <div id="news-container" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;max-width:1000px;margin:0 auto;"></div>
                 </div>
 
-                <!-- SLIDE 2: TRIVIA GAME -->
-                <div id="slide-2" style="display:none;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:60px 40px;text-align:center;position:relative;overflow:hidden;">
+                <!-- SLIDE 3: TRIVIA GAME -->
+                <div id="slide-3" style="display:none;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:60px 40px;text-align:center;position:relative;overflow:hidden;">
                     <div style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;">
                         <div style="position:absolute;width:4px;height:4px;background:rgba(255,255,255,0.6);border-radius:50%;top:15%;left:10%;animation:twinkle 2s infinite alternate;"></div>
                         <div style="position:absolute;width:3px;height:3px;background:rgba(255,255,255,0.5);border-radius:50%;top:30%;left:80%;animation:twinkle 3s infinite alternate;"></div>
@@ -1245,7 +1335,7 @@
     <script>
         // ===== CAROUSEL LOGIC =====
         let currentSlide = 0;
-        const totalSlides = 3;
+        const totalSlides = 4;
         const slideInterval = 8000; // 8 seconds per slide
         let autoTimer = null;
         let progressTimer = null;
