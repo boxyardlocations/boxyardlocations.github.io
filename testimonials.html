@@ -1,538 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>Testimonials | A.M.A.L.L.A.T.T.O.U.F</title>
-    <meta name="title" content="Testimonials | A.M.A.L.L.A.T.T.O.U.F">
-    <meta name="description" content="Read testimonials from community members about their experiences with amallattouf.com and Dr. Rosenberg's work.">
-    <meta name="keywords" content="testimonials, reviews, amallattouf, Dr. Rosenberg, Israel support">
-    <meta name="author" content="A.M.A.L.L.A.T.T.O.U.F">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://amallattouf.com/testimonials">
-    <meta property="og:title" content="Testimonials | A.M.A.L.L.A.T.T.O.U.F">
-    <meta property="og:description" content="Read testimonials from community members about their experiences with amallattouf.com.">
-    <meta property="og:site_name" content="A.M.A.L.L.A.T.T.O.U.F">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://amallattouf.com/testimonials">
-    <meta property="twitter:title" content="Testimonials | A.M.A.L.L.A.T.T.O.U.F">
-    <meta property="twitter:description" content="Read testimonials from community members about their experiences with amallattouf.com.">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://amallattouf.com/testimonials">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-blue: #0066cc;
-            --primary-dark: #004999;
-            --accent-gold: #d4af37;
-            --text-dark: #1a1a1a;
-            --text-medium: #4a5568;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
-            --bg-white: #ffffff;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.08);
-            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2), 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.7;
-            color: var(--text-dark);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        /* Animated Background Shapes */
-        .bg-shape {
-            position: fixed;
-            border-radius: 50%;
-            opacity: 0.1;
-            filter: blur(60px);
-            z-index: 0;
-            animation: float 20s ease-in-out infinite;
-        }
-        
-        .bg-shape-1 {
-            width: 400px;
-            height: 400px;
-            background: #0066cc;
-            top: 10%;
-            left: -10%;
-            animation-delay: 0s;
-        }
-        
-        .bg-shape-2 {
-            width: 300px;
-            height: 300px;
-            background: #d4af37;
-            bottom: 20%;
-            right: -5%;
-            animation-delay: 7s;
-        }
-        
-        .bg-shape-3 {
-            width: 500px;
-            height: 500px;
-            background: #ffffff;
-            top: 50%;
-            left: 50%;
-            animation-delay: 14s;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            33% {
-                transform: translate(30px, -30px) rotate(120deg);
-            }
-            66% {
-                transform: translate(-20px, 20px) rotate(240deg);
-            }
-        }
-        
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-            background: var(--bg-white);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
-            padding: 40px 60px;
-            color: white;
-            border-bottom: 4px solid var(--accent-gold);
-        }
-        
-        .header-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .site-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-        
-        .site-subtitle {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            font-weight: 400;
-        }
-        
-        /* Article Header */
-        .article-header {
-            padding: 60px 60px 40px;
-            background: linear-gradient(to bottom, var(--bg-light), var(--bg-white));
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .article-header-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            line-height: 1.2;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-        
-        .article-meta {
-            display: flex;
-            gap: 20px;
-            color: var(--text-medium);
-            font-size: 0.9rem;
-            padding-bottom: 20px;
-        }
-        
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .article-description {
-            font-size: 1.15rem;
-            color: var(--text-medium);
-            line-height: 1.6;
-            max-width: 800px;
-        }
-        
-        /* Article Content */
-        .article-content {
-            padding: 60px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .testimonial-card {
-            background: var(--bg-white);
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid var(--accent-gold);
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-        
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .testimonial-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        .testimonial-info {
-            flex: 1;
-        }
-        
-        .testimonial-name {
-            font-weight: 700;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            margin-bottom: 2px;
-        }
-        
-        .testimonial-location {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        .testimonial-text {
-            color: var(--text-medium);
-            font-size: 1rem;
-            line-height: 1.7;
-            font-style: italic;
-        }
-        
-        .testimonial-text::before {
-            content: '"';
-            color: var(--accent-gold);
-            font-size: 2rem;
-            font-family: 'Playfair Display', serif;
-            line-height: 0;
-            margin-right: 5px;
-        }
-        
-        /* Footer */
-        footer {
-            background: #f8f9fa;
-            padding: 40px 60px;
-            border-top: 1px solid #e2e8f0;
-            color: var(--text-medium);
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-        
-        footer p {
-            max-width: 900px;
-            margin: 0 auto 15px;
-        }
-        
-        footer strong {
-            color: var(--text-dark);
-        }
-        
-        @media (max-width: 768px) {
-            .header,
-            .article-header,
-            .article-content,
-            footer {
-                padding: 30px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .site-title {
-                font-size: 1.5rem;
-            }
-            
-            .testimonial-card {
-                padding: 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Testimonials | A.M.A.L.L.A.T.T.O.U.F</title>
+<meta name="description" content="Read testimonials from community members about their experiences with amallattouf.com and Dr. Rosenberg's work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Epilogue', sans-serif; background: #f5f2ed; color: #1a1a18; }
+
+/* ── NAV ── */
+nav {
+  background: #fff; display: flex; justify-content: space-between; align-items: center;
+  padding: 0 48px; height: 64px; border-bottom: 1px solid rgba(26,26,24,0.08);
+  position: sticky; top: 0; z-index: 50;
+}
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.18em; color: #1a3a7c; text-decoration: none; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: rgba(26,26,24,0.5); text-decoration: none; text-transform: uppercase; transition: color 0.15s; }
+.nav-links a:hover { color: #1a3a7c; }
+.nav-links a.active { color: #1a3a7c; border-bottom: 2px solid #1a3a7c; padding-bottom: 2px; }
+.nav-right { display: flex; gap: 10px; align-items: center; }
+.nav-quiz { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: #1a3a7c; border: 1.5px solid #1a3a7c; padding: 8px 16px; border-radius: 100px; text-decoration: none; display: inline-block; }
+.nav-donate { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.15em; background: #1a3a7c; color: #fff; border: none; padding: 9px 22px; border-radius: 100px; text-decoration: none; display: inline-block; }
+
+/* ── PAGE BANNER ── */
+.page-banner { background: #fff; border-bottom: 1px solid rgba(26,26,24,0.08); padding: 56px 48px 48px; }
+.page-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #1a3a7c; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.page-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: #1a3a7c; }
+.page-title { font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 0.9; letter-spacing: 0.03em; color: #1a1a18; margin-bottom: 20px; }
+.page-title .blue { color: #1a3a7c; }
+.page-subtitle { font-size: 16px; font-weight: 300; line-height: 1.7; color: rgba(26,26,24,0.6); max-width: 580px; }
+
+/* ── RIBBON ── */
+.ribbon { background: #1a3a7c; padding: 13px 0; overflow: hidden; white-space: nowrap; }
+.ribbon-inner { display: inline-flex; animation: marquee 22s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ribbon-item { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 0.18em; color: rgba(255,255,255,0.7); padding: 0 24px; }
+.ribbon-sep { font-size: 14px; color: rgba(255,255,255,0.25); }
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: #fff; display: grid; grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid rgba(26,26,24,0.08);
+}
+.stat-cell {
+  padding: 28px 40px;
+  border-right: 1px solid rgba(26,26,24,0.07);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 0.02em; color: #1a3a7c; line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,26,24,0.4); }
+
+/* ── TESTIMONIALS SECTION ── */
+.testimonials-section { padding: 56px 48px 80px; }
+
+.section-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
+.section-heading { font-family: 'Bebas Neue', sans-serif; font-size: 52px; letter-spacing: 0.04em; color: #1a1a18; line-height: 1; }
+.section-meta { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(26,26,24,0.35); padding-bottom: 8px; }
+
+/* ── FEATURED TESTIMONIAL ── */
+.t-featured {
+  background: #1a3a7c; border-radius: 20px;
+  padding: 48px; margin-bottom: 24px; position: relative; overflow: hidden;
+}
+.t-featured::before {
+  content: '"'; font-family: 'Bebas Neue', sans-serif; font-size: 200px;
+  color: rgba(255,255,255,0.05); position: absolute; top: -20px; left: 24px; line-height: 1; pointer-events: none;
+}
+.t-featured .t-text {
+  font-size: 22px; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.92);
+  font-style: italic; position: relative; margin-bottom: 28px; max-width: 800px;
+}
+.t-featured .t-footer { display: flex; align-items: center; gap: 16px; }
+.t-featured .t-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;
+  color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.05em; flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.t-featured .t-name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.t-featured .t-location { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* ── GRID ── */
+.t-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.t-card {
+  background: #fff; border: 1px solid rgba(26,26,24,0.08);
+  border-radius: 16px; padding: 28px 26px;
+  transition: border-color 0.2s, box-shadow 0.2s; position: relative; overflow: hidden;
+}
+.t-card::after {
+  content: '"'; font-family: 'Bebas Neue', sans-serif; font-size: 100px;
+  color: rgba(26,58,124,0.04); position: absolute; bottom: -12px; right: 16px; line-height: 1; pointer-events: none;
+}
+.t-card:hover { border-color: #1a3a7c; box-shadow: 0 6px 24px rgba(26,58,124,0.1); }
+
+.t-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.t-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #1a3a7c; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.05em; flex-shrink: 0;
+}
+.t-info .t-name { font-size: 14px; font-weight: 600; color: #1a1a18; margin-bottom: 2px; }
+.t-info .t-location { font-size: 11px; font-weight: 400; color: rgba(26,26,24,0.38); letter-spacing: 0.05em; text-transform: uppercase; }
+
+.t-text {
+  font-size: 14px; font-weight: 300; line-height: 1.8;
+  color: rgba(26,26,24,0.65); font-style: italic; position: relative;
+}
+
+/* ── CTA STRIP ── */
+.cta-strip {
+  background: #1a3a7c; padding: 48px;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px;
+}
+.cta-heading { font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.04em; color: #fff; line-height: 1; }
+.cta-heading span { color: #7fb3e8; }
+.cta-sub { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55); margin-top: 8px; line-height: 1.6; }
+.cta-btns { display: flex; flex-direction: column; gap: 10px; }
+.cta-btn-white { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.12em; background: #fff; color: #1a3a7c; border: none; padding: 12px 28px; border-radius: 100px; text-decoration: none; display: inline-block; text-align: center; white-space: nowrap; }
+.cta-btn-ghost { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: rgba(255,255,255,0.6); border: 1.5px solid rgba(255,255,255,0.22); padding: 11px 28px; border-radius: 100px; text-decoration: none; display: inline-block; text-align: center; white-space: nowrap; }
+
+/* ── FOOTER ── */
+.site-footer { background: #1a1a18; color: rgba(255,255,255,0.6); padding: 48px; font-size: 13px; line-height: 1.8; }
+.site-footer p { max-width: 700px; margin-bottom: 12px; }
+.site-footer p:last-child { margin-bottom: 0; color: rgba(255,255,255,0.3); }
+.site-footer strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; } .nav-links { display: none; }
+  .page-banner, .testimonials-section { padding-left: 24px; padding-right: 24px; }
+  .page-title { font-size: 52px; }
+  .t-grid { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: 1fr; }
+  .stat-cell { border-right: none; border-bottom: 1px solid rgba(26,26,24,0.07); }
+  .t-featured { padding: 32px 28px; }
+  .t-featured .t-text { font-size: 17px; }
+  .cta-strip { grid-template-columns: 1fr; padding: 36px 24px; }
+  .site-footer { padding: 36px 24px; }
+}
+</style>
 </head>
 <body>
-    <!-- Animated Background Shapes -->
-    <div class="bg-shape bg-shape-1"></div>
-    <div class="bg-shape bg-shape-2"></div>
-    <div class="bg-shape bg-shape-3"></div>
-    
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <h1 class="site-title">A.M.A.L.L.A.T.T.O.U.F</h1>
-                <p class="site-subtitle">Resources, Advocacy, and Community Support</p>
-            </div>
-        </header>
-        
-        <!-- Article Header -->
-        <div class="article-header">
-            <div class="article-header-content">
-                <h1>Community Testimonials</h1>
-                <div class="article-meta">
-                    <span class="meta-item">📅 February 2026</span>
-                    <span class="meta-item">💬 15 Testimonials</span>
-                </div>
-                <p class="article-description">
-                    Hear from community members about their experiences with amallattouf.com and the resources that have supported them.
-                </p>
-            </div>
-        </div>
-        
-        <!-- Testimonials Content -->
-        <div class="article-content">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">SM</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Sarah M.</div>
-                        <div class="testimonial-location">New York</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">Finding amallattouf.com felt like finally taking a deep breath. The resources are clear, compassionate, and empowering. I'm especially grateful for Dr. Rosenberg's unwavering commitment to standing with Israelis during incredibly difficult times. His work brings both knowledge and heart.</p>
-            </div>
-            
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">DR</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Daniel R.</div>
-                        <div class="testimonial-location">Toronto</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">This platform helped me understand where to turn when I needed reliable information and meaningful support. Dr. Rosenberg's advocacy for Israel and the safety of its people is thoughtful, principled, and deeply humane.</p>
-            </div>
-            
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">LK</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Leah K.</div>
-                        <div class="testimonial-location">Los Angeles</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">amallattouf.com connected me with resources I didn't even know existed. Beyond that, the moral clarity and compassion Dr. Rosenberg shows for Israelis facing hardship is inspiring. It reminds you that empathy still matters.</p>
-            </div>
-            
-            <!-- Testimonial 4 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">MS</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Michael S.</div>
-                        <div class="testimonial-location">London</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">I appreciate how grounded and practical this site is. No noise, just substance. Dr. Rosenberg's work in supporting Israel and highlighting the real struggles of everyday Israelis deserves genuine recognition.</p>
-            </div>
-            
-            <!-- Testimonial 5 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">RT</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Rachel T.</div>
-                        <div class="testimonial-location">Chicago</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">This site gave me guidance when I felt overwhelmed and unsure where to look. Dr. Rosenberg's voice is one of integrity and care, especially in how he brings attention to the human cost of conflict for Israelis.</p>
-            </div>
-            
-            <!-- Testimonial 6 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">JP</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Jonathan P.</div>
-                        <div class="testimonial-location">Sydney</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">amallattouf.com is a rare mix of clarity, resources, and conscience. Dr. Rosenberg's consistent support for Israel and his compassion for its people come from a place of deep understanding and responsibility.</p>
-            </div>
-            
-            <!-- Testimonial 7 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">ML</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Miriam L.</div>
-                        <div class="testimonial-location">Boston</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">I felt seen and supported using this platform. The resources are thoughtfully curated, and Dr. Rosenberg's dedication to advocating for Israelis during times of crisis is both courageous and deeply moving.</p>
-            </div>
-            
-            <!-- Testimonial 8 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">DH</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">David H.</div>
-                        <div class="testimonial-location">San Francisco</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">This website helped me cut through confusion and find exactly what I needed. Dr. Rosenberg's work stands out for its humanity and for keeping the focus on protecting lives and dignity in Israel.</p>
-            </div>
-            
-            <!-- Testimonial 9 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">NE</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Naomi E.</div>
-                        <div class="testimonial-location">Miami</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">amallattouf.com isn't just informative — it's grounding. Dr. Rosenberg's commitment to speaking up for Israelis facing fear and uncertainty shows real leadership and compassion.</p>
-            </div>
-            
-            <!-- Testimonial 10 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">AW</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Alex W.</div>
-                        <div class="testimonial-location">Berlin</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">I value platforms that combine practical help with moral clarity. This site does exactly that, and Dr. Rosenberg's support for Israel and concern for its people feels sincere and deeply ethical.</p>
-            </div>
-            
-            <!-- Testimonial 11 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">RJ</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Rebecca J.</div>
-                        <div class="testimonial-location">Seattle</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">The resources here helped me feel less alone and more informed. Dr. Rosenberg's advocacy highlights the human stories behind the headlines and keeps the focus on protecting Israeli lives.</p>
-            </div>
-            
-            <!-- Testimonial 12 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">EB</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Ethan B.</div>
-                        <div class="testimonial-location">Denver</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">amallattouf.com gave me access to reliable support when I needed it most. Dr. Rosenberg's work reflects a deep respect for the struggles Israelis face and a genuine desire to make a difference.</p>
-            </div>
-            
-            <!-- Testimonial 13 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">HV</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Hannah V.</div>
-                        <div class="testimonial-location">Paris</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">This site is thoughtful, calm, and purposeful. Dr. Rosenberg's continued support for Israel and empathy for its people during painful times is something I truly admire.</p>
-            </div>
-            
-            <!-- Testimonial 14 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">MI</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Mark I.</div>
-                        <div class="testimonial-location">Atlanta</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">I'm grateful for how accessible and grounded amallattouf.com is. Dr. Rosenberg's efforts to stand with Israelis and bring attention to their plight come from a place of compassion, not politics.</p>
-            </div>
-            
-            <!-- Testimonial 15 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">YN</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-name">Yael N.</div>
-                        <div class="testimonial-location">Tel Aviv</div>
-                    </div>
-                </div>
-                <p class="testimonial-text">Seeing support that feels sincere and informed means a lot. amallattouf.com provides meaningful resources, and Dr. Rosenberg's solidarity with Israelis during difficult moments is deeply appreciated.</p>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <footer>
-            <p><strong>About A.M.A.L.L.A.T.T.O.U.F</strong></p>
-            <p>
-                This platform provides information and resources related to Israeli-Palestinian relations, Middle East advocacy, and pro-Israel organizations. We aim to present perspectives while acknowledging the complexity and nuance required when discussing this conflict.
-            </p>
-            <p style="margin-top: 20px;">
-                <strong>Disclaimer:</strong> The views expressed in testimonials represent individual perspectives and experiences. Readers are encouraged to seek multiple sources and viewpoints when forming their understanding of these complex issues.
-            </p>
-            <p style="margin-top: 15px;">Last updated: February 2026</p>
-        </footer>
+
+<nav>
+  <a href="index.html" class="nav-logo">AMALLATTOUF</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#directory">Directory</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL" target="_blank">Podcast</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" class="nav-quiz">🏆 Quiz Champ</a>
+    <a href="https://www.fidf.org/" target="_blank" class="nav-donate">Donate</a>
+  </div>
+</nav>
+
+<div class="page-banner">
+  <div class="page-eyebrow">Community Voices</div>
+  <div class="page-title"><span class="blue">Community</span><br>Testimonials</div>
+  <p class="page-subtitle">Hear from community members about their experiences with amallattouf.com and the resources that have supported them.</p>
+</div>
+
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <span class="ribbon-item">NEW YORK</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">LOS ANGELES</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">TORONTO</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">LONDON</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">TEL AVIV</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">SYDNEY</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">CHICAGO</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">PARIS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">BERLIN</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">MIAMI</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">NEW YORK</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">LOS ANGELES</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">TORONTO</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">LONDON</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">TEL AVIV</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">SYDNEY</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">CHICAGO</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">PARIS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">BERLIN</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">MIAMI</span><span class="ribbon-sep">·</span>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-cell"><div class="stat-num">15</div><div class="stat-label">Testimonials</div></div>
+  <div class="stat-cell"><div class="stat-num">12</div><div class="stat-label">Cities Represented</div></div>
+  <div class="stat-cell"><div class="stat-num">Feb 2026</div><div class="stat-label">Last Updated</div></div>
+</div>
+
+<div class="testimonials-section">
+  <div class="section-top">
+    <div class="section-heading">What People Say</div>
+    <div class="section-meta">15 Testimonials</div>
+  </div>
+
+  <!-- Featured -->
+  <div class="t-featured">
+    <p class="t-text">Finding amallattouf.com felt like finally taking a deep breath. The resources are clear, compassionate, and empowering. I'm especially grateful for Dr. Rosenberg's unwavering commitment to standing with Israelis during incredibly difficult times. His work brings both knowledge and heart.</p>
+    <div class="t-footer">
+      <div class="t-avatar">SM</div>
+      <div>
+        <div class="t-name">Sarah M.</div>
+        <div class="t-location">New York</div>
+      </div>
     </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="t-grid">
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">DR</div>
+        <div class="t-info"><div class="t-name">Daniel R.</div><div class="t-location">Toronto</div></div>
+      </div>
+      <p class="t-text">This platform helped me understand where to turn when I needed reliable information and meaningful support. Dr. Rosenberg's advocacy for Israel is thoughtful, principled, and deeply humane.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">LK</div>
+        <div class="t-info"><div class="t-name">Leah K.</div><div class="t-location">Los Angeles</div></div>
+      </div>
+      <p class="t-text">amallattouf.com connected me with resources I didn't even know existed. The moral clarity and compassion Dr. Rosenberg shows for Israelis facing hardship is inspiring. It reminds you that empathy still matters.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">MS</div>
+        <div class="t-info"><div class="t-name">Michael S.</div><div class="t-location">London</div></div>
+      </div>
+      <p class="t-text">I appreciate how grounded and practical this site is. No noise, just substance. Dr. Rosenberg's work in supporting Israel and highlighting the real struggles of everyday Israelis deserves genuine recognition.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">RT</div>
+        <div class="t-info"><div class="t-name">Rachel T.</div><div class="t-location">Chicago</div></div>
+      </div>
+      <p class="t-text">This site gave me guidance when I felt overwhelmed and unsure where to look. Dr. Rosenberg's voice is one of integrity and care, especially in how he brings attention to the human cost of conflict for Israelis.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">JP</div>
+        <div class="t-info"><div class="t-name">Jonathan P.</div><div class="t-location">Sydney</div></div>
+      </div>
+      <p class="t-text">amallattouf.com is a rare mix of clarity, resources, and conscience. Dr. Rosenberg's consistent support for Israel and compassion for its people comes from a place of deep understanding and responsibility.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">ML</div>
+        <div class="t-info"><div class="t-name">Miriam L.</div><div class="t-location">Boston</div></div>
+      </div>
+      <p class="t-text">I felt seen and supported using this platform. Dr. Rosenberg's dedication to advocating for Israelis during times of crisis is both courageous and deeply moving.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">DH</div>
+        <div class="t-info"><div class="t-name">David H.</div><div class="t-location">San Francisco</div></div>
+      </div>
+      <p class="t-text">This website helped me cut through confusion and find exactly what I needed. Dr. Rosenberg's work stands out for its humanity and for keeping the focus on protecting lives and dignity in Israel.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">NE</div>
+        <div class="t-info"><div class="t-name">Naomi E.</div><div class="t-location">Miami</div></div>
+      </div>
+      <p class="t-text">amallattouf.com isn't just informative — it's grounding. Dr. Rosenberg's commitment to speaking up for Israelis facing fear and uncertainty shows real leadership and compassion.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">AW</div>
+        <div class="t-info"><div class="t-name">Alex W.</div><div class="t-location">Berlin</div></div>
+      </div>
+      <p class="t-text">I value platforms that combine practical help with moral clarity. This site does exactly that, and Dr. Rosenberg's support for Israel and concern for its people feels sincere and deeply ethical.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">RJ</div>
+        <div class="t-info"><div class="t-name">Rebecca J.</div><div class="t-location">Seattle</div></div>
+      </div>
+      <p class="t-text">The resources here helped me feel less alone and more informed. Dr. Rosenberg's advocacy highlights the human stories behind the headlines and keeps the focus on protecting Israeli lives.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">EB</div>
+        <div class="t-info"><div class="t-name">Ethan B.</div><div class="t-location">Denver</div></div>
+      </div>
+      <p class="t-text">amallattouf.com gave me access to reliable support when I needed it most. Dr. Rosenberg's work reflects a deep respect for the struggles Israelis face and a genuine desire to make a difference.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">HV</div>
+        <div class="t-info"><div class="t-name">Hannah V.</div><div class="t-location">Paris</div></div>
+      </div>
+      <p class="t-text">This site is thoughtful, calm, and purposeful. Dr. Rosenberg's continued support for Israel and empathy for its people during painful times is something I truly admire.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">MI</div>
+        <div class="t-info"><div class="t-name">Mark I.</div><div class="t-location">Atlanta</div></div>
+      </div>
+      <p class="t-text">I'm grateful for how accessible and grounded amallattouf.com is. Dr. Rosenberg's efforts to stand with Israelis come from a place of compassion, not politics.</p>
+    </div>
+
+    <div class="t-card">
+      <div class="t-header">
+        <div class="t-avatar">YN</div>
+        <div class="t-info"><div class="t-name">Yael N.</div><div class="t-location">Tel Aviv</div></div>
+      </div>
+      <p class="t-text">Seeing support that feels sincere and informed means a lot. amallattouf.com provides meaningful resources, and Dr. Rosenberg's solidarity with Israelis during difficult moments is deeply appreciated.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="cta-strip">
+  <div>
+    <div class="cta-heading">Support Israel.<br>Spread <span>Truth.</span><br>Take Action.</div>
+    <p class="cta-sub">Browse our comprehensive directory of pro-Israel organizations and resources.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="https://www.fidf.org/" target="_blank" class="cta-btn-white">Donate to FIDF →</a>
+    <a href="index.html#directory" class="cta-btn-ghost">Browse Directory</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p><strong>About A.M.A.L.L.A.T.T.O.U.F</strong></p>
+  <p>This platform provides information and resources related to Israeli-Palestinian relations, Middle East advocacy, and pro-Israel organizations. We aim to present perspectives while acknowledging the complexity and nuance required when discussing this conflict.</p>
+  <p><strong>Disclaimer:</strong> Views expressed in testimonials represent individual perspectives. Readers are encouraged to seek multiple sources when forming their understanding of these complex issues.</p>
+  <p>Last updated: February 2026</p>
+</footer>
+
 </body>
 </html>
