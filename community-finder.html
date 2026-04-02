@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Local Community Finder | AMALLATTOUF</title>
+
+<!-- Leaflet CSS (free, open-source maps) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Epilogue:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Epilogue', sans-serif;
+    background: #f5f2ed;
+    color: #1a1a18;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 64px;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.18em;
+    color: #1a3a7c;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: rgba(26,26,24,0.5);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: #1a3a7c; }
+  .nav-right { display: flex; gap: 10px; align-items: center; }
+  .nav-quiz {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: transparent;
+    color: #1a3a7c;
+    border: 1.5px solid #1a3a7c;
+    padding: 8px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav-quiz:hover { background: #1a3a7c; color: #fff; }
+  .nav-donate {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    background: #1a3a7c;
+    color: #fff;
+    border: none;
+    padding: 9px 22px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s;
+  }
+  .nav-donate:hover { background: #0f2660; }
+
+  /* ── HERO ── */
+  .hero {
+    background: #fff;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+    padding: 64px 48px 56px;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .eyebrow-flags { font-size: 18px; }
+  .eyebrow-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.4);
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 8vw, 96px);
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+  }
+  .hero-title .black { color: #1a1a18; }
+  .hero-title .blue  { color: #1a3a7c; }
+  .hero-desc {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(26,26,24,0.6);
+    max-width: 560px;
+  }
+
+  /* ── RIBBON ── */
+  .ribbon {
+    background: #1a3a7c;
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ribbon-inner {
+    display: inline-flex;
+    animation: marquee 28s linear infinite;
+  }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .ribbon-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.7);
+    padding: 0 28px;
+  }
+  .ribbon-sep { font-size: 16px; color: rgba(255,255,255,0.25); padding: 0 4px; }
+
+  /* ── SEARCH SECTION ── */
+  .search-section {
+    background: #fff;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+    padding: 40px 48px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.4);
+    margin-bottom: 12px;
+  }
+  .search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-width: 680px;
+  }
+  .search-wrap {
+    flex: 1;
+    position: relative;
+  }
+  .search-wrap svg {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(26,26,24,0.35);
+    pointer-events: none;
+  }
+  #address-input {
+    width: 100%;
+    font-family: 'Epilogue', sans-serif;
+    font-size: 14px;
+    color: #1a1a18;
+    background: #f5f2ed;
+    border: 1.5px solid rgba(26,26,24,0.15);
+    border-radius: 100px;
+    padding: 13px 18px 13px 44px;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  #address-input::placeholder { color: rgba(26,26,24,0.35); }
+  #address-input:focus { border-color: #1a3a7c; background: #fff; }
+
+  /* Autocomplete dropdown */
+  #autocomplete-list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #fff;
+    border: 1.5px solid rgba(26,26,24,0.12);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(26,58,124,0.12);
+    overflow: hidden;
+    z-index: 500;
+    display: none;
+  }
+  #autocomplete-list.visible { display: block; }
+  .ac-item {
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #1a1a18;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(26,26,24,0.05);
+    transition: background 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ac-item:last-child { border-bottom: none; }
+  .ac-item:hover { background: #f0f4fb; color: #1a3a7c; }
+  .ac-item svg { flex-shrink: 0; color: rgba(26,26,24,0.3); }
+
+  #search-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    background: #1a3a7c;
+    color: #fff;
+    border: none;
+    padding: 13px 30px;
+    border-radius: 100px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.1s;
+  }
+  #search-btn:hover { background: #0f2660; }
+  #search-btn:active { transform: scale(0.97); }
+  #search-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Filter pills */
+  .filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 7px 16px;
+    border-radius: 100px;
+    border: 1.5px solid rgba(26,26,24,0.15);
+    background: #fff;
+    color: rgba(26,26,24,0.55);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Epilogue', sans-serif;
+  }
+  .pill.active { background: #1a3a7c; color: #fff; border-color: #1a3a7c; }
+  .pill:hover:not(.active) { border-color: #1a3a7c; color: #1a3a7c; }
+
+  /* ── CONTROLS BAR ── */
+  .controls-bar {
+    display: none;
+    background: #fff;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+    padding: 14px 48px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 64px;
+    z-index: 900;
+  }
+  .controls-bar.visible { display: flex; }
+  .result-count {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.4);
+  }
+  .result-count strong { color: #1a3a7c; }
+  .view-toggle { display: flex; gap: 6px; }
+  .vbtn {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 100px;
+    border: 1.5px solid rgba(26,26,24,0.15);
+    background: #fff;
+    color: rgba(26,26,24,0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Epilogue', sans-serif;
+    transition: all 0.15s;
+  }
+  .vbtn:hover { border-color: #1a3a7c; color: #1a3a7c; }
+  .vbtn.active { background: #1a3a7c; color: #fff; border-color: #1a3a7c; }
+
+  /* ── RADIUS SELECTOR ── */
+  .radius-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .radius-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.4);
+  }
+  #radius-select {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #1a3a7c;
+    background: #f0f4fb;
+    border: 1.5px solid rgba(26,58,124,0.2);
+    border-radius: 100px;
+    padding: 5px 12px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    padding: 40px 48px 80px;
+    background: #f5f2ed;
+  }
+
+  /* ── STATE BOX ── */
+  .state-box {
+    background: #fff;
+    border: 1px solid rgba(26,26,24,0.08);
+    border-radius: 16px;
+    text-align: center;
+    padding: 80px 24px;
+  }
+  .state-icon { font-size: 2.6rem; margin-bottom: 16px; }
+  .state-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.06em;
+    color: #1a1a18;
+    margin-bottom: 8px;
+  }
+  .state-box p {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(26,26,24,0.5);
+    line-height: 1.6;
+  }
+
+  /* ── SPINNER ── */
+  .spinner { display: none; text-align: center; padding: 60px; }
+  .spinner.visible { display: block; }
+  .spin {
+    width: 40px; height: 40px;
+    border: 3px solid rgba(26,58,124,0.12);
+    border-top-color: #1a3a7c;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner p {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.4);
+  }
+  .spinner-detail {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(26,26,24,0.3);
+    margin-top: 6px;
+  }
+
+  /* ── ERROR ── */
+  .error-banner {
+    display: none;
+    background: #fff0f0;
+    border: 1.5px solid rgba(200,0,0,0.15);
+    border-radius: 100px;
+    color: #c00;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .error-banner.visible { display: block; }
+
+  /* ── MAP ── */
+  #map-container {
+    display: none;
+    border: 1px solid rgba(26,26,24,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    height: 530px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 20px rgba(26,58,124,0.06);
+  }
+  #map-container.visible { display: block; }
+  #map { width: 100%; height: 100%; }
+
+  /* Leaflet popup customisation */
+  .leaflet-popup-content-wrapper {
+    border-radius: 12px !important;
+    box-shadow: 0 6px 24px rgba(26,58,124,0.15) !important;
+    border: 1px solid rgba(26,26,24,0.08) !important;
+    font-family: 'Epilogue', sans-serif !important;
+  }
+  .leaflet-popup-content { margin: 14px 16px !important; }
+  .pop-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: #1a3a7c;
+    margin-bottom: 4px;
+  }
+  .pop-addr { font-size: 12px; font-weight: 300; color: rgba(26,26,24,0.55); margin-bottom: 8px; line-height: 1.5; }
+  .pop-dist { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #1a3a7c; opacity: 0.7; margin-bottom: 10px; }
+  .pop-links { display: flex; flex-direction: column; gap: 5px; }
+  .pop-link { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #1a3a7c; text-decoration: none; }
+  .pop-link:hover { text-decoration: underline; }
+
+  /* ── RESULTS GRID ── */
+  #results-list {
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  #results-list.visible { display: grid; }
+
+  .result-card {
+    background: #fff;
+    border: 1px solid rgba(26,26,24,0.08);
+    border-radius: 16px;
+    padding: 26px 24px 22px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.3s ease both;
+  }
+  .result-card:hover {
+    border-color: #1a3a7c;
+    box-shadow: 0 6px 24px rgba(26,58,124,0.1);
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+  .card-big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: rgba(26,26,24,0.04);
+    position: absolute;
+    bottom: -8px; right: 12px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .card-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: #dce9f7;
+    color: #1a3a7c;
+    padding: 4px 10px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .card-icon { font-size: 18px; margin-bottom: 6px; }
+  .card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: #1a1a18;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .card-dist {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #1a3a7c;
+    margin-bottom: 6px;
+    opacity: 0.7;
+  }
+  .card-address {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.55;
+    color: rgba(26,26,24,0.55);
+    margin-bottom: 14px;
+  }
+  .card-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .clink {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a3a7c;
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(26,58,124,0.3);
+    padding-bottom: 1px;
+    display: inline-block;
+    transition: border-color 0.15s, opacity 0.15s;
+  }
+  .clink:hover { border-color: #1a3a7c; opacity: 0.75; }
+  .clink.muted { color: rgba(26,26,24,0.45); border-color: rgba(26,26,24,0.15); }
+  .clink.muted:hover { color: #1a3a7c; border-color: rgba(26,58,124,0.3); opacity: 1; }
+
+  /* ── LOAD MORE ── */
+  #load-more-trigger { height: 1px; margin-top: 10px; grid-column: 1 / -1; }
+  .load-more-spinner {
+    display: none;
+    text-align: center;
+    padding: 24px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.4);
+    grid-column: 1 / -1;
+  }
+  .load-more-spinner.visible { display: block; }
+
+  /* ── CTA STRIP ── */
+  .cta-strip {
+    background: #1a3a7c;
+    padding: 56px 48px;
+    margin-top: 48px;
+    display: none;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 40px;
+    border-radius: 16px;
+  }
+  .cta-strip.visible { display: grid; }
+  .cta-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+  }
+  .cta-heading span { color: #7fb3e8; }
+  .cta-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    margin-top: 10px;
+    line-height: 1.5;
+    max-width: 460px;
+  }
+  .cta-btns { display: flex; flex-direction: column; gap: 10px; }
+  .cta-btn-white {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    background: #fff;
+    color: #1a3a7c;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 100px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s;
+  }
+  .cta-btn-white:hover { background: #dce9f7; }
+  .cta-btn-ghost {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    border: 1.5px solid rgba(255,255,255,0.22);
+    padding: 11px 28px;
+    border-radius: 100px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .cta-btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+  /* ── DATA NOTICE ── */
+  .data-notice {
+    background: #f0f4fb;
+    border: 1.5px solid rgba(26,58,124,0.12);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    display: none;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(26,26,24,0.6);
+    line-height: 1.6;
+  }
+  .data-notice.visible { display: flex; }
+  .data-notice svg { flex-shrink: 0; color: #1a3a7c; margin-top: 2px; }
+  .data-notice strong { font-weight: 600; color: #1a3a7c; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: #fff;
+    border-top: 1px solid rgba(26,26,24,0.08);
+    padding: 20px 48px;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(26,26,24,0.45);
+    line-height: 1.75;
+  }
+  .disclaimer strong { color: rgba(26,26,24,0.6); font-weight: 500; }
+  .disclaimer a { color: #1a3a7c; text-decoration: none; }
+  .disclaimer a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a1a18;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+  }
+  .footer-brand .brand-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    color: #fff;
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+  }
+  .footer-brand p {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.65;
+    max-width: 240px;
+  }
+  .footer-col h4 {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 9px; }
+  .footer-col a {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    background: #111110;
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-bottom p {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+  .footer-flags { font-size: 1rem; letter-spacing: 4px; }
+
+  /* ── FLOATING BUTTONS ── */
+  .floating-btns {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 200;
+  }
+  .float-quiz {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: #fff;
+    color: #1a3a7c;
+    border: 1.5px solid #1a3a7c;
+    padding: 11px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(26,58,124,0.15);
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .float-quiz:hover { background: #1a3a7c; color: #fff; box-shadow: 0 6px 24px rgba(26,58,124,0.3); transform: translateY(-2px); }
+  .float-donate {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    background: #1a3a7c;
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(26,58,124,0.35);
+    transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .float-donate:hover { background: #0f2660; box-shadow: 0 6px 28px rgba(26,58,124,0.5); transform: translateY(-2px); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 10px 16px; height: auto; flex-wrap: wrap; gap: 8px; }
+    .nav-links { flex-wrap: wrap; gap: 10px 18px; width: 100%; justify-content: center; padding-bottom: 4px; }
+    .nav-links a { font-size: 11px; }
+    .nav-right { width: 100%; justify-content: center; padding-bottom: 6px; }
+    .hero { padding: 40px 24px; }
+    .search-section { padding: 28px 24px; }
+    .controls-bar { padding: 12px 24px; top: 0; }
+    .main { padding: 28px 24px 80px; }
+    #results-list.visible { grid-template-columns: 1fr 1fr; }
+    .cta-strip.visible { grid-template-columns: 1fr; padding: 40px 24px; }
+    footer { grid-template-columns: 1fr; padding: 32px 24px; }
+    .footer-bottom { padding: 14px 24px; flex-direction: column; text-align: center; }
+    .disclaimer { padding: 16px 24px; }
+    .floating-btns { bottom: 18px; right: 16px; }
+  }
+  @media (max-width: 600px) {
+    #results-list.visible { grid-template-columns: 1fr; }
+    .search-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="https://amallattouf.com/" class="nav-logo">AMALLATTOUF</a>
+  <ul class="nav-links">
+    <li><a href="https://amallattouf.com/about.html">About</a></li>
+    <li><a href="https://amallattouf.com/#directory">Directory</a></li>
+    <li><a href="https://www.amallattouf.com/blog.html">Blog</a></li>
+    <li><a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL" target="_blank">Podcast</a></li>
+    <li><a href="https://www.amallattouf.com/testimonials">Testimonials</a></li>
+    <li><a href="https://amallattouf.com/contact.html">Contact</a></li>
+    <li><a href="https://www.instagram.com/amal.lattouf" target="_blank">Social</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" class="nav-quiz">🏆 Quiz Champ</a>
+    <a href="https://www.fidf.org/" target="_blank" class="nav-donate">Donate</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-eyebrow">
+    <span class="eyebrow-flags">🇮🇱 🇺🇸</span>
+    <span class="eyebrow-text">Local Community Finder · USA</span>
+  </div>
+  <div class="hero-title">
+    <span class="black">Find</span> <span class="blue">Pro-Israel</span><br>
+    <span class="black">&amp; Jewish</span><br>
+    <span class="blue">Groups Near You</span>
+  </div>
+  <p class="hero-desc">Search by address or ZIP code to discover synagogues, Jewish community centers, charities, schools, and advocacy organizations close to home.</p>
+</div>
+
+<!-- ── RIBBON ── -->
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <span class="ribbon-item">SYNAGOGUES</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">COMMUNITY CENTERS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">ADVOCACY ORGS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">CHARITIES</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">JEWISH SCHOOLS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">PRO-ISRAEL GROUPS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">STAND WITH ISRAEL</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">SYNAGOGUES</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">COMMUNITY CENTERS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">ADVOCACY ORGS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">CHARITIES</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">JEWISH SCHOOLS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">PRO-ISRAEL GROUPS</span><span class="ribbon-sep">·</span>
+    <span class="ribbon-item">STAND WITH ISRAEL</span><span class="ribbon-sep">·</span>
+  </div>
+</div>
+
+<!-- ── SEARCH SECTION ── -->
+<div class="search-section">
+  <div class="section-label">Search your area</div>
+  <div class="search-row">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="address-input" placeholder="Enter address, city, or ZIP code…" autocomplete="off"/>
+      <div id="autocomplete-list"></div>
+    </div>
+    <button id="search-btn" onclick="doSearch()">Find Groups →</button>
+  </div>
+  <div class="filter-pills">
+    <span class="pill active" data-type="all" onclick="setFilter(this)">All</span>
+    <span class="pill" data-type="synagogue" onclick="setFilter(this)">🕍 Synagogue</span>
+    <span class="pill" data-type="jewish_center" onclick="setFilter(this)">🏛 JCC / Center</span>
+    <span class="pill" data-type="charity" onclick="setFilter(this)">❤️ Charity</span>
+    <span class="pill" data-type="school" onclick="setFilter(this)">📚 School</span>
+  </div>
+</div>
+
+<!-- ── CONTROLS BAR ── -->
+<div class="controls-bar" id="controls-bar">
+  <div class="result-count" id="result-count">—</div>
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <div class="radius-wrap">
+      <span class="radius-label">Radius:</span>
+      <select id="radius-select" onchange="if(searchLat) runSearch()">
+        <option value="8000">5 miles</option>
+        <option value="16000" selected>10 miles</option>
+        <option value="32000">20 miles</option>
+        <option value="48000">30 miles</option>
+      </select>
+    </div>
+    <div class="view-toggle">
+      <button class="vbtn active" id="list-view-btn" onclick="setView('list')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        List View
+      </button>
+      <button class="vbtn" id="map-view-btn" onclick="setView('map')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        Map View
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+  <div class="error-banner" id="error-banner"></div>
+
+  <div class="data-notice" id="data-notice">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span><strong>Powered by OpenStreetMap</strong> — Data is community-maintained and may not include every organization. Results show places tagged as Jewish or related in the OpenStreetMap database. Know a missing group? <a href="https://amallattouf.com/contact.html" style="color:#1a3a7c;font-weight:600;">Suggest an addition →</a></span>
+  </div>
+
+  <div class="spinner" id="spinner">
+    <div class="spin"></div>
+    <p>Searching nearby groups…</p>
+    <p class="spinner-detail">Querying OpenStreetMap database</p>
+  </div>
+
+  <div id="empty-state" class="state-box">
+    <div class="state-icon">✡️</div>
+    <h3>Search for Your Community</h3>
+    <p>Enter an address or ZIP code above to find Jewish and pro-Israel organizations near you.<br>Powered by OpenStreetMap — no API key required.</p>
+  </div>
+
+  <div id="map-container"><div id="map"></div></div>
+  <div id="results-list"></div>
+  <div id="load-more-trigger"></div>
+  <div class="load-more-spinner" id="lm-spin">
+    <div class="spin" style="width:28px;height:28px;border-width:2px;margin:0 auto 10px;"></div>
+    Loading more…
+  </div>
+
+  <div class="cta-strip" id="cta-strip">
+    <div>
+      <div class="cta-heading">Support Israel.<br>Spread <span>Truth.</span><br>Take Action.</div>
+      <p class="cta-sub">Every organization in this directory is a pathway to engagement. Advocate, learn, and make a difference in U.S.–Israel relations.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="https://www.fidf.org/" target="_blank" rel="noopener" class="cta-btn-white">Donate to FIDF →</a>
+      <a href="https://amallattouf.com/#directory" class="cta-btn-ghost">Browse All Organizations</a>
+      <a href="https://amallattouf.com/contact.html" class="cta-btn-ghost">Suggest a Group</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── DISCLAIMER ── -->
+<div class="disclaimer">
+  <strong>Disclaimer:</strong> Results are sourced from OpenStreetMap via the Overpass API and are provided for informational purposes only. AMALLATTOUF does not endorse, verify, or guarantee the accuracy of any listed organization's information, policies, or activities. Inclusion in results does not constitute an official endorsement. All organization links lead to third-party websites; AMALLATTOUF is not responsible for their content. Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>. To suggest an addition or correction, please <a href="https://amallattouf.com/contact.html">contact us</a>.
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">
+    <a href="https://amallattouf.com/" class="brand-name">AMALLATTOUF</a>
+    <p>Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, and Facts.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Navigate</h4>
+    <ul>
+      <li><a href="https://amallattouf.com/about.html">About</a></li>
+      <li><a href="https://amallattouf.com/#directory">Directory</a></li>
+      <li><a href="https://www.amallattouf.com/blog.html">Blog</a></li>
+      <li><a href="https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL">Podcast</a></li>
+      <li><a href="https://www.amallattouf.com/testimonials">Testimonials</a></li>
+      <li><a href="https://amallattouf.com/contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Resources</h4>
+    <ul>
+      <li><a href="https://www.aipac.org" target="_blank" rel="noopener">AIPAC</a></li>
+      <li><a href="https://www.adl.org" target="_blank" rel="noopener">ADL</a></li>
+      <li><a href="https://www.fidf.org" target="_blank" rel="noopener">FIDF</a></li>
+      <li><a href="https://www.standwithus.com" target="_blank" rel="noopener">StandWithUs</a></li>
+      <li><a href="https://hillel.org" target="_blank" rel="noopener">Hillel</a></li>
+      <li><a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" rel="noopener">🏆 Quiz Champ</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 AMALLATTOUF · Pro-Israel Resource Directory · USA</p>
+  <span class="footer-flags">🇮🇱 🇺🇸</span>
+  <p>All rights reserved</p>
+</div>
+
+<!-- ── FLOATING BUTTONS ── -->
+<div class="floating-btns">
+  <a href="https://amallattouf-quiz-champ.lovable.app/" target="_blank" rel="noopener" class="float-quiz">🏆 Quiz Champ</a>
+  <a href="https://www.fidf.org/" target="_blank" rel="noopener" class="float-donate">Donate</a>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════
+let leafletMap = null;
+let view = 'list';
+let activeFilter = 'all';
+let results = [];
+let shown = 0;
+let isLoading = false;
+let searchLat = null;
+let searchLon = null;
+let mapMarkers = [];
+const PAGE = 10;
+const listEl = document.getElementById('results-list');
+
+// ── Category config ──
+const ICONS  = { synagogue:'🕍', jewish_center:'🏛', charity:'❤️', school:'📚', default:'✡️' };
+const LABELS = { synagogue:'Synagogue', jewish_center:'JCC / Center', charity:'Charity', school:'Jewish School', default:'Community Group' };
+
+// Overpass tags to query per filter
+const OSM_QUERIES = {
+  all: `
+    node["religion"="jewish"](around:{R},{LAT},{LON});
+    way["religion"="jewish"](around:{R},{LAT},{LON});
+    node["amenity"="place_of_worship"]["religion"="jewish"](around:{R},{LAT},{LON});
+    node["amenity"="community_centre"]["community"="jewish"](around:{R},{LAT},{LON});
+    node["name"~"synagogue|synagog|shul|chabad|hillel|JCC|jewish|Jewish|Beth |Bnai|Temple",i](around:{R},{LAT},{LON});
+    way["name"~"synagogue|synagog|shul|chabad|hillel|JCC|jewish|Jewish|Beth |Bnai|Temple",i](around:{R},{LAT},{LON});
+  `,
+  synagogue: `
+    node["religion"="jewish"]["amenity"="place_of_worship"](around:{R},{LAT},{LON});
+    way["religion"="jewish"]["amenity"="place_of_worship"](around:{R},{LAT},{LON});
+    node["name"~"synagogue|synagog|shul|chabad|beth |bnai|temple",i](around:{R},{LAT},{LON});
+    way["name"~"synagogue|synagog|shul|chabad|beth |bnai|temple",i](around:{R},{LAT},{LON});
+  `,
+  jewish_center: `
+    node["amenity"="community_centre"]["community"="jewish"](around:{R},{LAT},{LON});
+    node["name"~"jewish community|JCC|hillel|jewish center|jewish centre|federation",i](around:{R},{LAT},{LON});
+    way["name"~"jewish community|JCC|hillel|jewish center|jewish centre|federation",i](around:{R},{LAT},{LON});
+  `,
+  charity: `
+    node["name"~"jewish family|jewish charity|jewish vocational|jewish federation|jewish free",i](around:{R},{LAT},{LON});
+    way["name"~"jewish family|jewish charity|jewish vocational|jewish federation|jewish free",i](around:{R},{LAT},{LON});
+  `,
+  school: `
+    node["amenity"="school"]["religion"="jewish"](around:{R},{LAT},{LON});
+    node["name"~"yeshiva|hebrew school|jewish day|jewish academy|day school",i](around:{R},{LAT},{LON});
+    way["name"~"yeshiva|hebrew school|jewish day|jewish academy|day school",i](around:{R},{LAT},{LON});
+  `
+};
+
+// ═══════════════════════════════════════════════════════
+//  AUTOCOMPLETE  (Nominatim)
+// ═══════════════════════════════════════════════════════
+let acTimer = null;
+const inp = document.getElementById('address-input');
+const acList = document.getElementById('autocomplete-list');
+
+inp.addEventListener('input', () => {
+  clearTimeout(acTimer);
+  const q = inp.value.trim();
+  if (q.length < 3) { acList.classList.remove('visible'); return; }
+  acTimer = setTimeout(() => fetchSuggestions(q), 300);
+});
+
+inp.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { acList.classList.remove('visible'); doSearch(); }
+  if (e.key === 'Escape') acList.classList.remove('visible');
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-wrap')) acList.classList.remove('visible');
+});
+
+async function fetchSuggestions(q) {
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&countrycodes=us&limit=5&addressdetails=1`;
+    const res = await fetch(url, { headers: { 'Accept-Language': 'en' } });
+    const data = await res.json();
+    renderSuggestions(data);
+  } catch(e) { /* silent fail */ }
+}
+
+function renderSuggestions(items) {
+  acList.innerHTML = '';
+  if (!items.length) { acList.classList.remove('visible'); return; }
+  items.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'ac-item';
+    div.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      ${esc(item.display_name)}`;
+    div.addEventListener('click', () => {
+      inp.value = item.display_name;
+      searchLat = parseFloat(item.lat);
+      searchLon = parseFloat(item.lon);
+      acList.classList.remove('visible');
+      runSearch();
+    });
+    acList.appendChild(div);
+  });
+  acList.classList.add('visible');
+}
+
+// ═══════════════════════════════════════════════════════
+//  GEOCODE + SEARCH
+// ═══════════════════════════════════════════════════════
+async function doSearch() {
+  const q = inp.value.trim();
+  if (!q) return;
+  showErr('');
+  setLoad(true);
+  document.getElementById('empty-state').style.display = 'none';
+
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&countrycodes=us&limit=1`;
+    const res = await fetch(url, { headers: { 'Accept-Language': 'en' } });
+    const data = await res.json();
+    if (!data.length) {
+      setLoad(false);
+      showErr('Could not find that address. Please try a different search.');
+      return;
+    }
+    searchLat = parseFloat(data[0].lat);
+    searchLon = parseFloat(data[0].lon);
+    runSearch();
+  } catch(e) {
+    setLoad(false);
+    showErr('Network error. Please check your connection and try again.');
+  }
+}
+
+function setFilter(el) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  activeFilter = el.dataset.type;
+  if (searchLat !== null) runSearch();
+}
+
+async function runSearch() {
+  setLoad(true);
+  results = []; shown = 0;
+  listEl.innerHTML = '';
+  clearMapMarkers();
+  document.getElementById('cta-strip').classList.remove('visible');
+  document.getElementById('data-notice').classList.remove('visible');
+
+  const radius = parseInt(document.getElementById('radius-select').value);
+  const queryTemplate = OSM_QUERIES[activeFilter] || OSM_QUERIES.all;
+  const queryBody = queryTemplate
+    .replace(/{R}/g, radius)
+    .replace(/{LAT}/g, searchLat)
+    .replace(/{LON}/g, searchLon);
+
+  const overpassQuery = `[out:json][timeout:25];(${queryBody});out center tags;`;
+  const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(overpassQuery)}`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    processResults(data.elements || []);
+  } catch(e) {
+    setLoad(false);
+    showErr('Could not reach the OpenStreetMap database. Please try again in a moment.');
+  }
+}
+
+function processResults(elements) {
+  const seen = new Set();
+  const raw = [];
+
+  elements.forEach(el => {
+    const name = el.tags && el.tags.name;
+    if (!name) return;
+    const key = name.toLowerCase().trim();
+    if (seen.has(key)) return;
+    seen.add(key);
+
+    // Get coordinates
+    let lat, lon;
+    if (el.type === 'node') { lat = el.lat; lon = el.lon; }
+    else if (el.center) { lat = el.center.lat; lon = el.center.lon; }
+    else return;
+
+    const dist = haversine(searchLat, searchLon, lat, lon);
+    const cat = guessCategory(el.tags, name);
+
+    raw.push({
+      id: el.id,
+      name,
+      lat, lon,
+      dist,
+      cat,
+      tags: el.tags || {},
+      address: buildAddress(el.tags),
+      website: el.tags && (el.tags.website || el.tags['contact:website'] || el.tags['url']),
+      phone: el.tags && (el.tags.phone || el.tags['contact:phone']),
+    });
+  });
+
+  // Sort by distance
+  results = raw.sort((a, b) => a.dist - b.dist);
+
+  setLoad(false);
+  document.getElementById('controls-bar').classList.add('visible');
+  document.getElementById('result-count').innerHTML =
+    `Found <strong>${results.length}</strong> groups near you`;
+
+  if (!results.length) {
+    document.getElementById('empty-state').innerHTML = `
+      <div class="state-icon">😔</div>
+      <h3>No Groups Found</h3>
+      <p>No Jewish organizations were found in OpenStreetMap for this area.<br>
+      Try increasing the search radius, or <a href="https://amallattouf.com/contact.html" style="color:#1a3a7c;font-weight:600;">suggest a group</a> to add.</p>`;
+    document.getElementById('empty-state').style.display = 'block';
+  } else {
+    document.getElementById('data-notice').classList.add('visible');
+    renderPage();
+    setView(view);
+    if (view === 'map') centerMap();
+    setTimeout(() => document.getElementById('cta-strip').classList.add('visible'), 600);
+  }
+}
+
+function guessCategory(tags, name) {
+  if (!tags) return 'default';
+  const n = name.toLowerCase();
+  const amenity = (tags.amenity || '').toLowerCase();
+  const religion = (tags.religion || '').toLowerCase();
+
+  if (amenity === 'place_of_worship' && religion === 'jewish') return 'synagogue';
+  if (n.includes('synagog') || n.includes('shul') || n.includes('chabad') || n.includes('temple') || n.includes('beth ') || n.includes('bnai')) return 'synagogue';
+  if (n.includes('yeshiva') || n.includes('hebrew school') || n.includes('day school') || n.includes('academy') || amenity === 'school') return 'school';
+  if (n.includes('jcc') || n.includes('community center') || n.includes('community centre') || n.includes('hillel') || n.includes('federation')) return 'jewish_center';
+  if (n.includes('family service') || n.includes('charity') || n.includes('vocational') || n.includes('free loan')) return 'charity';
+  return 'default';
+}
+
+function buildAddress(tags) {
+  if (!tags) return '';
+  const parts = [
+    tags['addr:housenumber'] && tags['addr:street'] ? `${tags['addr:housenumber']} ${tags['addr:street']}` : tags['addr:street'],
+    tags['addr:city'],
+    tags['addr:state'],
+    tags['addr:postcode']
+  ].filter(Boolean);
+  return parts.join(', ');
+}
+
+// ═══════════════════════════════════════════════════════
+//  MAP (Leaflet)
+// ═══════════════════════════════════════════════════════
+function initLeafletMap() {
+  if (leafletMap) return;
+  leafletMap = L.map('map').setView([39.5, -98.35], 4);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19
+  }).addTo(leafletMap);
+}
+
+function centerMap() {
+  if (!leafletMap) initLeafletMap();
+  leafletMap.setView([searchLat, searchLon], 12);
+  buildMapMarkers();
+}
+
+function buildMapMarkers() {
+  clearMapMarkers();
+
+  // User pin
+  const userIcon = L.divIcon({
+    html: `<div style="width:16px;height:16px;background:#1a3a7c;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(26,58,124,0.4);"></div>`,
+    iconSize: [16, 16], iconAnchor: [8, 8], className: ''
+  });
+  const userMarker = L.marker([searchLat, searchLon], { icon: userIcon, zIndexOffset: 1000 })
+    .addTo(leafletMap)
+    .bindPopup('<div style="font-family:Epilogue,sans-serif;font-size:12px;font-weight:600;color:#1a3a7c;">📍 Your location</div>');
+  mapMarkers.push(userMarker);
+
+  results.forEach(p => {
+    const em = ICONS[p.cat] || ICONS.default;
+    const icon = L.divIcon({
+      html: `<div style="width:36px;height:36px;background:#1a3a7c;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 3px 10px rgba(26,58,124,0.35);">${em}</div>`,
+      iconSize: [36, 36], iconAnchor: [18, 36], className: ''
+    });
+
+    const mapsUrl = `https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=17/${p.lat}/${p.lon}`;
+    const popup = `
+      <div class="pop-name">${esc(p.name)}</div>
+      ${p.address ? `<div class="pop-addr">${esc(p.address)}</div>` : ''}
+      <div class="pop-dist">📍 ${p.dist.toFixed(1)} mi away</div>
+      <div class="pop-links">
+        ${p.website ? `<a class="pop-link" href="${esc(p.website)}" target="_blank" rel="noopener">Visit Website →</a>` : ''}
+        <a class="pop-link" href="${mapsUrl}" target="_blank" rel="noopener">View on OpenStreetMap →</a>
+      </div>`;
+
+    const m = L.marker([p.lat, p.lon], { icon })
+      .addTo(leafletMap)
+      .bindPopup(popup, { maxWidth: 240 });
+    mapMarkers.push(m);
+  });
+}
+
+function clearMapMarkers() {
+  if (!leafletMap) return;
+  mapMarkers.forEach(m => m.remove());
+  mapMarkers = [];
+}
+
+// ═══════════════════════════════════════════════════════
+//  RENDER LIST
+// ═══════════════════════════════════════════════════════
+function renderPage() {
+  const slice = results.slice(shown, shown + PAGE);
+  slice.forEach((p, i) => listEl.appendChild(mkCard(p, shown + i)));
+  shown += slice.length;
+  listEl.classList.add('visible');
+  document.getElementById('lm-spin').classList.remove('visible');
+}
+
+function mkCard(p, idx) {
+  const num = String(idx + 1).padStart(2, '0');
+  const mapsUrl = `https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=17/${p.lat}/${p.lon}`;
+  const d = document.createElement('div');
+  d.className = 'result-card';
+  d.style.animationDelay = `${(idx % PAGE) * 35}ms`;
+  d.innerHTML = `
+    <div class="card-big-num">${num}</div>
+    <span class="card-badge">${LABELS[p.cat] || LABELS.default}</span>
+    <div class="card-icon">${ICONS[p.cat] || ICONS.default}</div>
+    <div class="card-name">${esc(p.name)}</div>
+    <div class="card-dist">📍 ${p.dist.toFixed(1)} mi away</div>
+    ${p.address ? `<div class="card-address">${esc(p.address)}</div>` : ''}
+    <div class="card-links">
+      ${p.website ? `<a class="clink" href="${esc(normalizeUrl(p.website))}" target="_blank" rel="noopener">Website →</a>` : ''}
+      <a class="clink muted" href="${mapsUrl}" target="_blank" rel="noopener">OpenStreetMap →</a>
+      ${p.phone ? `<a class="clink muted" href="tel:${esc(p.phone)}">${esc(p.phone)}</a>` : ''}
+    </div>`;
+  return d;
+}
+
+function normalizeUrl(url) {
+  if (!url) return '#';
+  return url.startsWith('http') ? url : 'https://' + url;
+}
+
+// ═══════════════════════════════════════════════════════
+//  VIEW TOGGLE
+// ═══════════════════════════════════════════════════════
+function setView(v) {
+  view = v;
+  document.getElementById('list-view-btn').classList.toggle('active', v === 'list');
+  document.getElementById('map-view-btn').classList.toggle('active', v === 'map');
+  const mapCont = document.getElementById('map-container');
+  mapCont.classList.toggle('visible', v === 'map');
+  listEl.classList.toggle('visible', v === 'list');
+
+  if (v === 'map') {
+    if (!leafletMap) initLeafletMap();
+    setTimeout(() => {
+      leafletMap.invalidateSize();
+      if (searchLat) centerMap();
+    }, 100);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+//  INFINITE SCROLL
+// ═══════════════════════════════════════════════════════
+const scrollObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !isLoading && shown < results.length && view === 'list') {
+    document.getElementById('lm-spin').classList.add('visible');
+    setTimeout(renderPage, 400);
+  }
+}, { rootMargin: '200px' });
+scrollObs.observe(document.getElementById('load-more-trigger'));
+
+// ═══════════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════════
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 3958.8;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function setLoad(on) {
+  isLoading = on;
+  document.getElementById('spinner').classList.toggle('visible', on);
+  const b = document.getElementById('search-btn');
+  b.disabled = on;
+  b.textContent = on ? 'Searching…' : 'Find Groups →';
+}
+
+function showErr(msg) {
+  const e = document.getElementById('error-banner');
+  e.textContent = msg;
+  e.classList.toggle('visible', !!msg);
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
