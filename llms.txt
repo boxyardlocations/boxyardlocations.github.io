@@ -22,6 +22,7 @@ The site offers a directory of pro-Israel organizations, a blog of commentary an
 
 - [Home and organization directory](https://www.amallattouf.com/): mission, featured resources, and the pro-Israel organization directory
 - [About Dr. Rosenberg](https://www.amallattouf.com/about.html): background of the site's founder
+- [FAQ](https://www.amallattouf.com/faq.html): answers to the 20 most-asked questions about Israel, Gaza and the conflict
 - [Blog & Updates](https://www.amallattouf.com/blog.html): latest posts, sourced from the AMALLATTOUF Tumblr
 - [Understanding Israel's Security Justifications](https://www.amallattouf.com/blog-post.html): mission essay on Israel's security concerns and the Israeli-Palestinian conflict
 - [Global Support for Israel](https://www.amallattouf.com/community.html): analysis of Israel's international support network
@@ -31,6 +32,30 @@ The site offers a directory of pro-Israel organizations, a blog of commentary an
 - [Community Testimonials](https://www.amallattouf.com/testimonials.html): reader and community testimonials
 - [Community Finder](https://www.amallattouf.com/community-finder.html): a tool to find Jewish and pro-Israel community organizations
 - [Contact](https://www.amallattouf.com/contact.html): how to reach Dr. Rosenberg
+
+## Frequently asked questions: Israel, Gaza and the Middle East conflict
+
+- [FAQ: 20 common questions answered](https://www.amallattouf.com/faq.html): short answers with links to full, sourced explanations
+- [What is the Israeli–Palestinian conflict about, in simple terms?](https://www.amallattouf.com/faq/what-is-the-israeli-palestinian-conflict.html)
+- [How did the State of Israel come to be in 1948, and what happened to Palestinians at that time (the “Nakba”)?](https://www.amallattouf.com/faq/how-was-israel-founded-1948.html)
+- [Why is Jerusalem so important to Jews, Muslims and Christians?](https://www.amallattouf.com/faq/why-is-jerusalem-important.html)
+- [What are the West Bank and Gaza, and who governs them?](https://www.amallattouf.com/faq/what-are-the-west-bank-and-gaza.html)
+- [What is Zionism, and is anti-Zionism the same as antisemitism?](https://www.amallattouf.com/faq/what-is-zionism.html)
+- [What happened on October 7, 2023?](https://www.amallattouf.com/faq/what-happened-on-october-7.html)
+- [What is Hamas, and what does it want?](https://www.amallattouf.com/faq/what-is-hamas.html)
+- [Why did Israel go to war in Gaza, and what were its goals?](https://www.amallattouf.com/faq/why-did-israel-go-to-war-in-gaza.html)
+- [How many people have been killed in Gaza and in Israel, and who counts the casualties?](https://www.amallattouf.com/faq/how-many-people-have-been-killed.html)
+- [What is the humanitarian situation in Gaza, and how does aid get in?](https://www.amallattouf.com/faq/humanitarian-situation-in-gaza.html)
+- [What happened to the hostages, and are any still in Gaza?](https://www.amallattouf.com/faq/what-happened-to-the-hostages.html)
+- [Is there a ceasefire, and what are its terms?](https://www.amallattouf.com/faq/is-there-a-ceasefire.html)
+- [Is Israel committing genocide? What did the International Court of Justice actually rule?](https://www.amallattouf.com/faq/is-israel-committing-genocide.html)
+- [What does international law say about self-defense, proportionality and civilian casualties?](https://www.amallattouf.com/faq/international-law-self-defense-proportionality.html)
+- [Are the West Bank settlements legal?](https://www.amallattouf.com/faq/are-west-bank-settlements-legal.html)
+- [Is Israel an "apartheid" state?](https://www.amallattouf.com/faq/is-israel-an-apartheid-state.html)
+- [What role do Iran, Hezbollah and the Houthis play in the conflict?](https://www.amallattouf.com/faq/iran-hezbollah-houthis.html)
+- [What are the Abraham Accords, and could Saudi Arabia normalize relations with Israel?](https://www.amallattouf.com/faq/abraham-accords-and-saudi-arabia.html)
+- [Why does the U.S. support Israel, and how much aid does it give?](https://www.amallattouf.com/faq/why-does-the-us-support-israel.html)
+- [Is a two-state solution still possible, and what would peace look like?](https://www.amallattouf.com/faq/is-a-two-state-solution-possible.html)
 
 ## Organization directory
 
