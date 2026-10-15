@@ -163,7 +163,61 @@
             }
             h1 { font-size: 2rem; }
         }
-    </style>
+    
+/* Semantic headings: keep original look */
+div.site-title{margin-bottom:20px}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.amallattouf.com/#organization",
+      "name": "A.M.A.L.L.A.T.T.O.U.F",
+      "alternateName": "AMALLATTOUF",
+      "url": "https://www.amallattouf.com/",
+      "description": "Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, and Facts — a directory and education resource for pro-Israel engagement.",
+      "founder": {
+        "@id": "https://www.amallattouf.com/about.html#person"
+      },
+      "sameAs": [
+        "https://www.instagram.com/amal.lattouf",
+        "https://www.tumblr.com/amallattouf",
+        "https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.amallattouf.com/#website",
+      "url": "https://www.amallattouf.com/",
+      "name": "A.M.A.L.L.A.T.T.O.U.F",
+      "publisher": {
+        "@id": "https://www.amallattouf.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://www.amallattouf.com/tennis.html#article",
+      "url": "https://www.amallattouf.com/tennis.html",
+      "mainEntityOfPage": "https://www.amallattouf.com/tennis.html",
+      "headline": "The Hidden Cost of Tennis",
+      "description": "An in-depth look at how tennis impacts the feet, ankles, and joints, told through the personal experience of Dr. Rosenberg and supported by medical research.",
+      "author": {
+        "@type": "Person",
+        "@id": "https://www.amallattouf.com/about.html#person",
+        "name": "Dr. Joseph G. Rosenberg",
+        "url": "https://www.amallattouf.com/about.html"
+      },
+      "publisher": {
+        "@id": "https://www.amallattouf.com/#organization"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -173,7 +227,7 @@
 
     <div class="container">
         <header>
-            <h1 class="site-title">A.M.A.L.L.A.T.T.O.U.F</h1>
+            <div class="site-title">A.M.A.L.L.A.T.T.O.U.F</div>
             <p class="site-subtitle">Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, Facts</p>
         </header>
 

@@ -206,7 +206,55 @@ nav {
   @media (max-width: 600px) {
     .floating-btns { bottom: 18px; right: 16px; }
   }
+
+/* Semantic headings: keep original look */
+h1.page-title{font-weight:inherit}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.amallattouf.com/#organization",
+      "name": "A.M.A.L.L.A.T.T.O.U.F",
+      "alternateName": "AMALLATTOUF",
+      "url": "https://www.amallattouf.com/",
+      "description": "Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, and Facts — a directory and education resource for pro-Israel engagement.",
+      "founder": {
+        "@id": "https://www.amallattouf.com/about.html#person"
+      },
+      "sameAs": [
+        "https://www.instagram.com/amal.lattouf",
+        "https://www.tumblr.com/amallattouf",
+        "https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.amallattouf.com/#website",
+      "url": "https://www.amallattouf.com/",
+      "name": "A.M.A.L.L.A.T.T.O.U.F",
+      "publisher": {
+        "@id": "https://www.amallattouf.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ContactPage",
+      "@id": "https://www.amallattouf.com/contact.html#webpage",
+      "url": "https://www.amallattouf.com/contact.html",
+      "name": "Contact Dr. Rosenberg | A.M.A.L.L.A.T.T.O.U.F",
+      "isPartOf": {
+        "@id": "https://www.amallattouf.com/#website"
+      },
+      "about": {
+        "@id": "https://www.amallattouf.com/about.html#person"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -228,7 +276,7 @@ nav {
 
 <div class="page-banner">
   <div class="page-eyebrow">Get in Touch</div>
-  <div class="page-title"><span class="blue">Contact</span><br>Dr. Rosenberg</div>
+  <h1 class="page-title"><span class="blue">Contact</span><br>Dr. Rosenberg</h1>
   <p class="page-subtitle">A message about correspondence and staying connected in retirement.</p>
 </div>
 

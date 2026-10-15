@@ -744,7 +744,56 @@
     .result-card { grid-template-columns: 1fr; padding: 20px; }
     .card-num { display: none; }
   }
+
+/* Semantic headings: keep original look */
+h1.hero-title{font-weight:inherit}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.amallattouf.com/#organization",
+      "name": "A.M.A.L.L.A.T.T.O.U.F",
+      "alternateName": "AMALLATTOUF",
+      "url": "https://www.amallattouf.com/",
+      "description": "Advancing Middle-East Allies through Law, Learning, Advocacy, Transparency, Tolerance, Outreach, Unity, and Facts — a directory and education resource for pro-Israel engagement.",
+      "founder": {
+        "@id": "https://www.amallattouf.com/about.html#person"
+      },
+      "sameAs": [
+        "https://www.instagram.com/amal.lattouf",
+        "https://www.tumblr.com/amallattouf",
+        "https://open.spotify.com/show/67xrcEbd49Uyhn9kuvCkIL"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.amallattouf.com/#website",
+      "url": "https://www.amallattouf.com/",
+      "name": "A.M.A.L.L.A.T.T.O.U.F",
+      "publisher": {
+        "@id": "https://www.amallattouf.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.amallattouf.com/community-finder.html#webpage",
+      "url": "https://www.amallattouf.com/community-finder.html",
+      "name": "Local Community Finder | AMALLATTOUF",
+      "description": "A search tool to help visitors find Jewish and pro-Israel community organizations.",
+      "isPartOf": {
+        "@id": "https://www.amallattouf.com/#website"
+      },
+      "about": {
+        "@id": "https://www.amallattouf.com/#organization"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -773,11 +822,11 @@
     <span class="eyebrow-flags">🇮🇱 🇺🇸</span>
     <span class="eyebrow-text">Local Community Finder · USA</span>
   </div>
-  <div class="hero-title">
+  <h1 class="hero-title">
     <span class="black">Find</span> <span class="blue">Pro-Israel</span><br>
     <span class="black">&amp; Jewish</span><br>
     <span class="blue">Groups Near You</span>
-  </div>
+  </h1>
   <p class="hero-desc">Search by address or ZIP code to discover synagogues, Jewish community centers, charities, schools, and advocacy organizations close to home.</p>
 </div>
 
